@@ -1,5 +1,5 @@
-const Example = require('./Example');
+const Itinerary = require('./Itinerary');
 
 module.exports = {
-  Example
+  Itinerary
 };
