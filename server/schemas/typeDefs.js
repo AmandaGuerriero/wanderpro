@@ -16,7 +16,7 @@ type Query {
 
 type Mutation {
   addItinerary(title: String!, description: String, dateBegin: String, dateEnd: String): Itinerary
-  updateItinerary(_id: ID!, title: String!, description: String, dateBegin: String, dateEnd: String): Itinerary
+  updateItinerary(_id: ID!, title: String, description: String, dateBegin: String, dateEnd: String): Itinerary
 }
 
 `;
