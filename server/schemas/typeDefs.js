@@ -19,7 +19,8 @@ type Itinerary {
 type Query {
   itineraries(title: String): [Itinerary]
   itineraryById(_id: ID!): Itinerary
-  user: User
+  users: [User]
+  userById(_id: ID!): User
 }
 
 type Mutation {

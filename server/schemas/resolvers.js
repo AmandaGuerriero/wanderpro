@@ -8,15 +8,18 @@ const resolvers = {
     itineraryById: async (parent, { _id }) => {
       return await Itinerary.findById(_id)
     },
-    user: async (parent, { _id }) => {
-      const user = await User.findById(user._id).populate({
+    users: async () => {
+      return await User.find();
+    },
+    userById: async (parent, { _id }) => {
+      const user = await User.findById(_id).populate({
         path: 'itineraries',
         populate: 'title'
       });
 
       user.itineraries.sort((a, b) => b.title - a.title);
 
-      return user;
+      return User.findById(_id);
     },
   },
   Mutation: {
