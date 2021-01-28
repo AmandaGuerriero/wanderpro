@@ -26,7 +26,7 @@ type Mutation {
   addItinerary(title: String!, description: String, dateBegin: String, dateEnd: String): Itinerary
   updateItinerary(_id: ID!, title: String, description: String, dateBegin: String, dateEnd: String): Itinerary
   addUser(username: String!, email: String!, password: String!): User
-  updateUser(username: String, email: String, password: String): User
+  updateUser(_id: ID!, username: String): User
 }
 
 `;

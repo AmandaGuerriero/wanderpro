@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 const { Schema } = mongoose;
 const bcrypt = require('bcrypt');
-const Itinerary = require('./Itenerary');
+const Itinerary = require('./Itinerary');
 
 const userSchema = new Schema({
   username: {

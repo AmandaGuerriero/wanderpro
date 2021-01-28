@@ -24,7 +24,7 @@ const resolvers = {
       const itinerary = await Itinerary.create(args);
       return itinerary;
     }, 
-    updateItinerary: async(parent, { _id, title, description }) => {
+    updateItinerary: async (parent, { _id, title, description }) => {
       const newTitle = title
       const newDescription = description
       return Itinerary.findByIdAndUpdate(_id, {title: newTitle, description: newDescription}, { new: true });
