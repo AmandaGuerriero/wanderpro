@@ -9,9 +9,27 @@ type Itinerary {
   dateEnd: String
 }
 
+type Day {
+  dayId: ID!
+  title: String
+  date: String
+}
+
+type Activity {
+  _id: ID!
+  location: String
+  timeFrom: String
+  timeTo: String
+  notes: String
+}
+
 type Query {
   itineraries(title: String): [Itinerary]
   itineraryById(_id: ID!): Itinerary
+  days(title: String): [Day]
+  dayById(_id: ID!): Day
+  activities(title: String): [Activity]
+  activityById(_id: ID!): Activity
 }
 
 type Mutation {
