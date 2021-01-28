@@ -1,4 +1,4 @@
-import mapboxSdk from '@mapbox/mapbox-sdk/services/directions';
+// import mapboxSdk from '@mapbox/mapbox-sdk/services/directions';
 import * as mapboxgl from 'mapbox-gl';
 
 const MaxWayPoint = 20;
@@ -14,8 +14,8 @@ mapboxgl.accessToken = 'pk.eyJ1Ijoiem91c2hpbHUzMSIsImEiOiJja2tnMGxiZmEwOW5lMnVsY
     var map = new mapboxgl.Map({
         container: 'map',
         style: 'mapbox://styles/mapbox/streets-v11',
-        center: [-122.486052, 37.830348],
-        zoom: 15
+        center: [-74.5, 40],
+        zoom: 9
     });
 
     map.on('load', function () {
@@ -58,3 +58,4 @@ mapboxgl.accessToken = 'pk.eyJ1Ijoiem91c2hpbHUzMSIsImEiOiJja2tnMGxiZmEwOW5lMnVsY
             }
         });
     });
+    export default Map
