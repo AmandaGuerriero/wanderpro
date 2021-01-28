@@ -28,8 +28,14 @@ const resolvers = {
       return itinerary;
     }, 
     updateItinerary: async (parent, { _id, title, description }) => {
-      const newTitle = title
-      const newDescription = description
+      // const itinerary = Itinerary.findById(_id);  
+      if (title !== undefined) {
+        newTitle = title
+      }
+      if (description !== undefined) {
+        newDescription = description
+      }
+      
       return Itinerary.findByIdAndUpdate(_id, {title: newTitle, description: newDescription}, { new: true });
     },
     addUser: async (parent, args) => {
