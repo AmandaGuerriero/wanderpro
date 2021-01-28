@@ -5,15 +5,15 @@ const Createpost = () => {
   const [postText, setText] = useState('');
   const [characterCount, setCharacterCount] = useState(0);
 
-  const [addPost, { error }] = useMutation(ADD_POST, {
+  const [addPost, { error }] = useMutation(ADD_Itinerary, {
     update(cache, { data: { addPost } }) {
       try {
         // update thought array's cache
         // could potentially not exist yet, so wrap in a try/catch
-        const { posts } = cache.readQuery({ query: QUERY_POSTS });
+        const { posts } = cache.readQuery({ query: QUERY_ITINERARIES });
         cache.writeQuery({
-          query: QUERY_POSTS,
-          data: { posts: [addPost, ...posts] }
+          query: QUERY_ITINERARIES,
+          data: { posts: [ADD_Itinerary, ...posts] }
         });
       } catch (e) {
         console.error(e);
@@ -54,45 +54,54 @@ const Createpost = () => {
   };
 
 	return (
-		<section id='createpost'>
-      <div className='c-createpost-form'>
+/* create itinerary form  */
+		<section id='create-itinerary'>
+/* Title */
+      <div className='c-create-itinerary-form'>
         <form action=''>
         <ul>
             <li>
               <div className='form-group'>
-                <input type='text' name='itineraryTitle' placeholder='Name your itinerary'></input>
+                <input type='text' name='title' id='title' placeholder='Name your itinerary'></input>
               </div>
             </li>
-
+/* Location input */
           <li>
             <div className='form-group flex'>
               <div class="icon-container">
                 <div className='icon-spirit icon__location--grey'></div>
               </div>
               <div class='input-container'>
-                <input type='text' name='tripCity' placeholder='City'></input>
+                <input type='text' name='location' id='location' placeholder='City'></input>
               </div>
            </div>
-
+/* Date Begin */
             <div className='form-group flex'>
               <div className='icon-container'>
                 <div className='icon-spirit icon__calendar'></div>
               </div>
               <div className='input-container'>
-                <input type='text' name='tripWhen' placeholder='When'></input>
+                <input type='text' name='dateBegin' id='dateBegin' placeholder='Date Begin'></input>
               </div>
             </div>
-
-            <div className='form-group flex'>
+/* Date End */
+<div className='form-group flex'>
               <div className='icon-container'>
                 <div className='icon-spirit icon__calendar'></div>
               </div>
               <div className='input-container'>
-                <input type='text' name='tripDays' placeholder='How many days'> </input>
+                <input type='text' name='dateEnd' id='dateEnd' placeholder='Date End'></input>
               </div>
             </div>
           </li>
+/* caption - description  */
             <li>
+              <div class='form-group'>
+                <textarea name='description' id='description' rows="4" placeholder='Write a caption…'></textarea>
+              </div>
+            </li>
+            <li>
+/* upload a photo */
               <div className='form-group flex'>
                 <div className='icon-container'>
                   <div className='icon-spirit icon__photo'></div>
@@ -100,12 +109,6 @@ const Createpost = () => {
                 <div className='input-container'>
                   <input type='file' name='image_url' placeholder='+ Photo'></input>
                  </div>
-              </div>
-            </li>
-
-            <li>
-              <div class='form-group'>
-                <textarea name='tripCaption' id='tripCaption' rows="4" placeholder='Write a caption…'></textarea>
               </div>
             </li>
         </ul>
