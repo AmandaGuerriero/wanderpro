@@ -62,7 +62,12 @@ const Createpost = () => {
         <ul>
             <li>
               <div className='form-group'>
-                <input type='text' name='title' id='title' placeholder='Name your itinerary'></input>
+                <input 
+                type='text' 
+                name='title' 
+                id='title' 
+                placeholder='Name your itinerary'>
+                </input>
               </div>
             </li>
 /* Location input */
@@ -72,7 +77,11 @@ const Createpost = () => {
                 <div className='icon-spirit icon__location--grey'></div>
               </div>
               <div class='input-container'>
-                <input type='text' name='location' id='location' placeholder='City'></input>
+                <input 
+                type='text' 
+                name='location' 
+                id='location' 
+                placeholder='City'></input>
               </div>
            </div>
 /* Date Begin */
@@ -81,7 +90,11 @@ const Createpost = () => {
                 <div className='icon-spirit icon__calendar'></div>
               </div>
               <div className='input-container'>
-                <input type='text' name='dateBegin' id='dateBegin' placeholder='Date Begin'></input>
+                <input 
+                type='text' 
+                name='dateBegin' 
+                id='dateBegin' 
+                placeholder='Date Begin'></input>
               </div>
             </div>
 /* Date End */
@@ -90,14 +103,22 @@ const Createpost = () => {
                 <div className='icon-spirit icon__calendar'></div>
               </div>
               <div className='input-container'>
-                <input type='text' name='dateEnd' id='dateEnd' placeholder='Date End'></input>
+                <input 
+                type='text' 
+                name='dateEnd' 
+                id='dateEnd' 
+                placeholder='Date End'></input>
               </div>
             </div>
           </li>
 /* caption - description  */
             <li>
               <div class='form-group'>
-                <textarea name='description' id='description' rows="4" placeholder='Write a caption…'></textarea>
+                <textarea 
+                name='description' 
+                id='description' 
+                rows="4" 
+                placeholder='Write a caption…'></textarea>
               </div>
             </li>
             <li>
@@ -107,7 +128,10 @@ const Createpost = () => {
                   <div className='icon-spirit icon__photo'></div>
                 </div>
                 <div className='input-container'>
-                  <input type='file' name='image_url' placeholder='+ Photo'></input>
+                  <input 
+                  type='file' 
+                  name='image_url' 
+                  placeholder='+ Photo'></input>
                  </div>
               </div>
             </li>
