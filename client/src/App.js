@@ -5,6 +5,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 import Home from "./pages/Home";
 import Nav from "./components/Nav";
+import SinglePost from "./pages/SinglePost";
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
         <Nav />
         <Switch>
         <Route exact path="/" component={Home} />
+        <Route exact path="/" component={SinglePost} />
         </Switch>
       </div>
     </Router>
