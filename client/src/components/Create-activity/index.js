@@ -68,7 +68,7 @@ const App = () => {
               </div>
 
               <div className="form-group col-sm-4">
-                <label htmlFor="location">Time starts</label>
+                <label htmlFor="timeFrom">Time starts</label>
                 <input
                   type='time' 
                   name='timeFrom' 

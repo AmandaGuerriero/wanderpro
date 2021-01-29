@@ -2,18 +2,22 @@ import React from 'react';
 import './Createpost.css';
 
 const Createpost = () => {
-  const [postText, setText] = useState('');
+  const [title, setTitle] = useState('');
+  const [location, setLocation] = useState('');
+  const [dateBegin, setDateBegin] = useState('');
+  const [dateEnd, setDateEnd] = useState('');
+  const [description, setDescription] = useState('');
   const [characterCount, setCharacterCount] = useState(0);
 
-  const [addPost, { error }] = useMutation(ADD_Itinerary, {
+  const [addPost, { error }] = useMutation(addItinerary, {
     update(cache, { data: { addPost } }) {
       try {
         // update thought array's cache
         // could potentially not exist yet, so wrap in a try/catch
-        const { posts } = cache.readQuery({ query: QUERY_ITINERARIES });
+        const { posts } = cache.readQuery({ query: itineraries });
         cache.writeQuery({
-          query: QUERY_ITINERARIES,
-          data: { posts: [ADD_Itinerary, ...posts] }
+          query: itineraries,
+          data: { posts: [addItinerary, ...posts] }
         });
       } catch (e) {
         console.error(e);
@@ -42,12 +46,20 @@ const Createpost = () => {
 
     try {
       await addPost({
-        variables: { postText }
+        variables: { title, location, dateBegin, dateEnd, description }
       });
 
       // clear form value
-      setText('');
-      setCharacterCount(0);
+      setTitle('');
+
+      setLocation('');
+
+      setDateBegin('');
+
+      setDateEnd('');
+
+      setDescription('');
+
     } catch (e) {
       console.error(e);
     }
@@ -66,8 +78,8 @@ const Createpost = () => {
                 type='text' 
                 name='title' 
                 id='title' 
-                placeholder='Name your itinerary'>
-                </input>
+                placeholder='Name your itinerary'
+                value={title} />
               </div>
             </li>
 /* Location input */
@@ -81,7 +93,8 @@ const Createpost = () => {
                 type='text' 
                 name='location' 
                 id='location' 
-                placeholder='City'></input>
+                placeholder='City'
+                value={location} />
               </div>
            </div>
 /* Date Begin */
@@ -94,7 +107,8 @@ const Createpost = () => {
                 type='text' 
                 name='dateBegin' 
                 id='dateBegin' 
-                placeholder='Date Begin'></input>
+                placeholder='Date Begin'
+                value={dateBegin}/>
               </div>
             </div>
 /* Date End */
@@ -107,7 +121,8 @@ const Createpost = () => {
                 type='text' 
                 name='dateEnd' 
                 id='dateEnd' 
-                placeholder='Date End'></input>
+                placeholder='Date End'
+                value={dateEnd} />
               </div>
             </div>
           </li>
@@ -118,7 +133,8 @@ const Createpost = () => {
                 name='description' 
                 id='description' 
                 rows="4" 
-                placeholder='Write a caption…'></textarea>
+                placeholder='Write a caption…'
+                value={description} />
               </div>
             </li>
             <li>
