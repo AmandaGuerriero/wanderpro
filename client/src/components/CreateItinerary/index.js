@@ -1,43 +1,49 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { ADD_ITINERARY } from "../../utils/mutations"
+import { QUERY_ITINERARIES } from "../../utils/queries"
+import { useMutation } from '@apollo/react-hooks';
 import './Createpost.css';
 
-const Createpost = () => {
+const CreateItinerary = () => {
   const [title, setTitle] = useState('');
   const [location, setLocation] = useState('');
   const [dateBegin, setDateBegin] = useState('');
   const [dateEnd, setDateEnd] = useState('');
   const [description, setDescription] = useState('');
-  const [characterCount, setCharacterCount] = useState(0);
+  // const [characterCount, setCharacterCount] = useState(0);
 
-  const [addPost, { error }] = useMutation(addItinerary, {
-    update(cache, { data: { addPost } }) {
+  const [addItinerary, { error }] = useMutation(ADD_ITINERARY, {
+    update(cache, { data: { addItinerary } }) {
       try {
-        // update thought array's cache
-        // could potentially not exist yet, so wrap in a try/catch
-        const { posts } = cache.readQuery({ query: itineraries });
+         // update thought array's cache
+         // could potentially not exist yet, so wrap in a try/catch
+        const { posts } = cache.readQuery({ query: QUERY_ITINERARIES });
         cache.writeQuery({
-          query: itineraries,
-          data: { posts: [addItinerary, ...posts] }
+          query: QUERY_ITINERARIES,
+          data: { posts: [ADD_ITINERARY, ...posts] }
         });
       } catch (e) {
         console.error(e);
       }
-
-      // update me object's cache
-      const { me } = cache.readQuery({ query: QUERY_ME });
-      cache.writeQuery({
-        query: QUERY_ME,
-        data: { me: { ...me, posts: [...me.posts, addPost] } }
-      });
     }
-  });
+  })
+
+  // update me object's cache
+  // const { me } = cache.readQuery({ query: QUERY_ME });
+  // cache.writeQuery({
+  //   query: QUERY_ME,
+  //   data: { me: { ...me, posts: [...me.posts, addPost] } }
+  // });
+  //   }
+  // });
 
   // update state based on form input changes
   const handleChange = event => {
-    if (event.target.value.length <= 280) {
-      setText(event.target.value);
-      setCharacterCount(event.target.value.length);
-    }
+    // if (event.target.value.length <= 280) {
+      setTitle(event.target.value);
+      setDescription(event.target.value);
+      // setCharacterCount(event.target.value.length);
+    // }
   };
 
   // submit form
@@ -45,7 +51,7 @@ const Createpost = () => {
     event.preventDefault();
 
     try {
-      await addPost({
+      await addItinerary({
         variables: { title, location, dateBegin, dateEnd, description }
       });
 
@@ -66,11 +72,9 @@ const Createpost = () => {
   };
 
 	return (
-/* create itinerary form  */
-		<section id='create-itinerary'>
-/* Title */
+		<section id="create-itinerary">
       <div className='c-create-itinerary-form'>
-        <form action=''>
+      <form onSubmit={handleFormSubmit}>
         <ul>
             <li>
               <div className='form-group'>
@@ -79,16 +83,15 @@ const Createpost = () => {
                 name='title' 
                 id='title' 
                 placeholder='Name your itinerary'
-                value={title} />
+                onChange={handleChange} />
               </div>
             </li>
-/* Location input */
           <li>
             <div className='form-group flex'>
-              <div class="icon-container">
+              <div className="icon-container">
                 <div className='icon-spirit icon__location--grey'></div>
               </div>
-              <div class='input-container'>
+              <div className='input-container'>
                 <input 
                 type='text' 
                 name='location' 
@@ -97,7 +100,6 @@ const Createpost = () => {
                 value={location} />
               </div>
            </div>
-/* Date Begin */
             <div className='form-group flex'>
               <div className='icon-container'>
                 <div className='icon-spirit icon__calendar'></div>
@@ -111,7 +113,6 @@ const Createpost = () => {
                 value={dateBegin}/>
               </div>
             </div>
-/* Date End */
 <div className='form-group flex'>
               <div className='icon-container'>
                 <div className='icon-spirit icon__calendar'></div>
@@ -126,9 +127,8 @@ const Createpost = () => {
               </div>
             </div>
           </li>
-/* caption - description  */
             <li>
-              <div class='form-group'>
+              <div className='form-group'>
                 <textarea 
                 name='description' 
                 id='description' 
@@ -138,7 +138,6 @@ const Createpost = () => {
               </div>
             </li>
             <li>
-/* upload a photo */
               <div className='form-group flex'>
                 <div className='icon-container'>
                   <div className='icon-spirit icon__photo'></div>
@@ -152,17 +151,15 @@ const Createpost = () => {
               </div>
             </li>
         </ul>
-          
-          {/* <ul className='no-space'>
-            <li className='c-createpost-summary__map'>
-            <app-list></app-list>
-            </li>
-          </ul> */}
-
+        <div className="flex-row flex-end">
+          <button type="submit">
+            Submit
+          </button>
+        </div>
         </form>
       </div>
 	  </section>
 	);
 }
 
-export default Createpost;
+export default CreateItinerary;
