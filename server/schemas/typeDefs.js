@@ -18,18 +18,20 @@ type Itinerary {
 }
 
 type Day {
-  dayId: ID!
+  _id: ID!
   title: String
   date: String
+  
 }
 
 type Activity {
   _id: ID!
-  location: String
+  location: String!
   timeFrom: String
   timeTo: String
   notes: String
 }
+
 
 type Auth {
   token: ID!
@@ -41,12 +43,10 @@ type Query {
   itineraryById(_id: ID!): Itinerary
   days(title: String): [Day]
   dayById(_id: ID!): Day
-  activities(title: String): [Activity]
+  activities(title: String!): [Activity]
   activityById(_id: ID!): Activity
-
   users: [User]
   userById(_id: ID!): User
-
 }
 
 type Mutation {
@@ -55,8 +55,11 @@ type Mutation {
   login(email: String!, password: String!): Auth
   addUser(username: String!, email: String!, password: String!): Auth
   updateUser(_id: ID!, username: String): User
+  addDay(title: String!, date: String): Day
+  updateDay(_id: ID!, title: String, date: String): Day
+  addActivity(location: String!, timeFrom: String, timeTo: String, notes:String): Activity
+  updateActivity(_id: ID!, location: String): Activity
 }
-
 `;
 
 module.exports = typeDefs;

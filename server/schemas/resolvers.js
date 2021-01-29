@@ -1,6 +1,8 @@
-const { Itinerary, User } = require('../models');
+
+const { Itinerary, User, Activity, Day } = require('../models');
 const { signToken } = require('../utils/auth');
 const { AuthenticationError } = require('apollo-server-express');
+
 
 const resolvers = {
   Query: {
@@ -22,6 +24,12 @@ const resolvers = {
       user.itineraries.sort((a, b) => b.title - a.title);
 
       return User.findById(_id);
+    },
+    days: async () => {
+      return await Day.find();
+    },
+    activities: async () => {
+      return await Activity.find();
     },
   },
   Mutation: {
@@ -69,6 +77,26 @@ const resolvers = {
 
       throw new AuthenticationError('Not logged in');
     },
+
+    addDay: async (parent, args) => {
+      const day = await Day.create(args);
+
+      return day;
+    },
+    updateDay: async (parent, { _id, title }) => {
+      const newTitle = title
+      return await Day.findByIdAndUpdate(_id, {title: newTitle}, { new: true });
+    },
+    addActivity: async (parent, args) => {
+      const activity = await Activity.create(args);
+
+      return Activity;
+    },
+    updateActivity: async (parent, { _id, location }) => {
+      const newLocation = location
+      return await Activity.findByIdAndUpdate(_id, {location: newLocation}, { new: true });
+    },
+
     login: async (parent, { email, password }) => {
       const user = await User.findOne({ email });
 
@@ -86,6 +114,7 @@ const resolvers = {
 
       return { token, user };
     }
+
   }
 };
 
