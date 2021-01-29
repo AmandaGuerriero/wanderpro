@@ -28,6 +28,8 @@ type Activity {
   timeFrom: String
   timeTo: String
   notes: String
+}
+
 type Auth {
   token: ID!
   user: User
