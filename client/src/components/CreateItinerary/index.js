@@ -11,6 +11,13 @@ const CreateItinerary = () => {
   const [dateEnd, setDateEnd] = useState('');
   const [description, setDescription] = useState('');
   // const [characterCount, setCharacterCount] = useState(0);
+  const [state, setState] = React.useState({
+    title: "",
+    location: "",
+    dateBegin: "",
+    dateEnd: "",
+    description: "",
+  })
 
   const [addItinerary, { error }] = useMutation(ADD_ITINERARY, {
     update(cache, { data: { addItinerary } }) {
@@ -85,32 +92,38 @@ const CreateItinerary = () => {
  
 
   const handleChange = event => {
-    const { name, value } = event.target;
-    setTitle({
-      ...title,
-      [name]: value,
+    const { name, value } = event.target.value;
+    setState({
+      ...state,
+      [event.target.name]: value
     })
+    console.log(event.target.value)
 
-      setLocation({
-        ...location,
-        [name]: value,
-      })
+    // setTitle({
+    //   ...title,
+    //   [title]: value,
+    // })
 
-        setDateBegin({
-          ...dateBegin,
-          [name]: value,
-        })
+    // setLocation({
+    //   ...location,
+    //   [name]: value,
+    // })
 
-          setDateEnd({
-            ...dateEnd,
-            [name]: value,
-          });
+    // setDateBegin({
+    //   ...dateBegin,
+    //   [name]: value,
+    // })
 
-            setDescription({
-              ...description,
-              [name]: value
+    // setDateEnd({
+    //   ...dateEnd,
+    //   [name]: value,
+    // });
 
-        });
+    // setDescription({
+    //   ...description,
+    //   [name]: value
+
+    // });
   };
 
 	return (
@@ -124,8 +137,7 @@ const CreateItinerary = () => {
                 type='text' 
                 name='title' 
                 id='title'
-                value={title}
-                setState={setTitle}
+                value={state.title}
                 onChange={handleChange}/>
             </div>
          
@@ -139,8 +151,7 @@ const CreateItinerary = () => {
                 name='location' 
                 id='location' 
                 placeholder='City'
-                value={location}
-                setState={setLocation}
+                value={state.location}
                 onChange={handleChange}/>
               </div>
             </div>
@@ -155,8 +166,7 @@ const CreateItinerary = () => {
                 name='dateBegin' 
                 id='dateBegin' 
                 placeholder='Date Begin'
-                value={dateBegin}
-                setState={setDateBegin}
+                value={state.dateBegin}
                 onChange={handleChange}/>
               </div>
             </div>
@@ -171,8 +181,7 @@ const CreateItinerary = () => {
                 name='dateEnd' 
                 id='dateEnd' 
                 placeholder='Date End'
-                value={dateEnd}
-                setState={setDateEnd}
+                value={state.dateEnd}
                 onChange={handleChange}/>
               </div>
             </div>
@@ -183,8 +192,7 @@ const CreateItinerary = () => {
                 id='description' 
                 rows="4" 
                 placeholder='Write a caption…'
-                value={description}
-                setState={setDescription}
+                value={state.description}
                 onChange={handleChange}/>
             </div>
           
