@@ -12,6 +12,7 @@ type Itinerary {
   _id: String
   title: String
   description: String
+  location: String
   dateBegin: String
   dateEnd: String
 }
@@ -32,7 +33,10 @@ type Activity {
 }
 
 
-
+type Auth {
+  token: ID!
+  user: User
+}
 
 type Query {
   itineraries(title: String): [Itinerary]
@@ -46,9 +50,10 @@ type Query {
 }
 
 type Mutation {
-  addItinerary(title: String!, description: String, dateBegin: String, dateEnd: String): Itinerary
-  updateItinerary(_id: ID!, title: String, description: String, dateBegin: String, dateEnd: String): Itinerary
-  addUser(username: String!, email: String!, password: String!): User
+  addItinerary(title: String!, description: String, location: String, dateBegin: String, dateEnd: String): Itinerary
+  updateItinerary(_id: ID!, title: String, description: String, location: String, dateBegin: String, dateEnd: String): Itinerary
+  login(email: String!, password: String!): Auth
+  addUser(username: String!, email: String!, password: String!): Auth
   updateUser(_id: ID!, username: String): User
   addDay(title: String!, date: String): Day
   updateDay(_id: ID!, title: String, date: String): Day
