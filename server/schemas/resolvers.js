@@ -1,4 +1,6 @@
 const { Itinerary, User } = require('../models');
+const { signToken } = require('../utils/auth');
+const { AuthenticationError } = require('apollo-server-express');
 
 const resolvers = {
   Query: {
@@ -28,19 +30,62 @@ const resolvers = {
       return itinerary;
     }, 
     updateItinerary: async (parent, { _id, title, description }) => {
-      const newTitle = title
-      const newDescription = description
+      // const itinerary = Itinerary.findById(_id);  
+      if (title !== undefined) {
+        let newTitle = title
+      }
+      if (description !== undefined) {
+        let newDescription = description
+      }
+      console.log(newDescription)
       return Itinerary.findByIdAndUpdate(_id, {title: newTitle, description: newDescription}, { new: true });
     },
     addUser: async (parent, args) => {
       const user = await User.create(args);
+      const token = signToken(user);
+    
+      return { token, user };
+    },
+    login: async (parent, { email, password }) => {
+      const user = await User.findOne({ email });
+    
+      if (!user) {
+        throw new AuthenticationError('Incorrect credentials');
+      }
+    
+      const correctPw = await user.isCorrectPassword(password);
+    
+      if (!correctPw) {
+        throw new AuthenticationError('Incorrect credentials');
+      }
+    
+      const token = signToken(user);
+      return { token, user };
+    },
+    updateUser: async (parent, args, context) => {
+      if (context.user) {
+        return await User.findByIdAndUpdate(context.user._id, args, { new: true });
+      }
 
-      return user;
+      throw new AuthenticationError('Not logged in');
     },
-    updateUser: async (parent, { _id, username }) => {
-      const newUsername = username
-      return await User.findByIdAndUpdate(_id, {username: newUsername}, { new: true });
-    },
+    login: async (parent, { email, password }) => {
+      const user = await User.findOne({ email });
+
+      if (!user) {
+        throw new AuthenticationError('Incorrect credentials');
+      }
+
+      const correctPw = await user.isCorrectPassword(password);
+
+      if (!correctPw) {
+        throw new AuthenticationError('Incorrect credentials');
+      }
+
+      const token = signToken(user);
+
+      return { token, user };
+    }
   }
 };
 

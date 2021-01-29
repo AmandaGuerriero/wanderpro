@@ -1,5 +1,6 @@
 import gql from 'graphql-tag';
 
+<<<<<<< HEAD
 // export const LOGIN_USER = gql`
 //   mutation login($email: String!, $password: String!) {
 //     login(email: $email, password: $password) {
@@ -33,12 +34,20 @@ export const ADD_POST = gql`
       username
       reactionCount
       reactions {
+=======
+export const LOGIN = gql`
+  mutation login($email: String!, $password: String!) {
+    login(email: $email, password: $password) {
+      token
+      user {
+>>>>>>> 6cc962d4f108e1826a5b96e03dcabd686e4fe323
         _id
       }
     }
   }
 `;
 
+<<<<<<< HEAD
 // export const ADD_REACTION = gql`
 //   mutation addReaction($thoughtId: ID!, $reactionBody: String!) {
 //     addReaction(thoughtId: $thoughtId, reactionBody: $reactionBody) {
@@ -80,3 +89,15 @@ export const ADD_POST = gql`
 //     }
 //   }
 // `;
+=======
+export const ADD_USER = gql`
+  mutation addUser($username: String!, $email: String!, $password: String!) {
+    addUser(username: $username, email: $email, password: $password) {
+      token
+      user {
+        _id
+      }
+    }
+  }
+`;
+>>>>>>> 6cc962d4f108e1826a5b96e03dcabd686e4fe323

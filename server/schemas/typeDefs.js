@@ -30,6 +30,11 @@ type Activity {
   notes: String
 }
 
+type Auth {
+  token: ID!
+  user: User
+}
+
 type Query {
   itineraries(title: String): [Itinerary]
   itineraryById(_id: ID!): Itinerary
@@ -46,7 +51,8 @@ type Query {
 type Mutation {
   addItinerary(title: String!, description: String, dateBegin: String, dateEnd: String): Itinerary
   updateItinerary(_id: ID!, title: String, description: String, dateBegin: String, dateEnd: String): Itinerary
-  addUser(username: String!, email: String!, password: String!): User
+  login(email: String!, password: String!): Auth
+  addUser(username: String!, email: String!, password: String!): Auth
   updateUser(_id: ID!, username: String): User
 }
 
