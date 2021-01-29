@@ -9,10 +9,10 @@ const activitySchema = new Schema({
     trim: true
   },
   timeFrom: {
-    type: Time
+    type: String
   },
   timeTo: {
-    type: Time
+    type: String
   },
   notes: {
     type: String,
