@@ -1,6 +1,6 @@
 const jwt = require('jsonwebtoken');
 
-const jwtSecretKey = process.env.JWT_SECRET_KEY;
+const secret = `${process.env.JWT_SECRET_KEY}`
 const expiration = '24h';
 
 module.exports = {
@@ -21,7 +21,7 @@ module.exports = {
     }
 
     try {
-      const { data } = jwt.verify(token, jwtSecretKey, { maxAge: expiration });
+      const { data } = jwt.verify(token, secret, { maxAge: expiration });
       req.user = data;
     }
     catch {
@@ -30,13 +30,9 @@ module.exports = {
 
     return req;
   },
-  signToken: function ({ firstName, email, _id }) {
-    const payload = { firstName, email, _id };
+  signToken: function({ username, email, _id }) {
+    const payload = { username, email, _id };
 
-    return jwt.sign(
-      { data: payload },
-      jwtSecretKey,
-      { expiresIn: expiration }
-    );
+    return jwt.sign({ data: payload }, secret, { expiresIn: expiration });
   }
 };
