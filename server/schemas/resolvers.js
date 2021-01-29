@@ -1,4 +1,4 @@
-const { Itinerary, User } = require('../models');
+const { Itinerary, User, Activity, Day } = require('../models');
 
 const resolvers = {
   Query: {
@@ -21,6 +21,12 @@ const resolvers = {
 
       return User.findById(_id);
     },
+    days: async () => {
+      return await Day.find();
+    },
+    activities: async () => {
+      return await Activity.find();
+    },
   },
   Mutation: {
     addItinerary: async (parent, args) => {
@@ -40,6 +46,24 @@ const resolvers = {
     updateUser: async (parent, { _id, username }) => {
       const newUsername = username
       return await User.findByIdAndUpdate(_id, {username: newUsername}, { new: true });
+    },
+    addDay: async (parent, args) => {
+      const day = await Day.create(args);
+
+      return day;
+    },
+    updateDay: async (parent, { _id, title }) => {
+      const newTitle = title
+      return await Day.findByIdAndUpdate(_id, {title: newTitle}, { new: true });
+    },
+    addActivity: async (parent, args) => {
+      const activity = await Activity.create(args);
+
+      return Activity;
+    },
+    updateActivity: async (parent, { _id, location }) => {
+      const newLocation = location
+      return await Activity.findByIdAndUpdate(_id, {location: newLocation}, { new: true });
     },
   }
 };
