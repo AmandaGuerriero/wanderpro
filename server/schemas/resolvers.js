@@ -25,20 +25,20 @@ const resolvers = {
     },
   },
   Mutation: {
-    addItinerary: async (parent, args) => {
-      const itinerary = await Itinerary.create(args);
-      return itinerary;
+    addItinerary: async (parent, args, context) => {
+      console.log(context);
+      if (context.user) {
+        const itinerary = new Itinerary(args);
+
+        await User.findByIdAndUpdate(context.user._id, { $push: { itineraries: itinerary } });
+
+        return itinerary;
+      }
+
+      throw new AuthenticationError('Not logged in');
     }, 
-    updateItinerary: async (parent, { _id, title, description }) => {
-      // const itinerary = Itinerary.findById(_id);  
-      if (title !== undefined) {
-        let newTitle = title
-      }
-      if (description !== undefined) {
-        let newDescription = description
-      }
-      console.log(newDescription)
-      return Itinerary.findByIdAndUpdate(_id, {title: newTitle, description: newDescription}, { new: true });
+    updateItinerary: async (parent, args) => {
+        return await Itinerary.findByIdAndUpdate(Itinerary._id, args, { new: true });
     },
     addUser: async (parent, args) => {
       const user = await User.create(args);

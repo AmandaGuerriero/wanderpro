@@ -15,6 +15,7 @@ type Itinerary {
   location: String
   dateBegin: String
   dateEnd: String
+  days: [Day]
 }
 
 type Day {
@@ -43,7 +44,6 @@ type Query {
   dayById(_id: ID!): Day
   activities(title: String): [Activity]
   activityById(_id: ID!): Activity
-
   users: [User]
   userById(_id: ID!): User
 
