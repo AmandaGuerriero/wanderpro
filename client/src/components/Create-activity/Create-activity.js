@@ -50,10 +50,11 @@ const CreateAcitivty = () => {
 
   const handleFormSubmit = async event => {
     event.preventDefault();
+
     try {
-      const mutationResponse = await addActivity({
+      await addActivity({
         variables: { date, location, timeFrom, timeTo, notes }
-      })    
+      });
       setDate('');
       setLocation('');
       setTimeFrom('');
@@ -128,6 +129,11 @@ const CreateAcitivty = () => {
           <button type="submit">
             Submit
           </button>
+
+          <p>
+        <button onClick={props.prev}>Previous</button>
+        <button onClick={props.next}>Next</button>
+      </p>
         </div>
       </form>
     </>

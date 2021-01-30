@@ -30,7 +30,9 @@ export const ADD_ITINERARY = gql`
       description,
       location,
       dateBegin,
-      dateEnd
+      dateEnd,
+      latitude,
+      longitude
     }
   }
 `;

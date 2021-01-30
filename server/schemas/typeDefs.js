@@ -15,7 +15,8 @@ type Itinerary {
   location: String
   dateBegin: String
   dateEnd: String
-  days: [Day]
+  latitude: Number
+  longtitude: Number
 }
 
 type Day {
