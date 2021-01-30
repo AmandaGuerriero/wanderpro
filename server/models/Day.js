@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const Activity = require('./Activity');
 
 const { Schema } = mongoose;
 
@@ -11,6 +12,7 @@ const daySchema = new Schema({
   date: {
     type: Date
   },
+  activities: [Activity.schema]
 });
 
 const Day = mongoose.model('Day', daySchema);

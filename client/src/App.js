@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { ApolloProvider } from '@apollo/react-hooks';
 import ApolloClient from 'apollo-boost';
+import { StoreProvider } from './utils/GlobalState';
 
 import Home from "./pages/Home";
 import Login from "./pages/Login";
@@ -28,16 +29,15 @@ function App() {
     <ApolloProvider client={client}>
       <Router>
         <div>
-            <Nav />
-            <Switch>
-              <Route exact path="/" component={Home} />
-              <Route exact path="/login" component={Login} />
-              <Route exact path="/signup" component={Signup} />
-              <Route exact path="/create" component={CreateItinerary} />
-              <Route exact path="/summary" component={Summary} />
-              
-              
-            </Switch>
+          <StoreProvider>
+              <Nav />
+              <Switch>
+                <Route exact path="/" component={Home} />
+                <Route exact path="/login" component={Login} />
+                <Route exact path="/signup" component={Signup} />
+                <Route exact path="/create" component={CreateItinerary} />
+              </Switch>
+            </StoreProvider>
         </div>
       </Router>
     </ApolloProvider>
