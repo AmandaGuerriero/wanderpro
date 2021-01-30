@@ -98,7 +98,7 @@ const resolvers = {
     addActivity: async (parent, args) => {
       const activity = await Activity.create(args);
 
-      return Activity;
+      return activity;
     },
     updateActivity: async (parent, { _id, location }) => {
       const newLocation = location
