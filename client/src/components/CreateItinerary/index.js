@@ -3,6 +3,7 @@ import { ADD_ITINERARY } from "../../utils/mutations"
 import { QUERY_ITINERARIES } from "../../utils/queries"
 import { useMutation } from '@apollo/react-hooks';
 import './Createpost.css';
+import { useStoreContext } from '../../utils/GlobalState';
 
 const CreateItinerary = () => {
   const [title, setTitle] = useState('');
