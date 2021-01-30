@@ -34,3 +34,29 @@ export const ADD_ITINERARY = gql`
     }
   }
 `;
+
+export const ADD_ACTIVITY = gql`
+  mutation addActivity($dayId: ID!, $name: String, $location: String!, $timeFrom: String, $timeTo: String, $notes: String) {
+    addActivity(dayId: $dayId, location: $location, timeFrom: $timeFrom, timeTo: $timeTo, notes: $notes, name: $name ) {
+      _id
+      title
+      activities {
+        _id
+        name
+        location
+        notes
+      }
+    }
+  }
+`;
+
+export const ADD_ACTIVITY_PUBLIC = gql`
+  mutation addActivityPublic($name: String, $location: String!) {
+    addActivityPublic(location: $location, name: $name ) {
+    _id
+      name
+      location
+      }
+    }
+`;
+

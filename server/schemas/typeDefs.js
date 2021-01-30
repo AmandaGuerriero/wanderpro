@@ -27,8 +27,8 @@ type Day {
 }
 
 type Activity {
-
   _id: ID!
+  name: String
   location: String!
   timeFrom: String
   timeTo: String
@@ -60,7 +60,8 @@ type Mutation {
   updateUser(_id: ID!, username: String): User
   addDay(itineraryId: ID!, title: String!, date: String): Itinerary
   updateDay(_id: ID!, title: String, date: String): Day
-  addActivity(dayId:ID!,location: String!, timeFrom: String, timeTo: String, notes:String): Day
+  addActivity(dayId:ID!,location: String!, timeFrom: String, timeTo: String, notes:String, name: String): Day
+  addActivityPublic(name: String, location: String!): Activity
   updateActivity(_id: ID!, location: String): Activity
 }
 `;
