@@ -3,7 +3,6 @@ import { ADD_ITINERARY } from "../../utils/mutations"
 import { QUERY_ITINERARIES } from "../../utils/queries"
 import { useMutation } from '@apollo/react-hooks';
 import './Createpost.css';
-import { useStoreContext } from '../../utils/GlobalState';
 
 const CreateItinerary = () => {
   const [title, setTitle] = useState('');
@@ -12,13 +11,6 @@ const CreateItinerary = () => {
   const [dateEnd, setDateEnd] = useState('');
   const [description, setDescription] = useState('');
   // const [characterCount, setCharacterCount] = useState(0);
-  const [state, setState] = React.useState({
-    title: "",
-    location: "",
-    dateBegin: "",
-    dateEnd: "",
-    description: "",
-  })
 
   const [addItinerary, { error }] = useMutation(ADD_ITINERARY, {
     update(cache, { data: { addItinerary } }) {
@@ -46,14 +38,20 @@ const CreateItinerary = () => {
   // });
 
   // update state based on form input changes
- 
+  const handleChange = event => {
+    // if (event.target.value.length <= 280) {
+      setTitle(event.target.value);
+      setDescription(event.target.value);
+      // setCharacterCount(event.target.value.length);
+    // }
+  };
 
   // submit form
   const handleFormSubmit = async event => {
     event.preventDefault();
 
     try {
-      const mutationResponse = await addItinerary({
+      await addItinerary({
         variables: { title, location, dateBegin, dateEnd, description }
       });
 
@@ -73,75 +71,22 @@ const CreateItinerary = () => {
     }
   };
 
-  // const handleChange = event => {
-  //   const { setTitle, value } = event.target;
-  //   setFormState({
-  //     ...formState,
-  //     [name]: value
-  //   });
-  // };
-
-  // const handleChange = event => {
-  //   if (event.target.value.length <= 280) {
-  //     setTitle(event.target.value);
-  //     setLocation(event.target.value);
-  //     setDateBegin(event.target.value);
-  //     setDateEnd(event.target.value);
-  //     setDescription(event.target.value);
-      // setCharacterCount(event.target.value.length);
-  //   }
- 
-
-  const handleChange = event => {
-    const { name, value } = event.target.value;
-    setState({
-      ...state,
-      [event.target.name]: value
-    })
-    console.log(event.target.value)
-
-    // setTitle({
-    //   ...title,
-    //   [title]: value,
-    // })
-
-    // setLocation({
-    //   ...location,
-    //   [name]: value,
-    // })
-
-    // setDateBegin({
-    //   ...dateBegin,
-    //   [name]: value,
-    // })
-
-    // setDateEnd({
-    //   ...dateEnd,
-    //   [name]: value,
-    // });
-
-    // setDescription({
-    //   ...description,
-    //   [name]: value
-
-    // });
-  };
-
 	return (
-		<section id='create-itinerary'>
+		<section id="create-itinerary">
       <div className='c-create-itinerary-form'>
-        <form onSubmit={handleFormSubmit}>
-          <ul>
-            <div className='form-group'>
+      <form onSubmit={handleFormSubmit}>
+        <ul>
+            <li>
+              <div className='form-group'>
                 <input 
-                placeholder='Name your itinerary'
                 type='text' 
                 name='title' 
-                id='title'
-                value={state.title}
-                onChange={handleChange}/>
-            </div>
-         
+                id='title' 
+                placeholder='Name your itinerary'
+                onChange={handleChange} />
+              </div>
+            </li>
+          <li>
             <div className='form-group flex'>
               <div className="icon-container">
                 <div className='icon-spirit icon__location--grey'></div>
@@ -152,11 +97,9 @@ const CreateItinerary = () => {
                 name='location' 
                 id='location' 
                 placeholder='City'
-                value={state.location}
-                onChange={handleChange}/>
+                value={location} />
               </div>
-            </div>
-           
+           </div>
             <div className='form-group flex'>
               <div className='icon-container'>
                 <div className='icon-spirit icon__calendar'></div>
@@ -167,12 +110,10 @@ const CreateItinerary = () => {
                 name='dateBegin' 
                 id='dateBegin' 
                 placeholder='Date Begin'
-                value={state.dateBegin}
-                onChange={handleChange}/>
+                value={dateBegin}/>
               </div>
             </div>
-
-            <div className='form-group flex'>
+<div className='form-group flex'>
               <div className='icon-container'>
                 <div className='icon-spirit icon__calendar'></div>
               </div>
@@ -182,46 +123,43 @@ const CreateItinerary = () => {
                 name='dateEnd' 
                 id='dateEnd' 
                 placeholder='Date End'
-                value={state.dateEnd}
-                onChange={handleChange}/>
+                value={dateEnd} />
               </div>
             </div>
-        
-            <div className='form-group'>
+          </li>
+            <li>
+              <div className='form-group'>
                 <textarea 
                 name='description' 
                 id='description' 
                 rows="4" 
                 placeholder='Write a caption…'
-                value={state.description}
-                onChange={handleChange}/>
-            </div>
-          
-            <div className='form-group flex'>
-              <div className='icon-container'>
-                <div className='icon-spirit icon__photo'></div>
+                value={description} />
               </div>
-              <div className='input-container'>
-                <input 
+            </li>
+            <li>
+              <div className='form-group flex'>
+                <div className='icon-container'>
+                  <div className='icon-spirit icon__photo'></div>
+                </div>
+                <div className='input-container'>
+                  <input 
                   type='file' 
                   name='image_url' 
                   placeholder='+ Photo'></input>
-                </div>
-            </div>
-            
+                 </div>
+              </div>
+            </li>
         </ul>
         <div className="flex-row flex-end">
-          <ul>
           <button type="submit">
-            Next
+            Submit
           </button>
-          </ul>
         </div>
         </form>
       </div>
 	  </section>
-  
-);
+	);
 }
 
 export default CreateItinerary;

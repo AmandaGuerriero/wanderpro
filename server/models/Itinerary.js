@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const Day = require('./Day');
 
 const { Schema } = mongoose;
 
@@ -20,7 +21,8 @@ const itinerarySchema = new Schema({
   },
   dateEnd: {
     type: Date
-  }
+  },
+  days: [Day.schema]
 });
 
 const Itinerary = mongoose.model('Itinerary', itinerarySchema);
