@@ -25,13 +25,6 @@ type Day {
   
 }
 
-input DayInput {
-  itinerarId: ID!
-  dayTitle: String
-  date: String
-  
-}
-
 type Activity {
   _id: ID
   location: String!
@@ -59,7 +52,7 @@ type Query {
 
 type Mutation {
   addItinerary(title: String!, description: String, location: String, dateBegin: String, dateEnd: String): Itinerary
-  updateItinerary(_id: ID!, title: String, description: String, location: String, dateBegin: String, dateEnd: String, days: DayInput): Itinerary
+  updateItinerary(_id: ID!, title: String, description: String, location: String, dateBegin: String, dateEnd: String): Itinerary
   login(email: String!, password: String!): Auth
   addUser(username: String!, email: String!, password: String!): Auth
   updateUser(_id: ID!, username: String): User
