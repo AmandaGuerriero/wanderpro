@@ -130,17 +130,21 @@ const App = () => {
           >
             Save
           </button>
+
+          <p>
+        <button onClick={props.prev}>Previous</button>
+        <button onClick={props.next}>Next</button>
+      </p>
         </div>
         <br/>
         <pre>
           {JSON.stringify(inputFields, null, 2)}
         </pre>
+
       </form>
     </>
   );
 };
 
-const rootElement = document.getElementById("root");
-ReactDOM.render(<App />, rootElement);
 
 export default Create-activity;

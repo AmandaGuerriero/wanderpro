@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { ADD_ITINERARY } from "../../utils/mutations"
 import { QUERY_ITINERARIES } from "../../utils/queries"
+import { geoCoding } from "../../utils/geocoding"
 import { useMutation } from '@apollo/react-hooks';
 import './Createpost.css';
 
@@ -11,6 +12,13 @@ const CreateItinerary = () => {
   const [dateEnd, setDateEnd] = useState('');
   const [description, setDescription] = useState('');
   // const [characterCount, setCharacterCount] = useState(0);
+  const [state, setState] = React.useState({
+    title: "",
+    location: "",
+    dateBegin: "",
+    dateEnd: "",
+    description: "",
+  })
 
   const [addItinerary, { error }] = useMutation(ADD_ITINERARY, {
     update(cache, { data: { addItinerary } }) {
@@ -28,25 +36,21 @@ const CreateItinerary = () => {
     }
   })
 
-  // update me object's cache
-  // const { me } = cache.readQuery({ query: QUERY_ME });
-  // cache.writeQuery({
-  //   query: QUERY_ME,
-  //   data: { me: { ...me, posts: [...me.posts, addPost] } }
-  // });
-  //   }
-  // });
-
-  // update state based on form input changes
- 
-
   // submit form
   const handleFormSubmit = async event => {
     event.preventDefault();
 
     try {
+      // Get coordinate from location
+
+      let coordinates = await geoCoding(state.location);
+      let latitude = 0,longitude =0;
+      if(coordinates&&coordinates.length) {
+        latitude = coordinates[0].center[1];
+        longitude = coordinates[0].center[0];
+      }
       const mutationResponse = await addItinerary({
-        variables: { title, location, dateBegin, dateEnd, description }
+        variables: { title, location, dateBegin, dateEnd, description,latitude,longitude }
       });
 
       // clear form value
@@ -59,58 +63,21 @@ const CreateItinerary = () => {
       setDateEnd('');
 
       setDescription('');
+      
 
     } catch (e) {
       console.error(e);
     }
   };
 
-  // const handleChange = event => {
-  //   const { setTitle, value } = event.target;
-  //   setFormState({
-  //     ...formState,
-  //     [name]: value
-  //   });
-  // };
-
-  // const handleChange = event => {
-  //   if (event.target.value.length <= 280) {
-  //     setTitle(event.target.value);
-  //     setLocation(event.target.value);
-  //     setDateBegin(event.target.value);
-  //     setDateEnd(event.target.value);
-  //     setDescription(event.target.value);
-      // setCharacterCount(event.target.value.length);
-  //   }
- 
-
   const handleChange = event => {
     const { name, value } = event.target;
-    setTitle({
-      ...title,
-      [name]: value,
+    setState({
+      ...state,
+      [name]: value
     })
+    console.log(event.target.value)
 
-      setLocation({
-        ...location,
-        [name]: value,
-      })
-
-        setDateBegin({
-          ...dateBegin,
-          [name]: value,
-        })
-
-          setDateEnd({
-            ...dateEnd,
-            [name]: value,
-          });
-
-            setDescription({
-              ...description,
-              [name]: value
-
-        });
   };
 
 	return (
@@ -124,8 +91,7 @@ const CreateItinerary = () => {
                 type='text' 
                 name='title' 
                 id='title'
-                value={title}
-                setState={setTitle}
+                value={state.title}
                 onChange={handleChange}/>
             </div>
          
@@ -139,8 +105,7 @@ const CreateItinerary = () => {
                 name='location' 
                 id='location' 
                 placeholder='City'
-                value={location}
-                setState={setLocation}
+                value={state.location}
                 onChange={handleChange}/>
               </div>
             </div>
@@ -155,8 +120,7 @@ const CreateItinerary = () => {
                 name='dateBegin' 
                 id='dateBegin' 
                 placeholder='Date Begin'
-                value={dateBegin}
-                setState={setDateBegin}
+                value={state.dateBegin}
                 onChange={handleChange}/>
               </div>
             </div>
@@ -171,8 +135,7 @@ const CreateItinerary = () => {
                 name='dateEnd' 
                 id='dateEnd' 
                 placeholder='Date End'
-                value={dateEnd}
-                setState={setDateEnd}
+                value={state.dateEnd}
                 onChange={handleChange}/>
               </div>
             </div>
@@ -183,8 +146,7 @@ const CreateItinerary = () => {
                 id='description' 
                 rows="4" 
                 placeholder='Write a caption…'
-                value={description}
-                setState={setDescription}
+                value={state.description}
                 onChange={handleChange}/>
             </div>
           

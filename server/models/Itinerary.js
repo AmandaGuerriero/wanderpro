@@ -20,6 +20,12 @@ const itinerarySchema = new Schema({
   },
   dateEnd: {
     type: Date
+  },
+  latitude: {
+    type: Number
+  },
+  longtitude: {
+    type: Number
   }
 });
 
