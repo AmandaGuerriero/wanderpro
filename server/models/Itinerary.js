@@ -22,7 +22,12 @@ const itinerarySchema = new Schema({
   dateEnd: {
     type: Date
   },
-  days: [Day.schema]
+  latitude: {
+    type: Number
+  },
+  longtitude: {
+    type: Number
+  }
 });
 
 const Itinerary = mongoose.model('Itinerary', itinerarySchema);

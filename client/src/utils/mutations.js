@@ -30,7 +30,21 @@ export const ADD_ITINERARY = gql`
       description,
       location,
       dateBegin,
-      dateEnd
+      dateEnd,
+      latitude,
+      longitude
     }
   }
 `;
+
+export const ADD_ACTIVITY = gql`
+  mutation addActivity($location: String!, $timeFrom: String, $timeTo: String, $notes:String) {
+    addActivity(location: $location, timeFrom: $timeFrom, timeTo: $timeTo, notes: $notes) {
+      _id,
+      location,
+      timeFrom,
+      timeTo,
+      notes
+    }
+  }
+`

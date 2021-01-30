@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { ADD_ITINERARY } from "../../utils/mutations"
 import { QUERY_ITINERARIES } from "../../utils/queries"
+import { geoCoding } from "../../utils/geocoding"
 import { useMutation } from '@apollo/react-hooks';
 import './Createpost.css';
 
@@ -11,6 +12,13 @@ const CreateItinerary = () => {
   const [dateEnd, setDateEnd] = useState('');
   const [description, setDescription] = useState('');
   // const [characterCount, setCharacterCount] = useState(0);
+  const [state, setState] = React.useState({
+    title: "",
+    location: "",
+    dateBegin: "",
+    dateEnd: "",
+    description: "",
+  })
 
   const [addItinerary, { error }] = useMutation(ADD_ITINERARY, {
     update(cache, { data: { addItinerary } }) {
@@ -28,31 +36,21 @@ const CreateItinerary = () => {
     }
   })
 
-  // update me object's cache
-  // const { me } = cache.readQuery({ query: QUERY_ME });
-  // cache.writeQuery({
-  //   query: QUERY_ME,
-  //   data: { me: { ...me, posts: [...me.posts, addPost] } }
-  // });
-  //   }
-  // });
-
-  // update state based on form input changes
-  const handleChange = event => {
-    // if (event.target.value.length <= 280) {
-      setTitle(event.target.value);
-      setDescription(event.target.value);
-      // setCharacterCount(event.target.value.length);
-    // }
-  };
-
   // submit form
   const handleFormSubmit = async event => {
     event.preventDefault();
 
     try {
-      await addItinerary({
-        variables: { title, location, dateBegin, dateEnd, description }
+      // Get coordinate from location
+
+      let coordinates = await geoCoding(state.location);
+      let latitude = 0,longitude =0;
+      if(coordinates&&coordinates.length) {
+        latitude = coordinates[0].center[1];
+        longitude = coordinates[0].center[0];
+      }
+      const mutationResponse = await addItinerary({
+        variables: { title, location, dateBegin, dateEnd, description,latitude,longitude }
       });
 
       // clear form value
@@ -65,10 +63,21 @@ const CreateItinerary = () => {
       setDateEnd('');
 
       setDescription('');
+      
 
     } catch (e) {
       console.error(e);
     }
+  };
+
+  const handleChange = event => {
+    const { name, value } = event.target;
+    setState({
+      ...state,
+      [name]: value
+    })
+    console.log(event.target.value)
+
   };
 
 	return (
@@ -81,12 +90,11 @@ const CreateItinerary = () => {
                 <input 
                 type='text' 
                 name='title' 
-                id='title' 
-                placeholder='Name your itinerary'
-                onChange={handleChange} />
-              </div>
-            </li>
-          <li>
+                id='title'
+                value={state.title}
+                onChange={handleChange}/>
+            </div>
+         
             <div className='form-group flex'>
               <div className="icon-container">
                 <div className='icon-spirit icon__location--grey'></div>
@@ -97,7 +105,8 @@ const CreateItinerary = () => {
                 name='location' 
                 id='location' 
                 placeholder='City'
-                value={location} />
+                value={state.location}
+                onChange={handleChange}/>
               </div>
            </div>
             <div className='form-group flex'>
@@ -110,7 +119,8 @@ const CreateItinerary = () => {
                 name='dateBegin' 
                 id='dateBegin' 
                 placeholder='Date Begin'
-                value={dateBegin}/>
+                value={state.dateBegin}
+                onChange={handleChange}/>
               </div>
             </div>
 <div className='form-group flex'>
@@ -123,7 +133,8 @@ const CreateItinerary = () => {
                 name='dateEnd' 
                 id='dateEnd' 
                 placeholder='Date End'
-                value={dateEnd} />
+                value={state.dateEnd}
+                onChange={handleChange}/>
               </div>
             </div>
           </li>
@@ -134,8 +145,15 @@ const CreateItinerary = () => {
                 id='description' 
                 rows="4" 
                 placeholder='Write a caption…'
-                value={description} />
+                value={state.description}
+                onChange={handleChange}/>
+            </div>
+          
+            <div className='form-group flex'>
+              <div className='icon-container'>
+                <div className='icon-spirit icon__photo'></div>
               </div>
+            </div>
             </li>
             <li>
               <div className='form-group flex'>
