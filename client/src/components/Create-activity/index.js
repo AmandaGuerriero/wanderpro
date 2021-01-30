@@ -1,4 +1,3 @@
-
 import React, { useState, useReducer, Fragment } from "react";
 import ReactDOM from "react-dom";
 import { ADD_ACTIVITY } from '../../utils/mutations';
@@ -51,11 +50,10 @@ const CreateAcitivty = () => {
 
   const handleFormSubmit = async event => {
     event.preventDefault();
-
     try {
-      await addActivity({
+      const mutationResponse = await addActivity({
         variables: { date, location, timeFrom, timeTo, notes }
-      });
+      })    
       setDate('');
       setLocation('');
       setTimeFrom('');
@@ -130,11 +128,6 @@ const CreateAcitivty = () => {
           <button type="submit">
             Submit
           </button>
-
-          <p>
-        <button onClick={props.prev}>Previous</button>
-        <button onClick={props.next}>Next</button>
-      </p>
         </div>
       </form>
     </>

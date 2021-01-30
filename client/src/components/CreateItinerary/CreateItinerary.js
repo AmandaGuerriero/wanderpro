@@ -5,7 +5,7 @@ import { geoCoding } from "../../utils/geocoding"
 import { useMutation } from '@apollo/react-hooks';
 import './Createpost.css';
 
-const CreateItinerary = (props) => {
+const CreateItinerary = () => {
   const [title, setTitle] = useState('');
   const [location, setLocation] = useState('');
   const [dateBegin, setDateBegin] = useState('');
@@ -48,8 +48,6 @@ const CreateItinerary = (props) => {
       if(coordinates&&coordinates.length) {
         latitude = coordinates[0].center[1];
         longitude = coordinates[0].center[0];
-        props.setLatitude(latitude);
-        props.setLongitude(longitude);
       }
       const mutationResponse = await addItinerary({
         variables: { title, location, dateBegin, dateEnd, description,latitude,longitude }
@@ -83,13 +81,13 @@ const CreateItinerary = (props) => {
   };
 
 	return (
-		<section id='create-itinerary'>
+		<section id="create-itinerary">
       <div className='c-create-itinerary-form'>
-        <form onSubmit={handleFormSubmit}>
-          <ul>
-            <div className='form-group'>
+      <form onSubmit={handleFormSubmit}>
+        <ul>
+            <li>
+              <div className='form-group'>
                 <input 
-                placeholder='Name your itinerary'
                 type='text' 
                 name='title' 
                 id='title'
@@ -110,8 +108,7 @@ const CreateItinerary = (props) => {
                 value={state.location}
                 onChange={handleChange}/>
               </div>
-            </div>
-           
+           </div>
             <div className='form-group flex'>
               <div className='icon-container'>
                 <div className='icon-spirit icon__calendar'></div>
@@ -126,8 +123,7 @@ const CreateItinerary = (props) => {
                 onChange={handleChange}/>
               </div>
             </div>
-
-            <div className='form-group flex'>
+<div className='form-group flex'>
               <div className='icon-container'>
                 <div className='icon-spirit icon__calendar'></div>
               </div>
@@ -141,8 +137,9 @@ const CreateItinerary = (props) => {
                 onChange={handleChange}/>
               </div>
             </div>
-        
-            <div className='form-group'>
+          </li>
+            <li>
+              <div className='form-group'>
                 <textarea 
                 name='description' 
                 id='description' 
@@ -156,27 +153,31 @@ const CreateItinerary = (props) => {
               <div className='icon-container'>
                 <div className='icon-spirit icon__photo'></div>
               </div>
-              <div className='input-container'>
-                <input 
+            </div>
+            </li>
+            <li>
+              <div className='form-group flex'>
+                <div className='icon-container'>
+                  <div className='icon-spirit icon__photo'></div>
+                </div>
+                <div className='input-container'>
+                  <input 
                   type='file' 
                   name='image_url' 
                   placeholder='+ Photo'></input>
-                </div>
-            </div>
-            
+                 </div>
+              </div>
+            </li>
         </ul>
         <div className="flex-row flex-end">
-          <ul>
           <button type="submit">
-            Next
+            Submit
           </button>
-          </ul>
         </div>
         </form>
       </div>
 	  </section>
-  
-);
+	);
 }
 
 export default CreateItinerary;
