@@ -95,11 +95,11 @@ const resolvers = {
       const newTitle = title
       return await Day.findByIdAndUpdate(_id, {title: newTitle}, { new: true });
     },
-    
+
     addActivity: async (parent, { _id, location, timeFrom, timeTo, notes}, context) => {
       if (context.user) {
         const updatedDay = await Day.findOneAndUpdate(
-          { _id: _id },
+          { _id: dayId },
           { $push: { activities: { location, timeFrom, timeTo, notes } } },
           { new: true}
         );

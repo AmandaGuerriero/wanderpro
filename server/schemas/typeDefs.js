@@ -19,6 +19,7 @@ type Itinerary {
 }
 
 type Day {
+
   _id: ID!
   title: String!
   date: String
@@ -26,6 +27,7 @@ type Day {
 }
 
 type Activity {
+
   _id: ID!
   location: String
   timeFrom: String
@@ -56,9 +58,9 @@ type Mutation {
   updateItinerary(_id: ID!, title: String, description: String, location: String, dateBegin: String, dateEnd: String): Itinerary
   addUser(username: String!, email: String!, password: String!): Auth
   updateUser(_id: ID!, username: String): User
-  addDay(title: String!, date: String): Itinerary
+  addDay(itineraryId: ID!, title: String!, date: String): Itinerary
   updateDay(_id: ID!, title: String, date: String): Day
-  addActivity(location: String!, timeFrom: String, timeTo: String, notes:String): Day
+  addActivity(dayId:ID!,location: String!, timeFrom: String, timeTo: String, notes:String): Day
   updateActivity(_id: ID!, location: String): Activity
 }
 `;
