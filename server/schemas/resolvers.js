@@ -78,20 +78,38 @@ const resolvers = {
       throw new AuthenticationError('Not logged in');
     },
 
-    addDay: async (parent, args) => {
-      const day = await Day.create(args);
-
-      return day;
+    addDay: async (parent, { itineraryId, title, date }, context) => {
+      if (context.user) {
+        const updatedItinerary = await Itinerary.findOneAndUpdate(
+          { _id: itineraryId },
+          { $push: { days: { title, date } } },
+          { new: true}
+        );
+    
+        return updatedItinerary;
+      }
+    
+      throw new AuthenticationError('You need to be logged in!');
     },
     updateDay: async (parent, { _id, title }) => {
       const newTitle = title
       return await Day.findByIdAndUpdate(_id, {title: newTitle}, { new: true });
     },
-    addActivity: async (parent, args) => {
-      const activity = await Activity.create(args);
-
-      return activity;
+    
+    addActivity: async (parent, { _id, location, timeFrom, timeTo, notes}, context) => {
+      if (context.user) {
+        const updatedDay = await Day.findOneAndUpdate(
+          { _id: _id },
+          { $push: { activities: { location, timeFrom, timeTo, notes } } },
+          { new: true}
+        );
+    
+        return updatedDay;
+      }
+    
+      throw new AuthenticationError('You need to be logged in!');
     },
+    
     updateActivity: async (parent, { _id, location }) => {
       const newLocation = location
       return await Activity.findByIdAndUpdate(_id, {location: newLocation}, { new: true });
