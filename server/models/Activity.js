@@ -17,6 +17,10 @@ const activitySchema = new Schema({
   notes: {
     type: String,
     trim: true
+  },
+  name: {
+    type: String,
+    trim: true
   }
 });
 
