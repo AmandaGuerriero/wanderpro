@@ -29,7 +29,7 @@ type Day {
 type Activity {
 
   _id: ID!
-  location: String
+  location: String!
   timeFrom: String
   timeTo: String
   notes: String
