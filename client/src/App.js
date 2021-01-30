@@ -8,7 +8,8 @@ import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import Nav from "./components/Nav";
-import CreateItinerary from "./components/CreateItinerary/CreateItinerary";
+import CreateItinerary from "./components/CreateItinerary/CreateItinerary"
+import CreateAcitivty from './components/Create-activity'
 import Summary from "./components/Summary/Summary";
 
 const client = new ApolloClient({
@@ -28,18 +29,19 @@ function App() {
 
     <ApolloProvider client={client}>
       <Router>
+      <StoreProvider>
         <div>
             <Nav />
             <Switch>
-              <Route exact path="/" component={Home} />
-              <Route exact path="/login" component={Login} />
-              <Route exact path="/signup" component={Signup} />
-              <Route exact path="/create" component={CreateItinerary} />
-              <Route exact path="/summary" component={Summary} />
-              
-              
+              <Route  exact path="/login" component={Login} />
+              <Route  exact path="/signup" component={Signup} />
+              <Route  exact path="/create" component={CreateItinerary} />
+              <Route  exact path='/createActivity' component={CreateAcitivty}/>
+              <Route  exact path="/summary" component={Summary} />
+              <Route  path ="/" component={Home} />
             </Switch>
         </div>
+      </StoreProvider>
       </Router>
     </ApolloProvider>
   );
