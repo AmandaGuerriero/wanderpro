@@ -9,6 +9,7 @@ import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import Nav from "./components/Nav";
 import CreateItinerary from "./components/CreateItinerary"
+import CreateAcitivty from './components/Create-activity';
 
 const client = new ApolloClient({
   request: (operation) => {
@@ -35,6 +36,7 @@ function App() {
                 <Route exact path="/login" component={Login} />
                 <Route exact path="/signup" component={Signup} />
                 <Route exact path="/create" component={CreateItinerary} />
+                <Route exact path="/createactivity" component={CreateAcitivty} />
               </Switch>
             </StoreProvider>
         </div>

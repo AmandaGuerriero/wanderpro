@@ -1,146 +1,125 @@
-import React, { useState, Fragment } from "react";
+import React, { useState, useReducer, Fragment } from "react";
 import ReactDOM from "react-dom";
+import { ADD_ACTIVITY } from '../../utils/mutations';
+import { QUERY_ITINERARIES } from '../../utils/queries';
+import { useMutation } from '@apollo/react-hooks';
+import './Create-activity.css';
+// import "bootstrap/dist/css/bootstrap.css";
 
-import "bootstrap/dist/css/bootstrap.css";
+// function reducer(state, { field, value }) {
+//   return {
+//     ...state,
+//     [field]: value
+//   }
+// }
 
-const App = () => {
-  const [inputFields, setInputFields] = useState([
-    { date:'', location: '', timeFrom: '', timeTo:'', notes: '' }
-  ]);
+const CreateAcitivty = () => {
+  const [state, setState ] = useState('');
 
-  const handleAddFields = () => {
-    const values = [...inputFields];
-    values.push({ date:'', location: '', timeFrom: '', timeTo:'', notes: ''});
-    setInputFields(values);
-  };
-
-  const handleRemoveFields = index => {
-    const values = [...inputFields];
-    values.splice(index, 1);
-    setInputFields(values);
-  };
-//needs to be updated
-  const handleInputChange = (index, event) => {
-    const values = [...inputFields];
-    if (event.target.name === "date") {
-      values[index].firstName = event.target.value;
-    } else {
-      values[index].lastName = event.target.value;
+  const [userInput, setUserInput] = useReducer(
+    (state, newState) => ({...state, ...newState}),
+    {
+      date: '',
+      location: '',
+      timeFrom: '',
+      timeTo: '',
+      notes: ''
     }
+  );
+  
+  const handleChange = evt => {
+    const name = evt.target.name;
+    const newValue = evt.target.value;
 
-    setInputFields(values);
-  };
+    setUserInput({[name]: newValue});
+    console.log(newValue)
+  }
+
+  const [addActivity, {error}] = useMutation(ADD_ACTIVITY, {
+    update(cache, { data: {addActivity} }) {
+      try {
+        const { posts } = cache.readQuery({ query: ADD_ACTIVITY });
+        cache.writeQuery({
+          query: QUERY_ITINERARIES,
+          data: { posts: [ADD_ACTIVITY, ...posts] }
+        });
+      } catch (e) {
+        console.log(e)
+      }
+    }
+  })
+
 
   const handleSubmit = e => {
     e.preventDefault();
-    console.log("inputFields", inputFields);
+    console.log("inputFields");
   };
 
   return (
     <>
       <h1>Dynamic Form Fields in React</h1>
       <form onSubmit={handleSubmit}>
-        <div className="form-row">
-          {inputFields.map((inputField, index) => (
-            <Fragment key={`${inputField}~${index}`}>
-              <div className="form-group flex">
-                <label htmlFor="date">Date</label>
-                <input
-                type='text' 
-                name='dateBegin' 
-                id='dateBegin' 
-                placeholder='Date Begin'
-                  value={inputField.date}
-                  onChange={event => handleInputChange(index, event)}
-                />
-              </div>
-
-              <div className="form-group col-sm-4">
-                <label htmlFor="location">Location</label>
-                <input
-                  type='text' 
-                  name='location' 
-                  id='location' 
-                  placeholder='Address'
-                  value={inputField.location}
-                  onChange={event => handleInputChange(index, event)}
-                />
-              </div>
-
-              <div className="form-group col-sm-4">
-                <label htmlFor="timeFrom">Time starts</label>
-                <input
-                  type='time' 
-                  name='timeFrom' 
-                  id='timeFrom' 
-                  placeholder='Time'
-                  value={inputField.timeFrom}
-                  onChange={event => handleInputChange(index, event)}
-                />
-              </div>
-
-              <div className="form-group col-sm-4">
-                <label htmlFor="location">Time ends</label>
-                <input
-                  type='time' 
-                  name='timeTo' 
-                  id='timeTo' 
-                  placeholder='Time ends'
-                  value={inputField.timeTo}
-                  onChange={event => handleInputChange(index, event)}
-                />
-              </div>
-
-              <div className="form-group col-sm-4">
-                <label htmlFor="location">Notes</label>
-                <input
-                  type='text' 
-                  name='notes' 
-                  id='notes' 
-                  placeholder='Notes'
-                  value={inputField.notes}
-                  onChange={event => handleInputChange(index, event)}
-                />
-              </div>
-
-              <div className="form-group col-sm-2">
-                <button
-                  className="btn btn-link"
-                  type="button"
-                  onClick={() => handleRemoveFields(index)}
-                >
-                  -
-                </button>
-                <button
-                  className="btn btn-link"
-                  type="button"
-                  onClick={() => handleAddFields()}
-                >
-                  +
-                </button>
-              </div>
-            </Fragment>
-          ))}
+        <div className="input-container">
+          <label htmlFor='date'>Date</label>
+          <input
+          type='text'
+          name='date'
+          id='date'
+          placeholder='Date'
+          value={state.date}
+          onChange={handleChange} />
         </div>
-        <div className="submit-button">
-          <button
-            className="btn btn-primary mr-2"
-            type="submit"
-            onSubmit={handleSubmit}
-          >
-            Save
-          </button>
+
+
+        <div className="input-container">
+          <label>Location</label>
+          <input
+          type='text'
+          name='location'
+          id='location'
+          placeholder='Location'
+          value={state.location}
+          onChange={handleChange} />
         </div>
-        <br/>
-        <pre>
-          {JSON.stringify(inputFields, null, 2)}
-        </pre>
+
+        <div className="input-container">
+          <label>Start Time</label>
+          <input
+          type='text'
+          name='timeFrom'
+          id='timeFrom'
+          placeholder='Start Time'
+          value={state.timeFrom}
+          onChange={handleChange} />
+        </div>
+
+        <div className="input-container">
+          <label>End Time</label>
+          <input
+          type='text'
+          name='timeTo'
+          id='timeTo'
+          placeholder='End Time'
+          value={state.timeTo}
+          onChange={handleChange} />
+        </div>
+
+        <div className="input-container">
+          <label>Notes</label>
+          <textarea
+          type='text'
+          name='notes'
+          id='notes'
+          placeholder='Enter Any Notes'
+          value={state.notes}
+          onChange={handleChange} />
+        </div>
       </form>
     </>
   );
 };
 
-const rootElement = document.getElementById("root");
-ReactDOM.render(<App />, rootElement);
+// const rootElement = document.getElementById("root");
+// ReactDOM.render(<App />, rootElement);
 
-export default Create-activity;
+export default CreateAcitivty;
