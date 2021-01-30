@@ -95,11 +95,21 @@ const resolvers = {
       const newTitle = title
       return await Day.findByIdAndUpdate(_id, {title: newTitle}, { new: true });
     },
-    addActivity: async (parent, args) => {
-      const activity = await Activity.create(args);
 
-      return activity;
+    addActivity: async (parent, { _id, location, timeFrom, timeTo, notes}, context) => {
+      if (context.user) {
+        const updatedDay = await Day.findOneAndUpdate(
+          { _id: dayId },
+          { $push: { activities: { location, timeFrom, timeTo, notes } } },
+          { new: true}
+        );
+    
+        return updatedDay;
+      }
+    
+      throw new AuthenticationError('You need to be logged in!');
     },
+    
     updateActivity: async (parent, { _id, location }) => {
       const newLocation = location
       return await Activity.findByIdAndUpdate(_id, {location: newLocation}, { new: true });
