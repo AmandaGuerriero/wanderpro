@@ -7,7 +7,7 @@ import './Create-activity.css';
 
 
 const CreateAcitivty = () => {
-  const [formState, setFormState] = useState({ location: '', timeFrom: '', timeTo: '', notes: ''})
+  const [formState, setFormState] = useState({ location: '', timeFrom: '', timeTo: '', notes: '', itineraryId: ''})
   const addActivity = useMutation(ADD_ACTIVITY);
   
   const handleFormSubmit = async event => {
@@ -17,7 +17,8 @@ const CreateAcitivty = () => {
         location: formState.location,
         timeFrom: formState.timeFrom,
         timeTo: formState.timeTo,
-        notes: formState.notes
+        notes: formState.notes,
+        itineraryId: formState.itineraryId
       }
     });
   }
@@ -84,6 +85,17 @@ const CreateAcitivty = () => {
           placeholder='Enter Any Notes'
           onChange={handleChange} />
         </div>
+
+        <div className="input-container">
+          <label>Itinerary ID</label>
+          <textarea
+          type='text'
+          name='itineraryId'
+          id='itinderaryId'
+          placeholder='Enter An ID for your Itinerary'
+          onChange={handleChange} />
+        </div>
+
         <div className="flex-row flex-end">
           <button type="submit">
             Submit
