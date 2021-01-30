@@ -4,17 +4,15 @@ import { ADD_ACTIVITY } from '../../utils/mutations';
 import { QUERY_ITINERARIES } from '../../utils/queries';
 import { useMutation } from '@apollo/react-hooks';
 import './Create-activity.css';
-// import "bootstrap/dist/css/bootstrap.css";
 
-// function reducer(state, { field, value }) {
-//   return {
-//     ...state,
-//     [field]: value
-//   }
-// }
 
 const CreateAcitivty = () => {
   const [state, setState ] = useState('');
+  const [date, setData] = useState('');
+  const [location, setLocation] = useState('');
+  const [timeFrom, setTimeFrom] = useState('');
+  const [timeTo, setTimeTo] = useState('');
+  const [notes, setNotes] = useState('');
 
   const [userInput, setUserInput] = useReducer(
     (state, newState) => ({...state, ...newState}),
@@ -50,15 +48,28 @@ const CreateAcitivty = () => {
   })
 
 
-  const handleSubmit = e => {
-    e.preventDefault();
+  const handleFormSubmit = async event => {
+    event.preventDefault();
+
+    try {
+      await addActivity({
+        variables: { date, location, timeFrom, timeTo, notes }
+      });
+      setDate('');
+      setLocation('');
+      setTimeFrom('');
+      setTimeTo('');
+      setNotes('')
+    } catch (e) {
+      console.log(e)
+    }
     console.log("inputFields");
   };
 
   return (
     <>
       <h1>Dynamic Form Fields in React</h1>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleFormSubmit}>
         <div className="input-container">
           <label htmlFor='date'>Date</label>
           <input
@@ -113,6 +124,11 @@ const CreateAcitivty = () => {
           placeholder='Enter Any Notes'
           value={state.notes}
           onChange={handleChange} />
+        </div>
+        <div className="flex-row flex-end">
+          <button type="submit">
+            Submit
+          </button>
         </div>
       </form>
     </>
