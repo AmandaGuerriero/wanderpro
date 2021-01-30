@@ -20,14 +20,14 @@ type Itinerary {
 
 type Day {
   _id: ID!
-  title: String
+  title: String!
   date: String
   
 }
 
 type Activity {
   _id: ID!
-  location: String!
+  location: String
   timeFrom: String
   timeTo: String
   notes: String
@@ -42,9 +42,9 @@ type Auth {
 type Query {
   itineraries(title: String): [Itinerary]
   itineraryById(_id: ID!): Itinerary
-  days(title: String): [Day]
+  days: [Day]
   dayById(_id: ID!): Day
-  activities(title: String!): [Activity]
+  activities: [Activity]
   activityById(_id: ID!): Activity
   users: [User]
   userById(_id: ID!): User
