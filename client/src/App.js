@@ -24,6 +24,10 @@ const client = new ApolloClient({
 })
 
 function App() {
+  const [ latitude, setLatitude ] = useState('')
+  const [ longitude, setLongitude] = useState('')
+  // setLatitude('-19.00')
+  
   return (
 
     <ApolloProvider client={client}>
@@ -32,10 +36,15 @@ function App() {
           <StoreProvider>
               <Nav />
               <Switch>
+                <Route path="/create">
+                  <CreateItinerary setLatitude={setLatitude} setLongitude={setLongitude} />
+                </Route>
                 <Route exact path="/" component={Home} />
                 <Route exact path="/login" component={Login} />
                 <Route exact path="/signup" component={Signup} />
-                <Route exact path="/create" component={CreateItinerary} />
+                <Route path="/summary">
+                  <Summary latitude={latitude} longitude={longitude}/>
+                </Route>
               </Switch>
             </StoreProvider>
         </div>

@@ -1,6 +1,6 @@
 
 const geocodingUrl = 'https://api.mapbox.com/geocoding/v5';
-const token = 'pk.eyJ1Ijoiem91c2hpbHUzMSIsImEiOiJja2tqYnlsN3UwY2FvMnpxYTNzaTRsZmo3In0.Uv3t2GOGKtdp2-IatP_i3g';
+const token = 'pk.eyJ1Ijoiem91c2hpbHUzMSIsImEiOiJja2tnMGxiZmEwOW5lMnVsYTN3OTR6eXg5In0.EExs7dyM_eoTAEdLXzUmVw';
 const req = (url, body, method = 'GET') =>
 new Request(url, {
   method,
