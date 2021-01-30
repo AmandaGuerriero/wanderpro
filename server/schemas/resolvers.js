@@ -78,10 +78,18 @@ const resolvers = {
       throw new AuthenticationError('Not logged in');
     },
 
-    addDay: async (parent, args) => {
-      const day = await Day.create(args);
-
-      return day;
+    addDay: async (parent, { itineraryId, title, date }, context) => {
+      if (context.user) {
+        const updatedItinerary = await Itinerary.findOneAndUpdate(
+          { _id: itineraryId },
+          { $push: { days: { title, date } } },
+          { new: true}
+        );
+    
+        return updatedItinerary;
+      }
+    
+      throw new AuthenticationError('You need to be logged in!');
     },
     updateDay: async (parent, { _id, title }) => {
       const newTitle = title
