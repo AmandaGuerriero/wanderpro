@@ -75,18 +75,16 @@ const resolvers = {
       throw new AuthenticationError('Not logged in');
     },
 
-    addActivity: async (parent, { itineraryId, name, date, location, timeFrom, timeTo, notes}, context) => {
-      if (context.user) {
+    addActivity: async (parent, { itineraryId, name, date, location, timeFrom, timeTo, notes}) => {
+      
         const updatedItinerary = await Itinerary.findOneAndUpdate(
           { _id: itineraryId },
           { $push: { activities: { name, date, location, timeFrom, timeTo, notes } } },
           { new: true}
         );
-    
+          console.log(updatedItinerary)
         return updatedItinerary;
-      }
-    
-      throw new AuthenticationError('You need to be logged in!');
+     
     },
     addActivityPublic: async (parent, args) => {
       const newActivity = await Activity.create(args);

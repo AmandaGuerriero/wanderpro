@@ -17,7 +17,7 @@ const CreateActivity = (props) => {
     console.log(formState)
     try {
       await addActivity({
-        varibles: {
+        variables: {
           location: formState.location,
           date: formState.date,
           timeFrom: formState.timeFrom,
@@ -26,6 +26,7 @@ const CreateActivity = (props) => {
           itineraryId: formState.itineraryId
         }
       })
+      console.log(addActivity)
     } 
     catch(e){
       console.log(e);
