@@ -15,14 +15,9 @@ type Itinerary {
   location: String
   dateBegin: String
   dateEnd: String
-<<<<<<< HEAD
-  latitude: String
-  longitude: String
-=======
   latitude: Int
   longitude: Int
   activities: [Activity]
->>>>>>> b737b0cd452a02f0851829615fa5ce140629b5de
 }
 
 type Activity {
