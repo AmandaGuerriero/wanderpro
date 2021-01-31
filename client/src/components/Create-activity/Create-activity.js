@@ -7,7 +7,7 @@ import { useMutation } from '@apollo/react-hooks';
 import './Create-activity.css';
 
 
-const CreateAcitivty = () => {
+const CreateAcitivty = (props) => {
   const [formState, setFormState] = useState({ location: '', timeFrom: '', timeTo: '', notes: '', itineraryId: ''})
   const addActivity = useMutation(ADD_ACTIVITY);
   
@@ -46,7 +46,6 @@ const CreateAcitivty = () => {
           onChange={handleChange} />
         </div>
 
-
         <div className="input-container">
           <label>Location</label>
           <input
@@ -84,16 +83,6 @@ const CreateAcitivty = () => {
           name='notes'
           id='notes'
           placeholder='Enter Any Notes'
-          onChange={handleChange} />
-        </div>
-
-        <div className="input-container">
-          <label>Itinerary ID</label>
-          <textarea
-          type='text'
-          name='itineraryId'
-          id='itinderaryId'
-          placeholder='Enter An ID for your Itinerary'
           onChange={handleChange} />
         </div>
 

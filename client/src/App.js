@@ -8,7 +8,7 @@ import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import Nav from "./components/Nav";
 import CreateItinerary from "./components/CreateItinerary/CreateItinerary"
-import Create from './components/Create-activity'
+import CreateActivity from './components/Create-activity/Create-activity'
 import Summary from "./components/Summary/Summary";
 const client = new ApolloClient({
   request: (operation) => {
@@ -39,7 +39,7 @@ function App() {
                 <Route exact path="/" component={Home} />
                 <Route exact path="/login" component={Login} />
                 <Route exact path="/signup" component={Signup} />
-                <Route exact path="/activity" component={Create} />
+                <Route exact path="/activity" component={CreateActivity} />
                 <Route path="/summary">
                   <Summary latitude={latitude} longitude={longitude}/>
                 </Route>

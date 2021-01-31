@@ -16,7 +16,7 @@ type Itinerary {
   dateBegin: String
   dateEnd: String
   latitude: String
-  longtitude: String
+  longitude: String
 }
 
 type Activity {
