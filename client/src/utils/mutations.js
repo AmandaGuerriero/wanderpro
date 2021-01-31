@@ -23,8 +23,8 @@ export const ADD_USER = gql`
 `;
 
 export const ADD_ITINERARY = gql`
-  mutation addItinerary($title: String!, $description: String, $location: String, $dateBegin: String, $dateEnd: String) {
-    addItinerary(title: $title, description: $description, location: $location, dateBegin: $dateBegin, dateEnd: $dateEnd) {
+  mutation addItinerary($title: String!, $description: String, $location: String, $dateBegin: String, $dateEnd: String, $latitude: String, $longitude: String) {
+    addItinerary(title: $title, description: $description, location: $location, dateBegin: $dateBegin, dateEnd: $dateEnd, latitude: $latitude, longitude: $longitude) {
       _id,
       title,
       description,
@@ -38,13 +38,27 @@ export const ADD_ITINERARY = gql`
 `;
 
 export const ADD_ACTIVITY = gql`
-  mutation addActivity($location: String!, $timeFrom: String, $timeTo: String, $notes:String) {
-    addActivity(location: $location, timeFrom: $timeFrom, timeTo: $timeTo, notes: $notes) {
-      _id,
-      location,
-      timeFrom,
-      timeTo,
-      notes
+  mutation addActivity($itineraryId: ID!, $name: String, $location: String!, $timeFrom: String, $timeTo: String, $notes: String) {
+    addActivity(dayId: $itineraryId, location: $location, timeFrom: $timeFrom, timeTo: $timeTo, notes: $notes, name: $name ) {
+      _id
+      title
+      activities {
+        _id
+        name
+        location
+        notes
+      }
     }
   }
-`
+`;
+
+export const ADD_ACTIVITY_PUBLIC = gql`
+  mutation addActivityPublic($name: String, $location: String!) {
+    addActivityPublic(location: $location, name: $name ) {
+    _id
+      name
+      location
+      }
+    }
+`;
+

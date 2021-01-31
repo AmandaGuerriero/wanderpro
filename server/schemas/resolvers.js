@@ -1,5 +1,5 @@
 
-const { Itinerary, User, Activity, Day } = require('../models');
+const { Itinerary, User, Activity } = require('../models');
 const { signToken } = require('../utils/auth');
 const { AuthenticationError } = require('apollo-server-express');
 
@@ -78,11 +78,11 @@ const resolvers = {
       throw new AuthenticationError('Not logged in');
     },
 
-    addDay: async (parent, { itineraryId, title, date }, context) => {
+    addActivity: async (parent, { itineraryId, name, date, location, timeFrom, timeTo, notes}, context) => {
       if (context.user) {
         const updatedItinerary = await Itinerary.findOneAndUpdate(
           { _id: itineraryId },
-          { $push: { days: { title, date } } },
+          { $push: { activities: { name, date, location, timeFrom, timeTo, notes } } },
           { new: true}
         );
     
@@ -91,28 +91,14 @@ const resolvers = {
     
       throw new AuthenticationError('You need to be logged in!');
     },
-    updateDay: async (parent, { _id, title }) => {
-      const newTitle = title
-      return await Day.findByIdAndUpdate(_id, {title: newTitle}, { new: true });
-    },
-
-    addActivity: async (parent, { _id, location, timeFrom, timeTo, notes}, context) => {
-      if (context.user) {
-        const updatedDay = await Day.findOneAndUpdate(
-          { _id: dayId },
-          { $push: { activities: { location, timeFrom, timeTo, notes } } },
-          { new: true}
-        );
-    
-        return updatedDay;
-      }
-    
-      throw new AuthenticationError('You need to be logged in!');
+    addActivityPublic: async (parent, args) => {
+      const newActivity = await Activity.create(args);
+      return newActivity;
     },
     
-    updateActivity: async (parent, { _id, location }) => {
-      const newLocation = location
-      return await Activity.findByIdAndUpdate(_id, {location: newLocation}, { new: true });
+    updateActivity: async (parent, { _id, name }) => {
+      const newName = name
+      return await Activity.findByIdAndUpdate(_id, {location: newName}, { new: true });
     },
 
     login: async (parent, { email, password }) => {
