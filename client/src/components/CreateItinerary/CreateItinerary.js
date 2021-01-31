@@ -5,7 +5,7 @@ import { geoCoding } from "../../utils/geocoding"
 import { useMutation } from '@apollo/react-hooks';
 import './Createpost.css';
 
-const CreateItinerary = () => {
+const CreateItinerary = (props) => {
   const [title, setTitle] = useState('');
   const [location, setLocation] = useState('');
   const [dateBegin, setDateBegin] = useState('');
@@ -39,18 +39,18 @@ const CreateItinerary = () => {
   // submit form
   const handleFormSubmit = async event => {
     event.preventDefault();
-
     try {
       // Get coordinate from location
-
       let coordinates = await geoCoding(state.location);
       let latitude = 0,longitude =0;
       if(coordinates&&coordinates.length) {
         latitude = coordinates[0].center[1];
         longitude = coordinates[0].center[0];
+        props.setLatitude(latitude);
+        props.setLongitude(longitude);
       }
       const mutationResponse = await addItinerary({
-        variables: { title, location, dateBegin, dateEnd, description,latitude,longitude }
+        variables: { title, location, dateBegin, dateEnd, description, latitude, longitude }
       });
 
       // clear form value

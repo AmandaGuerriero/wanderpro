@@ -23,10 +23,10 @@ const itinerarySchema = new Schema({
     type: Date
   },
   latitude: {
-    type: String
+    type: Number
   },
   longitude: {
-    type: String
+    type: Number
   },
   activities: [Activity.schema]
 });
