@@ -6,42 +6,15 @@ import { useMutation } from '@apollo/react-hooks';
 import './Createpost.css';
 
 const CreateItinerary = (props) => {
-  const [title, setTitle] = useState('');
-  const [location, setLocation] = useState('');
-  const [dateBegin, setDateBegin] = useState('');
-  const [dateEnd, setDateEnd] = useState('');
-  const [description, setDescription] = useState('');
-  // const [characterCount, setCharacterCount] = useState(0);
-  const [state, setState] = React.useState({
-    title: "",
-    location: "",
-    dateBegin: "",
-    dateEnd: "",
-    description: "",
-  })
-
-  const [addItinerary, { error }] = useMutation(ADD_ITINERARY, {
-    update(cache, { data: { addItinerary } }) {
-      try {
-         // update thought array's cache
-         // could potentially not exist yet, so wrap in a try/catch
-        const { posts } = cache.readQuery({ query: QUERY_ITINERARIES });
-        cache.writeQuery({
-          query: QUERY_ITINERARIES,
-          data: { posts: [ADD_ITINERARY, ...posts] }
-        });
-      } catch (e) {
-        console.error(e);
-      }
-    }
-  })
+  const [formState, setFormState] = useState({ location: '', dateBegin: '', dateEnd: '', title: '', description: ''})
+  const [addItinerary, { error }] = useMutation(ADD_ITINERARY);
 
   // submit form
   const handleFormSubmit = async event => {
     event.preventDefault();
     try {
       // Get coordinate from location
-      let coordinates = await geoCoding(state.location);
+      let coordinates = await geoCoding(formState.location);
       let latitude = 0,longitude =0;
       if(coordinates&&coordinates.length) {
         latitude = coordinates[0].center[1];
@@ -49,20 +22,29 @@ const CreateItinerary = (props) => {
         props.setLatitude(latitude);
         props.setLongitude(longitude);
       }
-      const mutationResponse = await addItinerary({
-        variables: { title, location, dateBegin, dateEnd, description, latitude, longitude }
+      console.log(latitude, longitude)
+      await addItinerary({
+        variables: { 
+          title: formState.title, 
+          location: formState.location,
+          dateBegin: formState.dateBegin, 
+          dateEnd: formState.dateEnd, 
+          description: formState.description, 
+          latitude: latitude, 
+          longitude: longitude 
+        }
       });
 
-      // clear form value
-      setTitle('');
+      // // clear form value
+      // setTitle('');
 
-      setLocation('');
+      // setLocation('');
 
-      setDateBegin('');
+      // setDateBegin('');
 
-      setDateEnd('');
+      // setDateEnd('');
       
-      setDescription('');
+      // setDescription('');
       
 
     } catch (e) {
@@ -72,8 +54,8 @@ const CreateItinerary = (props) => {
 
   const handleChange = event => {
     const { name, value } = event.target;
-    setState({
-      ...state,
+    setFormState({
+      ...formState,
       [name]: value
     })
     console.log(event.target.value)
@@ -91,6 +73,7 @@ const CreateItinerary = (props) => {
                 type='text' 
                 name='title' 
                 id='title'
+                // value={state.title}
                 onChange={handleChange}/>
             </div>
          
@@ -104,6 +87,7 @@ const CreateItinerary = (props) => {
                 name='location' 
                 id='location' 
                 placeholder='City'
+                // value={state.location}
                 onChange={handleChange}/>
               </div>
            </div>
@@ -117,6 +101,7 @@ const CreateItinerary = (props) => {
                 name='dateBegin' 
                 id='dateBegin' 
                 placeholder='Date Begin'
+                // value={state.dateBegin}
                 onChange={handleChange}/>
               </div>
             </div>
@@ -130,7 +115,9 @@ const CreateItinerary = (props) => {
                 name='dateEnd' 
                 id='dateEnd' 
                 placeholder='Date End'
-                onChange={props.handleChange}/>
+                // value={state.dateEnd}
+                onChange={handleChange}/>
+
               </div>
             </div>
           </li>
@@ -141,7 +128,8 @@ const CreateItinerary = (props) => {
                 id='description' 
                 rows="4" 
                 placeholder='Write a caption…'
-                onChange={props.handleChange}/>
+                // value={state.description}
+                onChange={handleChange}/>
             </div>
           
             <div className='form-group flex'>
