@@ -117,6 +117,7 @@ const CreateItinerary = (props) => {
                 placeholder='Date End'
                 // value={state.dateEnd}
                 onChange={handleChange}/>
+
               </div>
             </div>
           </li>
