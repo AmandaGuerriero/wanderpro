@@ -3,24 +3,22 @@ import ReactMapGL from 'react-map-gl';
 
 function Summary(props) {
   const [viewport, setViewport] = React.useState({
-    latitude: 34.0522,
-    longitude: 118.2437,
+    latitude: props.state.latitude,
+    longitude: props.state.longitude,
     zoom: 8
   });
 
   return (
-    // <div>
-    //   <p>title: {props.state.title}</p>
-    //   <p>location: {props.state.location}</p>
-    //   <p>description: {props.state.description}</p>
-
-      <ReactMapGL
-            {...viewport}
-            width="100%"
-            height="100%"
-            onViewportChange={(viewport) => setViewport(viewport)}
-          />
-    // </div>
+    <div>
+    <ReactMapGL
+      {...viewport}
+      onViewportChange={(viewport) => setViewport(viewport)}
+      mapboxApiAccessToken="pk.eyJ1Ijoiem91c2hpbHUzMSIsImEiOiJja2tnMGxiZmEwOW5lMnVsYTN3OTR6eXg5In0.EExs7dyM_eoTAEdLXzUmVw"
+    />
+      <p>Title: {props.title}</p>
+      <p>location: {props.location}</p>
+      <p>description: {props.description}</p>
+     </div>
   );
 }
 
