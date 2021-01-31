@@ -23,7 +23,7 @@ export const ADD_USER = gql`
 `;
 
 export const ADD_ITINERARY = gql`
-  mutation addItinerary($title: String!, $description: String, $location: String, $dateBegin: String, $dateEnd: String, $latitude: String, $longitude: String) {
+  mutation addItinerary($title: String!, $description: String, $location: String, $dateBegin: String, $dateEnd: String, $latitude: Int, $longitude: Int) {
     addItinerary(title: $title, description: $description, location: $location, dateBegin: $dateBegin, dateEnd: $dateEnd, latitude: $latitude, longitude: $longitude) {
       _id,
       title,

@@ -22,9 +22,10 @@ const client = new ApolloClient({
   uri: '/graphql',
 })
 function App() {
-  const [ latitude, setLatitude ] = useState('')
-  const [ longitude, setLongitude] = useState('')
+  const [ latitude, setLatitude ] = useState(0)
+  const [ longitude, setLongitude] = useState(0)
   // setLatitude('-19.00')
+  console.log(latitude, longitude)
   return (
     <ApolloProvider client={client}>
       <Router>
