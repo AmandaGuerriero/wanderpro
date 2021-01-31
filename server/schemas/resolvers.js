@@ -25,9 +25,6 @@ const resolvers = {
 
       return User.findById(_id);
     },
-    days: async () => {
-      return await Day.find();
-    },
     activities: async () => {
       return await Activity.find();
     },
