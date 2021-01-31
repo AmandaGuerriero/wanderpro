@@ -17,6 +17,7 @@
     "@mapbox/mapbox-gl-directions": "^4.1.0",
     "@mapbox/mapbox-sdk": "^0.12.0",
     "@reduxjs/toolkit": "^1.5.0",
+    "apollo-link-error": "^1.1.13",
     "if-env": "^1.0.4",
     "mapbox-gl": "^2.0.1",
     "mapbox-gl-directions": "^3.0.3",

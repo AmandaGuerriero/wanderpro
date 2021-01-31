@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { Steps, Step } from 'react-step-builder';
-
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { ApolloProvider } from '@apollo/react-hooks';
 import ApolloClient from 'apollo-boost';
@@ -9,7 +8,7 @@ import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import Nav from "./components/Nav";
-import CreateItinerary from "./components/CreateItinerary/CreateItinerary";
+import CreateItinerary from "./components/CreateItinerary/CreateItinerary"
 import CreateActivityContainer from './components/Create-activity/CreateActivityContainer';
 import Summary from "./components/Summary/Summary";
 const client = new ApolloClient({
@@ -31,13 +30,11 @@ const Navigation = (props) => {
     </div>
   );
 };
-
 function App() {
   const [ latitude, setLatitude ] = useState(0)
   const [ longitude, setLongitude] = useState(0)
   // setLatitude('-19.00')
   console.log(latitude, longitude)
-
   const config = {
     navigation: {
       component: Navigation,
@@ -52,11 +49,13 @@ function App() {
           <StoreProvider>
               <Nav />
               <Switch>
-                <Steps config ={config}>
-                  <Step exact path='/create' component={CreateItinerary} setLatitude={setLatitude} setLongitude={setLongitude}/>
-                  <Step exact path='/activity' component = {CreateActivityContainer} />
-                  <Step exact path='/summary' component = {Summary} latitude={latitude} longitude={longitude} />
-                </Steps>
+                <Route exact path ='/test1'>
+                  <Steps config ={config}>
+                    <Step exact path='/create' component={CreateItinerary} setLatitude={setLatitude} setLongitude={setLongitude}/>
+                    <Step exact path='/activity' component = {CreateActivityContainer} />
+                    <Step exact path='/summary' component = {Summary} latitude={latitude} longitude={longitude} />
+                  </Steps>
+                </Route>
                 {/* <Route path="/create">
                   <CreateItinerary setLatitude={setLatitude} setLongitude={setLongitude} />
                 </Route>
@@ -67,36 +66,12 @@ function App() {
                 <Route exact path="/" component={Home} />
                 <Route exact path="/login" component={Login} />
                 <Route exact path="/signup" component={Signup} />
-               
               </Switch>
             </StoreProvider>
         </div>
       </StoreProvider>
       </Router>
     </ApolloProvider>
-    // <ApolloProvider client={client}>
-    //   <Router>
-    //   <StoreProvider>
-    //     <div>
-    //       <StoreProvider>
-    //           <Nav />
-    //           <Switch>
-    //             <Steps config ={config}>
-    //               <Step exact path='/create' component={CreateItinerary} setLatitude={setLatitude} setLongitude={setLongitude}/>
-    //               <Step exact path='/activity' component = {CreateActivityContainer} />
-    //               <Step exact path='/summary' component = {Summary} latitude={latitude} longitude={longitude} />
-    //             </Steps>
-
-    //             <Route exact path="/" component={Home} />
-    //             <Route exact path="/login" component={Login} />
-    //             <Route exact path="/signup" component={Signup} />
-               
-    //           </Switch>
-    //         </StoreProvider>
-    //     </div>
-    //   </StoreProvider>
-    //   </Router>
-    // </ApolloProvider>
   );
 }
 export default App;

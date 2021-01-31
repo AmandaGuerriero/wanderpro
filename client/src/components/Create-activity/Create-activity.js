@@ -16,7 +16,7 @@ const CreateActivity = (props) => {
     console.log(formState)
     try {
       await addActivity({
-        varibles: {
+        variables: {
           location: formState.location,
           date: formState.date,
           timeFrom: formState.timeFrom,
@@ -25,6 +25,7 @@ const CreateActivity = (props) => {
           itineraryId: formState.itineraryId
         }
       })
+      console.log(addActivity)
     } 
     catch(e){
       console.log(e);
@@ -41,6 +42,7 @@ const CreateActivity = (props) => {
 
   return (
     <>
+      <h1>Dynamic Form Fields in React</h1>
       <form onSubmit={handleFormSubmit}>
       <div className="input-container">
           <label htmlFor='itID'>Itinerary ID</label>
