@@ -34,9 +34,16 @@ React.Component{
   render() {
     return (
     <div>
-      <p>Title: {this.props.title}</p>
-      <p>location: {this.props.location}</p>
-      <p>description: {this.props.description}</p>
+      <p>Your Trip: {this.props.title}</p>
+      {/* <p>Where: {this.props.location}</p> */}
+      <p>Your Itinerary: {this.props.itineraryId}</p>
+      <p>First day of your trip: {this.props.dateBegin}</p>
+      <p>Last day of your trip: {this.props.dateEnd}</p>
+      <p>Location: {this.props.location}</p>
+      <p>Time starts: {this.props.timeFrom}</p>
+      <p>Time ends: {this.props.timeTo}</p>
+      <p>Notes: {this.props.notes}</p>
+      <p>Get directions for your trip:</p>
       <div ref={el => (this.mapWrapper = el)} className="mapWrapper" />
     // </div>
     );

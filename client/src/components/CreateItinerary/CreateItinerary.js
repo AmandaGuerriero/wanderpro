@@ -39,10 +39,8 @@ const CreateItinerary = (props) => {
   // submit form
   const handleFormSubmit = async event => {
     event.preventDefault();
-
     try {
       // Get coordinate from location
-
       let coordinates = await geoCoding(state.location);
       let latitude = 0,longitude =0;
       if(coordinates&&coordinates.length) {
@@ -52,7 +50,7 @@ const CreateItinerary = (props) => {
         props.setLongitude(longitude);
       }
       const mutationResponse = await addItinerary({
-        variables: { title, location, dateBegin, dateEnd, description,latitude,longitude }
+        variables: { title, location, dateBegin, dateEnd, description, latitude, longitude }
       });
 
       // clear form value
@@ -87,13 +85,11 @@ const CreateItinerary = (props) => {
       <div className='c-create-itinerary-form'>
       <form onSubmit={handleFormSubmit}>
         <ul>
-            <li>
               <div className='form-group'>
                 <input 
                 type='text' 
                 name='title' 
                 id='title'
-                value={state.title}
                 onChange={handleChange}/>
             </div>
          
@@ -107,7 +103,6 @@ const CreateItinerary = (props) => {
                 name='location' 
                 id='location' 
                 placeholder='City'
-                value={state.location}
                 onChange={handleChange}/>
               </div>
            </div>
@@ -121,7 +116,6 @@ const CreateItinerary = (props) => {
                 name='dateBegin' 
                 id='dateBegin' 
                 placeholder='Date Begin'
-                value={state.dateBegin}
                 onChange={handleChange}/>
               </div>
             </div>
@@ -135,20 +129,16 @@ const CreateItinerary = (props) => {
                 name='dateEnd' 
                 id='dateEnd' 
                 placeholder='Date End'
-                value={state.dateEnd}
-                onChange={handleChange}/>
+                onChange={props.handleChange}/>
               </div>
             </div>
-          </li>
-            <li>
               <div className='form-group'>
                 <textarea 
                 name='description' 
                 id='description' 
                 rows="4" 
                 placeholder='Write a caption…'
-                value={state.description}
-                onChange={handleChange}/>
+                onChange={props.handleChange}/>
             </div>
           
             <div className='form-group flex'>
@@ -156,8 +146,7 @@ const CreateItinerary = (props) => {
                 <div className='icon-spirit icon__photo'></div>
               </div>
             </div>
-            </li>
-            <li>
+
               <div className='form-group flex'>
                 <div className='icon-container'>
                   <div className='icon-spirit icon__photo'></div>
@@ -169,7 +158,6 @@ const CreateItinerary = (props) => {
                   placeholder='+ Photo'></input>
                  </div>
               </div>
-            </li>
         </ul>
         <div className="flex-row flex-end">
           <button type="submit">
