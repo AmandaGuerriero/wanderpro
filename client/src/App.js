@@ -9,8 +9,8 @@ import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import Nav from "./components/Nav";
-import CreateItinerary from "./components/CreateItinerary/CreateItinerary"
-import CreateActivity from './components/Create-activity/Create-activity'
+import CreateItinerary from "./components/CreateItinerary/CreateItinerary";
+import CreateActivityContainer from './components/Create-activity/CreateActivityContainer';
 import Summary from "./components/Summary/Summary";
 const client = new ApolloClient({
   request: (operation) => {
@@ -27,8 +27,8 @@ const client = new ApolloClient({
 const Navigation = (props) => {
   return (
     <div>
-      <button onClick={props.prev}>Global Previous</button>
-      <button onClick={props.next}>Global Next</button>
+      <button onClick={props.prev}>Back</button>
+      <button onClick={props.next}>Next</button>
     </div>
   );
 };
@@ -55,7 +55,7 @@ function App() {
               <Switch>
                 <Steps config ={config}>
                   <Step exact path='/create' component={CreateItinerary} setLatitude={setLatitude} setLongitude={setLongitude}/>
-                  <Step exact path='/activity' component = {CreateActivity} />
+                  <Step exact path='/activity' component = {CreateActivityContainer} />
                   <Step exact path='/summary' component = {Summary} latitude={latitude} longitude={longitude} />
                 </Steps>
                 {/* <Route path="/create">

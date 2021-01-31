@@ -6,19 +6,6 @@ import { useMutation } from '@apollo/react-hooks';
 import './Createpost.css';
 
 const CreateItinerary = (props) => {
-  const [title, setTitle] = useState('');
-  const [location, setLocation] = useState('');
-  const [dateBegin, setDateBegin] = useState('');
-  const [dateEnd, setDateEnd] = useState('');
-  const [description, setDescription] = useState('');
-  // const [characterCount, setCharacterCount] = useState(0);
-  const [state, setState] = React.useState({
-    title: "",
-    location: 0,
-    dateBegin: "",
-    dateEnd: "",
-    description: "",
-  })
 
   const [addItinerary, { error }] = useMutation(ADD_ITINERARY, {
     update(cache, { data: { addItinerary } }) {
@@ -38,10 +25,16 @@ const CreateItinerary = (props) => {
 
   // submit form
   const handleFormSubmit = async event => {
+    let title = props.getState("title", "")
+    let location = props.getState("location", "")
+    let dateBegin = props.getState("dateBegin", "")
+    let dateEnd = props.getState("dateEnd", "")
+    let description = props.getState("description", "")
     event.preventDefault();
+    
     try {
       // Get coordinate from location
-      let coordinates = await geoCoding(state.location);
+      let coordinates = await geoCoding(props.getState("title", ""));
       let latitude = 0,longitude =0;
       if(coordinates&&coordinates.length) {
         latitude = coordinates[0].center[1];
@@ -54,15 +47,15 @@ const CreateItinerary = (props) => {
       });
 
       // clear form value
-      setTitle('');
+      // setTitle('');
 
-      setLocation('');
+      // setLocation('');
 
-      setDateBegin('');
+      // setDateBegin('');
 
-      setDateEnd('');
+      // setDateEnd('');
       
-      setDescription('');
+      // setDescription('');
       
 
     } catch (e) {
@@ -70,17 +63,9 @@ const CreateItinerary = (props) => {
     }
   };
 
-  const handleChange = event => {
-    const { name, value } = event.target;
-    setState({
-      ...state,
-      [name]: value
-    })
-    console.log(event.target.value)
-
-  };
-
+ 
 	return (
+  <div>
 		<section id="create-itinerary">
       <div className='c-create-itinerary-form'>
       <form onSubmit={handleFormSubmit}>
@@ -90,7 +75,8 @@ const CreateItinerary = (props) => {
                 type='text' 
                 name='title' 
                 id='title'
-                onChange={handleChange}/>
+                value={props.getState("title", "")}
+                onChange={props.handleChange}/>
             </div>
          
             <div className='form-group flex'>
@@ -103,7 +89,8 @@ const CreateItinerary = (props) => {
                 name='location' 
                 id='location' 
                 placeholder='City'
-                onChange={handleChange}/>
+                value={props.getState("location", "")}
+                onChange={props.handleChange}/>
               </div>
            </div>
             <div className='form-group flex'>
@@ -116,7 +103,8 @@ const CreateItinerary = (props) => {
                 name='dateBegin' 
                 id='dateBegin' 
                 placeholder='Date Begin'
-                onChange={handleChange}/>
+                value={props.getState("dateBegin", "")}
+                onChange={props.handleChange}/>
               </div>
             </div>
 <div className='form-group flex'>
@@ -129,6 +117,7 @@ const CreateItinerary = (props) => {
                 name='dateEnd' 
                 id='dateEnd' 
                 placeholder='Date End'
+                value={props.getState("dateEnd", "")}
                 onChange={props.handleChange}/>
               </div>
             </div>
@@ -138,6 +127,7 @@ const CreateItinerary = (props) => {
                 id='description' 
                 rows="4" 
                 placeholder='Write a caption…'
+                value={props.getState("description", "")}
                 onChange={props.handleChange}/>
             </div>
           
@@ -155,8 +145,9 @@ const CreateItinerary = (props) => {
                   <input 
                   type='file' 
                   name='image_url' 
-                  placeholder='+ Photo'></input>
-                 </div>
+                  placeholder='+ Photo'>
+                </input>
+              </div>
               </div>
         </ul>
         <div className="flex-row flex-end">
@@ -167,6 +158,7 @@ const CreateItinerary = (props) => {
         </form>
       </div>
 	  </section>
+  </div>
 	);
 }
 

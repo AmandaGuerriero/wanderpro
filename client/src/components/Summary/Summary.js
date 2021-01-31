@@ -29,20 +29,30 @@ React.Component{
 
     // Integrates directions control with map
     map.addControl(directions, 'top-left');
+    directions.setDestination(this.props.state.location);
+    // Add geolocate control to the map.
+map.addControl(
+  new mapboxgl.GeolocateControl({
+  positionOptions: {
+  enableHighAccuracy: true
+  },
+  trackUserLocation: true
+  })
+  );
   }
 
   render() {
     return (
     <div>
-      <p>Your Trip: {this.props.title}</p>
+      <p>Your Trip: {this.props.state.title}</p>
       {/* <p>Where: {this.props.location}</p> */}
-      <p>Your Itinerary: {this.props.itineraryId}</p>
-      <p>First day of your trip: {this.props.dateBegin}</p>
-      <p>Last day of your trip: {this.props.dateEnd}</p>
-      <p>Location: {this.props.location}</p>
-      <p>Time starts: {this.props.timeFrom}</p>
-      <p>Time ends: {this.props.timeTo}</p>
-      <p>Notes: {this.props.notes}</p>
+      <p>Your Itinerary: {this.props.state.tineraryId}</p>
+      <p>First day of your trip: {this.props.state.dateBegin}</p>
+      <p>Last day of your trip: {this.props.state.dateEnd}</p>
+      <p>Location: {this.props.state.location}</p>
+      <p>Time starts: {this.props.state.timeFrom}</p>
+      <p>Time ends: {this.props.state.timeTo}</p>
+      <p>Notes: {this.props.state.notes}</p>
       <p>Get directions for your trip:</p>
       <div ref={el => (this.mapWrapper = el)} className="mapWrapper" />
     // </div>
