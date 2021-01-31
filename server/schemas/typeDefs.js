@@ -22,7 +22,7 @@ type Itinerary {
 type Activity {
   _id: ID!
   name: String
-  date: Date
+  date: String
   location: String!
   timeFrom: String
   timeTo: String
