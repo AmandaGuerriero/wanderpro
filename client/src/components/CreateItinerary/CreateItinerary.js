@@ -150,11 +150,11 @@ const CreateItinerary = (props) => {
               </div>
               </div>
         </ul>
-        <div className="flex-row flex-end">
+        {/* <div className="flex-row flex-end">
           <button type="submit">
             Submit
           </button>
-        </div>
+        </div> */}
         </form>
       </div>
 	  </section>

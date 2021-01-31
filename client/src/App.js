@@ -23,12 +23,11 @@ const client = new ApolloClient({
   },
   uri: '/graphql',
 })
-
 const Navigation = (props) => {
   return (
     <div>
-      <button onClick={props.prev}>Back</button>
-      <button onClick={props.next}>Next</button>
+      <button onClick={props.prev}>Global Previous</button>
+      <button onClick={props.next}>Global Next</button>
     </div>
   );
 };
@@ -75,6 +74,29 @@ function App() {
       </StoreProvider>
       </Router>
     </ApolloProvider>
+    // <ApolloProvider client={client}>
+    //   <Router>
+    //   <StoreProvider>
+    //     <div>
+    //       <StoreProvider>
+    //           <Nav />
+    //           <Switch>
+    //             <Steps config ={config}>
+    //               <Step exact path='/create' component={CreateItinerary} setLatitude={setLatitude} setLongitude={setLongitude}/>
+    //               <Step exact path='/activity' component = {CreateActivityContainer} />
+    //               <Step exact path='/summary' component = {Summary} latitude={latitude} longitude={longitude} />
+    //             </Steps>
+
+    //             <Route exact path="/" component={Home} />
+    //             <Route exact path="/login" component={Login} />
+    //             <Route exact path="/signup" component={Signup} />
+               
+    //           </Switch>
+    //         </StoreProvider>
+    //     </div>
+    //   </StoreProvider>
+    //   </Router>
+    // </ApolloProvider>
   );
 }
 export default App;

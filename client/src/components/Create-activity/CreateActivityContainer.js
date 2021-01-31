@@ -19,7 +19,7 @@ const CreateActivityContainer = (props) => {
 
   return (
     <>
-      <h1>Add Creativity</h1>
+      <h1>Add Activity</h1>
         <div className="form-row">
           {inputFields.map((inputField, index) => (
             <Fragment key={`${inputField}~${index}`}>
