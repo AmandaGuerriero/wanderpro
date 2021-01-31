@@ -19,17 +19,10 @@ type Itinerary {
   longtitude: Number
 }
 
-type Day {
-
-  _id: ID!
-  title: String!
-  date: String
-  activities: [Activity]
-}
-
 type Activity {
   _id: ID!
   name: String
+  date: Date
   location: String!
   timeFrom: String
   timeTo: String
@@ -45,8 +38,6 @@ type Auth {
 type Query {
   itineraries(title: String): [Itinerary]
   itineraryById(_id: ID!): Itinerary
-  days(title: String): [Day]
-  dayById(_id: ID!): Day
   activities: [Activity]
   activityById(_id: ID!): Activity
   users: [User]
@@ -59,9 +50,7 @@ type Mutation {
   updateItinerary(_id: ID!, title: String, description: String, location: String, dateBegin: String, dateEnd: String): Itinerary
   addUser(username: String!, email: String!, password: String!): Auth
   updateUser(_id: ID!, username: String): User
-  addDay(itineraryId: ID!, title: String!, date: String): Itinerary
-  updateDay(_id: ID!, title: String, date: String): Day
-  addActivity(dayId:ID!,location: String!, timeFrom: String, timeTo: String, notes:String, name: String): Day
+  addActivity(itineraryId:ID!,location: String!, timeFrom: String, timeTo: String, notes:String, name: String): Itinerary
   addActivityPublic(name: String, location: String!): Activity
   updateActivity(_id: ID!, location: String): Activity
 }
