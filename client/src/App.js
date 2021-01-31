@@ -12,6 +12,7 @@ import Nav from "./components/Nav";
 import CreateItinerary from "./components/CreateItinerary/CreateItinerary"
 import CreateActivity from './components/Create-activity/Create-activity'
 import Summary from "./components/Summary/Summary";
+import Footer from "./components/Footer/Footer"
 const client = new ApolloClient({
   request: (operation) => {
     const token = localStorage.getItem('id_token')
@@ -53,11 +54,13 @@ function App() {
           <StoreProvider>
               <Nav />
               <Switch>
-                <Steps config ={config}>
-                  <Step exact path='/create' component={CreateItinerary} setLatitude={setLatitude} setLongitude={setLongitude}/>
-                  <Step exact path='/activity' component = {CreateActivity} />
-                  <Step exact path='/summary' component = {Summary} latitude={latitude} longitude={longitude} />
-                </Steps>
+                <Route exact path ='/test1'>
+                  <Steps config ={config}>
+                    <Step exact path='/create' component={CreateItinerary} setLatitude={setLatitude} setLongitude={setLongitude}/>
+                    <Step exact path='/activity' component = {CreateActivity} />
+                    <Step exact path='/summary' component = {Summary} latitude={latitude} longitude={longitude} />
+                  </Steps>
+                </Route>
                 {/* <Route path="/create">
                   <CreateItinerary setLatitude={setLatitude} setLongitude={setLongitude} />
                 </Route>
@@ -70,6 +73,7 @@ function App() {
                 <Route exact path="/signup" component={Signup} />
                
               </Switch>
+              <Footer/>
             </StoreProvider>
         </div>
       </StoreProvider>
