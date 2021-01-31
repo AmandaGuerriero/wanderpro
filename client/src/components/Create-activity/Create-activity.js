@@ -7,64 +7,29 @@ import './Create-activity.css';
 
 
 const CreateAcitivty = () => {
-  const [state, setState ] = useState('');
-  const [date, setData] = useState('');
-  const [location, setLocation] = useState('');
-  const [timeFrom, setTimeFrom] = useState('');
-  const [timeTo, setTimeTo] = useState('');
-  const [notes, setNotes] = useState('');
-
-  const [userInput, setUserInput] = useReducer(
-    (state, newState) => ({...state, ...newState}),
-    {
-      date: '',
-      location: '',
-      timeFrom: '',
-      timeTo: '',
-      notes: ''
-    }
-  );
+  const [formState, setFormState] = useState({ location: '', timeFrom: '', timeTo: '', notes: '', itineraryId: ''})
+  const addActivity = useMutation(ADD_ACTIVITY);
   
-  const handleChange = evt => {
-    const name = evt.target.name;
-    const newValue = evt.target.value;
-
-    setUserInput({[name]: newValue});
-    console.log(newValue)
-  }
-
-  const [addActivity, {error}] = useMutation(ADD_ACTIVITY, {
-    update(cache, { data: {addActivity} }) {
-      try {
-        const { posts } = cache.readQuery({ query: ADD_ACTIVITY });
-        cache.writeQuery({
-          query: QUERY_ITINERARIES,
-          data: { posts: [ADD_ACTIVITY, ...posts] }
-        });
-      } catch (e) {
-        console.log(e)
-      }
-    }
-  })
-
-
   const handleFormSubmit = async event => {
     event.preventDefault();
+    const mutationResponse = await addActivity({
+      varibles: {
+        location: formState.location,
+        timeFrom: formState.timeFrom,
+        timeTo: formState.timeTo,
+        notes: formState.notes,
+        itineraryId: formState.itineraryId
+      }
+    });
+  }
 
-    try {
-      await addActivity({
-        variables: { date, location, timeFrom, timeTo, notes }
-      });
-      setDate('');
-      setLocation('');
-      setTimeFrom('');
-      setTimeTo('');
-      setNotes('')
-    } catch (e) {
-      console.log(e)
-    }
-    console.log("inputFields");
-  };
+  const handleChange = event => {
+    const {name, value} = event.target;
+    setFormState({
+      ...formState,
+      [name]:value
+    })
+  }
 
   return (
     <>
@@ -77,7 +42,6 @@ const CreateAcitivty = () => {
           name='date'
           id='date'
           placeholder='Date'
-          value={state.date}
           onChange={handleChange} />
         </div>
 
@@ -89,7 +53,6 @@ const CreateAcitivty = () => {
           name='location'
           id='location'
           placeholder='Location'
-          value={state.location}
           onChange={handleChange} />
         </div>
 
@@ -100,7 +63,6 @@ const CreateAcitivty = () => {
           name='timeFrom'
           id='timeFrom'
           placeholder='Start Time'
-          value={state.timeFrom}
           onChange={handleChange} />
         </div>
 
@@ -111,7 +73,6 @@ const CreateAcitivty = () => {
           name='timeTo'
           id='timeTo'
           placeholder='End Time'
-          value={state.timeTo}
           onChange={handleChange} />
         </div>
 
@@ -122,9 +83,19 @@ const CreateAcitivty = () => {
           name='notes'
           id='notes'
           placeholder='Enter Any Notes'
-          value={state.notes}
           onChange={handleChange} />
         </div>
+
+        <div className="input-container">
+          <label>Itinerary ID</label>
+          <textarea
+          type='text'
+          name='itineraryId'
+          id='itinderaryId'
+          placeholder='Enter An ID for your Itinerary'
+          onChange={handleChange} />
+        </div>
+
         <div className="flex-row flex-end">
           <button type="submit">
             Submit
