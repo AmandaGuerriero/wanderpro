@@ -3,14 +3,13 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { ApolloProvider } from '@apollo/react-hooks';
 import ApolloClient from 'apollo-boost';
 import { StoreProvider } from './utils/GlobalState';
-
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import Nav from "./components/Nav";
-import CreateItinerary from "./components/CreateItinerary/CreateItinerary";
+import CreateItinerary from "./components/CreateItinerary/CreateItinerary"
+import Create from './components/Create-activity'
 import Summary from "./components/Summary/Summary";
-
 const client = new ApolloClient({
   request: (operation) => {
     const token = localStorage.getItem('id_token')
@@ -22,16 +21,14 @@ const client = new ApolloClient({
   },
   uri: '/graphql',
 })
-
 function App() {
   const [ latitude, setLatitude ] = useState('')
   const [ longitude, setLongitude] = useState('')
   // setLatitude('-19.00')
-  
   return (
-
     <ApolloProvider client={client}>
       <Router>
+      <StoreProvider>
         <div>
           <StoreProvider>
               <Nav />
@@ -49,9 +46,9 @@ function App() {
               </Switch>
             </StoreProvider>
         </div>
+      </StoreProvider>
       </Router>
     </ApolloProvider>
   );
 }
-
 export default App;

@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const Day = require('./Day');
+const Activity = require('./Activity');
 
 const { Schema } = mongoose;
 
@@ -28,7 +28,7 @@ const itinerarySchema = new Schema({
   longtitude: {
     type: Number
   },
-  days: [Day.schema]
+  activities: [Activity.schema]
 });
 
 const Itinerary = mongoose.model('Itinerary', itinerarySchema);

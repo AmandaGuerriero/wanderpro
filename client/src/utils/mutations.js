@@ -23,8 +23,8 @@ export const ADD_USER = gql`
 `;
 
 export const ADD_ITINERARY = gql`
-  mutation addItinerary($title: String!, $description: String, $location: String, $dateBegin: String, $dateEnd: String) {
-    addItinerary(title: $title, description: $description, location: $location, dateBegin: $dateBegin, dateEnd: $dateEnd) {
+  mutation addItinerary($title: String!, $description: String, $location: String, $dateBegin: String, $dateEnd: String, $latitude: String, $longitude: String) {
+    addItinerary(title: $title, description: $description, location: $location, dateBegin: $dateBegin, dateEnd: $dateEnd, latitude: $latitude, longitude: $longitude) {
       _id,
       title,
       description,
@@ -38,8 +38,8 @@ export const ADD_ITINERARY = gql`
 `;
 
 export const ADD_ACTIVITY = gql`
-  mutation addActivity($dayId: ID!, $name: String, $location: String!, $timeFrom: String, $timeTo: String, $notes: String) {
-    addActivity(dayId: $dayId, location: $location, timeFrom: $timeFrom, timeTo: $timeTo, notes: $notes, name: $name ) {
+  mutation addActivity($itineraryId: ID!, $name: String, $location: String!, $timeFrom: String, $timeTo: String, $notes: String) {
+    addActivity(dayId: $itineraryId, location: $location, timeFrom: $timeFrom, timeTo: $timeTo, notes: $notes, name: $name ) {
       _id
       title
       activities {
