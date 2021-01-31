@@ -64,7 +64,6 @@ const CreateActivity = (props) => {
           onChange={handleChange} />
         </div>
 
-
         <div className="input-container">
           <label>Location</label>
           <input

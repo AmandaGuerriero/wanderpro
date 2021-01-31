@@ -91,7 +91,6 @@ const CreateItinerary = (props) => {
                 type='text' 
                 name='title' 
                 id='title'
-                value={state.title}
                 onChange={handleChange}/>
             </div>
          
@@ -105,7 +104,6 @@ const CreateItinerary = (props) => {
                 name='location' 
                 id='location' 
                 placeholder='City'
-                value={state.location}
                 onChange={handleChange}/>
               </div>
            </div>
@@ -119,7 +117,6 @@ const CreateItinerary = (props) => {
                 name='dateBegin' 
                 id='dateBegin' 
                 placeholder='Date Begin'
-                value={state.dateBegin}
                 onChange={handleChange}/>
               </div>
             </div>
@@ -133,8 +130,7 @@ const CreateItinerary = (props) => {
                 name='dateEnd' 
                 id='dateEnd' 
                 placeholder='Date End'
-                value={state.dateEnd}
-                onChange={handleChange}/>
+                onChange={props.handleChange}/>
               </div>
             </div>
           </li>
@@ -145,8 +141,7 @@ const CreateItinerary = (props) => {
                 id='description' 
                 rows="4" 
                 placeholder='Write a caption…'
-                value={state.description}
-                onChange={handleChange}/>
+                onChange={props.handleChange}/>
             </div>
           
             <div className='form-group flex'>
