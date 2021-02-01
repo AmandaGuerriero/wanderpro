@@ -6,16 +6,19 @@
     --dark-cream: rgb(226, 204, 170);
     --light-blue: rgb(36, 186, 236);
     --dark-blue: rgb(22, 110, 243);
+    --spacing-one: calc(1rem * 0.5);
+    --spacing-two: calc(1rem);
+    --spacing-five: calc(2.5rem);
  }
 
 /* Footer Styling */
 footer {
-    position: fixed;
-    bottom: 0;
+    bottom: 0%;
     padding: 10px 0;
+    padding-top: 20px;
     margin-top: 20px;
     width: 100%;
-    background-image: linear-gradient(145deg, rgba(49, 115,18, 1)45%, rgba(110, 187, 45, 1)65%);
+    background-image: linear-gradient(145deg, rgba(22, 110, 243, .5)15%, rgba(36, 186, 236, 1)45%, rgba(22, 110, 243, .6)85%)
 }
     
 footer ul {
@@ -28,13 +31,13 @@ footer ul {
 }
 
 .footer-link {
-    color:var(--dark-cream);
+    color:var(--dark-blue);
     text-decoration: none;
     font-size: 2em;
 }
 
 .footer-link:hover {
-    color: var(--tertiary-color);
+    color: var(--dark-cream);
     transition: .5s;
     text-decoration: none;
 }
