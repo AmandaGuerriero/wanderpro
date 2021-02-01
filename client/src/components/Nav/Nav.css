@@ -1,0 +1,119 @@
+:root{
+    /* Color Palette 3 */
+    --dark-green: rgb(49, 115, 18);
+    --light-green: rgb(110, 187, 45);
+    --cream: rgb(222, 217, 201);
+    --dark-cream: rgb(226, 204, 170);
+    --light-blue: rgb(36, 186, 236);
+    --dark-blue: rgb(22, 110, 243);
+    --spacing-one: calc(1rem * 0.5);
+    --spacing-two: calc(1rem);
+    --spacing-five: calc(2.5rem);
+}
+
+
+header {
+    background-image: linear-gradient(145deg, rgba(22, 110, 243, 1)0%, rgba(36, 186, 236, 1)25%, rgba(22, 110, 243, 1)75%);
+    background-size: cover;
+    background-position: 80%;
+    background-attachment: fixed;
+    z-index: 9999;
+    height: 10vh;
+    width: 100%;
+}
+
+header nav {
+    float: right !important;
+    width: auto;
+}
+
+header h1 {
+    padding-left: var(--spacing-five);
+    padding-top: var(--spacing-two);
+}
+  
+header nav ul li :hover,
+header nav ul li :hover,
+header h1 :hover {
+    color: var(--dark-cream);
+    border-radius: 15px;
+    text-shadow: none;
+    text-decoration: none;
+    padding: 5px;
+    transition: .4s;
+}
+  
+header a {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: bold;
+}
+  
+nav li {
+    cursor: pointer;
+    margin: 5px;
+    list-style: none;
+    font-size: 1em;
+    padding-top: var(--spacing-two);
+    padding-right: var(--spacing-five);
+    float: right;
+}
+
+.flex-row {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+  .space-between {
+    justify-content: space-between;
+  }
+  
+  .flex-end {
+    justify-content: flex-end;
+  }
+
+  .mx-1 {
+    margin-right: var(--spacing-one);
+    margin-left: var(--spacing-one);
+  }
+  
+  .mx-2 {
+    margin-right: var(--spacing-two);
+    margin-left: var(--spacing-two);
+  }
+  
+  .my-1 {
+    margin-top: var(--spacing-one);
+    margin-bottom: var(--spacing-one);
+  }
+  
+  .my-2 {
+    margin-top: var(--spacing-two);
+    margin-bottom: var(--spacing-two);
+  }
+  
+  .my-5 {
+    margin-top: var(--spacing-five);
+    margin-bottom: var(--spacing-five);
+  }
+  
+  .px-1 {
+    padding-right: var(--spacing-one);
+    padding-left: var(--spacing-one);
+  }
+  
+  .px-2 {
+    padding-right: var(--spacing-two);
+    padding-left: var(--spacing-two);
+  }
+  
+  .py-1 {
+    padding-top: var(--spacing-one);
+    padding-bottom: var(--spacing-one);
+  }
+  
+  .py-2 {
+    padding-top: var(--spacing-two);
+    padding-bottom: var(--spacing-two);
+  }
+  

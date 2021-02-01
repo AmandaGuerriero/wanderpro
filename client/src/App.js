@@ -1,3 +1,5 @@
+import { loadStripe } from "@stripe/stripe-js";
+import { Elements } from "@stripe/react-stripe-js";
 import React, { useState } from "react";
 import { Steps, Step } from 'react-step-builder';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
@@ -8,6 +10,7 @@ import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import Profile from "./pages/Profile";
+import Donate from "./pages/Donate";
 import Nav from "./components/Nav";
 import CreateItinerary from "./components/CreateItinerary/CreateItinerary"
 import CreateActivityContainer from './components/Create-activity/CreateActivityContainer'
@@ -25,6 +28,9 @@ const client = new ApolloClient({
   },
   uri: '/graphql',
 })
+
+const stripePromise = loadStripe('pk_test_TYooMQauvdEDq54NiTphI7jx');
+
 const Navigation = (props) => {
   return (
     <div>
@@ -47,11 +53,16 @@ function App() {
   return (
     <ApolloProvider client={client}>
       <Router>
+      <Elements stripe={stripePromise}>
       <StoreProvider>
         <div>
           <StoreProvider>
               <Nav />
               <Switch>
+              
+                
+                <Route exact path="/donate" component={Donate} />
+                            
                 <Route exact path ='/test1'>
                   <Steps config ={config}>
                     <Step exact path='/create' component={CreateItinerary} setLatitude={setLatitude} setLongitude={setLongitude}/>
@@ -76,6 +87,7 @@ function App() {
             </StoreProvider>
         </div>
       </StoreProvider>
+      </Elements>
       </Router>
     </ApolloProvider>
   );
