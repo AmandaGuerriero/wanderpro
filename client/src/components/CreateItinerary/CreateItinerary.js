@@ -118,7 +118,7 @@ const CreateItinerary = (props) => {
 
               </div>
             </div>
-              <div className='form-group'>
+              {/* <div className='form-group'>
                 <textarea 
                 name='description' 
                 id='description' 
@@ -126,14 +126,14 @@ const CreateItinerary = (props) => {
                 placeholder='Write a caption…'
                 // value={state.description}
                 onChange={handleChange}/>
-            </div>
+            </div> */}
           
             <div className='form-group flex'>
               <div className='icon-container'>
                 <div className='icon-spirit icon__photo'></div>
               </div>
             </div>
-
+{/* 
               <div className='form-group flex'>
                 <div className='icon-container'>
                   <div className='icon-spirit icon__photo'></div>
@@ -145,7 +145,7 @@ const CreateItinerary = (props) => {
                   placeholder='+ Photo'>
                 </input>
               </div>
-              </div>
+              </div> */}
         </ul>
         <button 
                 className='btn'
