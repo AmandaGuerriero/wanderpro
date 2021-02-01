@@ -1,0 +1,61 @@
+:root{
+  /* Color Palette 3 */
+  --dark-green: rgb(49, 115, 18);
+  --light-green: rgb(110, 187, 45);
+  --cream: rgb(222, 217, 201);
+  --dark-cream: rgb(226, 204, 170);
+  --light-blue: rgb(36, 186, 236);
+  --dark-blue: rgb(22, 110, 243);
+  --spacing-one: calc(1rem * 0.5);
+  --spacing-two: calc(1rem);
+  --spacing-five: calc(2.5rem);
+
+}
+
+body {
+  font-family: 'Montserrat', sans-serif;
+}
+
+.btn-container {
+  margin-top: 1em;
+}
+
+.previous-btn {
+  margin-left: var(--spacing-five);
+  border: none;
+  padding: 10px;
+  background-color: var(--cream);
+  border: 2px solid var(--light-blue);
+  border-radius: 20px;
+  transition: .5s;
+}
+
+.next-btn {
+  margin-right: var(--spacing-five);
+  border: none;
+  padding: 10px;
+  background-color: var(--cream);
+  border: 2px solid var(--light-blue);
+  border-radius: 20px;
+  transition: .5s;
+}
+
+.next-btn:hover,
+.previous-btn:hover {
+  background-color: var(--dark-cream);
+  border: 2px solid var(--dark-blue);
+}
+
+.mapWrapper {
+  width: 100vw;
+  height: 100vh;
+}
+
+.flex-row {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.space-between {
+  justify-content: space-between;
+}

@@ -1,0 +1,45 @@
+:root{
+    /* Color Palette 3 */
+    --dark-green: rgb(49, 115, 18);
+    --light-green: rgb(110, 187, 45);
+    --cream: rgb(222, 217, 201);
+    --dark-cream: rgb(226, 204, 170);
+    --light-blue: rgb(36, 186, 236);
+    --dark-blue: rgb(22, 110, 243);
+    --spacing-one: calc(1rem * 0.5);
+    --spacing-two: calc(1rem);
+    --spacing-five: calc(2.5rem);
+ }
+
+/* Footer Styling */
+footer {
+    bottom: 0%;
+    padding: 10px 0;
+    padding-top: 20px;
+    margin-top: 20px;
+    width: 100%;
+    background-image: linear-gradient(145deg, rgba(22, 110, 243, .5)15%, rgba(36, 186, 236, 1)45%, rgba(22, 110, 243, .6)85%)
+}
+    
+footer ul {
+    width: 100%;    
+}
+
+.footer-item {
+    margin-left: 13%;
+    display: inline-block;
+}
+
+.footer-link {
+    color:var(--dark-blue);
+    text-decoration: none;
+    font-size: 2em;
+}
+
+.footer-link:hover {
+    color: var(--dark-cream);
+    transition: .5s;
+    text-decoration: none;
+}
+
+
