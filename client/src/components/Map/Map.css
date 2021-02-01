@@ -15,7 +15,7 @@
 
 .App-header {
   background-color: #282c34;
-  min-height: 100vh;
+  min-height: 50vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -29,8 +29,18 @@
 }
 
 .mapWrapper {
-  width: 50vw;
-  height: 50vh;
+display: block;
+position: relative;
+margin: 0px auto;
+width: 50%;
+height: 40px;
+padding: 10px;
+border: none;
+border-radius: 3px;
+font-size: 12px;
+text-align: center;
+color: #000;
+background: #ee8a65;
 }
 
 @keyframes App-logo-spin {
