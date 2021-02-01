@@ -38,8 +38,7 @@ function Nav() {
     <header className="flex-row space-between px-1">
       <h1>
         <Link to="/">
-        <FontAwesomeIcon icon={faCompass}/>
-          Wanderpro
+          <img className='logo-img' alt="wanderpro-logo" src={require("./wanderpro_logo.png")}/>
         </Link>
       </h1>
 
