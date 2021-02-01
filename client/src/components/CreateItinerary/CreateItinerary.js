@@ -8,7 +8,7 @@ import './CreateItinerary.css';
 
 const CreateItinerary = (props) => {
   const [formState, setFormState] = useState({ location: '', dateBegin: '', dateEnd: '', title: '', description: ''})
-  const [addItinerary, { error }] = useMutation(ADD_ITINERARY);
+  const [addItinerary, { error, data }] = useMutation(ADD_ITINERARY)
   // submit form
   const handleFormSubmit = async event => {
     event.preventDefault();
@@ -22,8 +22,7 @@ const CreateItinerary = (props) => {
         props.setLatitude(latitude);
         props.setLongitude(longitude);
       }
-      console.log(latitude, longitude)
-      await addItinerary({
+      const data = await addItinerary({
         variables: { 
           title: formState.title, 
           location: formState.location,
@@ -32,24 +31,13 @@ const CreateItinerary = (props) => {
           description: formState.description, 
           latitude: latitude, 
           longitude: longitude 
-        }
+        } 
       });
-
-      // // clear form value
-      // setTitle('');
-
-      // setLocation('');
-
-      // setDateBegin('');
-
-      // setDateEnd('');
-      
-      // setDescription('');
-      
-
+      console.log(data.data.addItinerary._id)
     } catch (e) {
       console.error(e);
     }
+    
   };
   const handleChange = event => {
     const { name, value } = event.target;

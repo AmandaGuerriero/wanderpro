@@ -14,7 +14,6 @@ query{
       location
       dateBegin
       dateEnd
-      activityCount
     }
   }
 }
@@ -34,7 +33,6 @@ query ($_id: ID!) {
       location
       dateEnd
       dateBegin
-      activityCount
     }
   }
 }

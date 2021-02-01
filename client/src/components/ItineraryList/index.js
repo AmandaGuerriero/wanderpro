@@ -17,9 +17,6 @@ const ItineraryList = ({ itineraries, title, description, activityCount }) => {
             <div className="card-body">
                 
                     <p>Description: {itinerary.description}</p>
-                    <p className="mb-0">
-                    You have {itinerary.activityCount} activities in this itinerary!
-                    </p>
                     <Link to={`/itinerary/${itinerary._id}`}><button>View full Itinerary</button></Link>
             </div>
           </div>
