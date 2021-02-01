@@ -43,19 +43,20 @@ map.addControl(
 
   render() {
     return (
+    // <div>
+    //   <p>Your Trip: {this.props.state.title}</p>
+    //   {/* <p>Where: {this.props.location}</p> */}
+    //   <p>Your Itinerary: {this.props.state.tineraryId}</p>
+    //   <p>First day of your trip: {this.props.state.dateBegin}</p>
+    //   <p>Last day of your trip: {this.props.state.dateEnd}</p>
+    //   <p>Location: {this.props.state.location}</p>
+    //   <p>Time starts: {this.props.state.timeFrom}</p>
+    //   <p>Time ends: {this.props.state.timeTo}</p>
+    //   <p>Notes: {this.props.state.notes}</p>
+    //   <p>Get directions for your trip:</p>
     <div>
-      <p>Your Trip: {this.props.state.title}</p>
-      {/* <p>Where: {this.props.location}</p> */}
-      <p>Your Itinerary: {this.props.state.tineraryId}</p>
-      <p>First day of your trip: {this.props.state.dateBegin}</p>
-      <p>Last day of your trip: {this.props.state.dateEnd}</p>
-      <p>Location: {this.props.state.location}</p>
-      <p>Time starts: {this.props.state.timeFrom}</p>
-      <p>Time ends: {this.props.state.timeTo}</p>
-      <p>Notes: {this.props.state.notes}</p>
-      <p>Get directions for your trip:</p>
       <div ref={el => (this.mapWrapper = el)} className="mapWrapper" />
-    // </div>
+     </div>
     );
   }
 }
