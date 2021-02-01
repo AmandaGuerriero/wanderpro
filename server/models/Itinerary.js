@@ -31,6 +31,10 @@ const itinerarySchema = new Schema({
   activities: [Activity.schema]
 });
 
+itinerarySchema.virtual('activityCount').get(function() {
+  return this.activities.length;
+});
+
 const Itinerary = mongoose.model('Itinerary', itinerarySchema);
 
 module.exports = Itinerary;

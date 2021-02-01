@@ -6,6 +6,16 @@ const { AuthenticationError } = require('apollo-server-express');
 
 const resolvers = {
   Query: {
+    me: async (parent, args, context) => {
+      if (context.user) {
+        const userData = await User.findOne({ _id: context.user._id })
+          .select('-__v -password')
+          .populate('itineraries')
+    
+        return userData;
+      }
+      throw new AuthenticationError('Not logged in');
+    },
     itineraries: async () => {
       return await Itinerary.find();
     },
@@ -16,10 +26,9 @@ const resolvers = {
       return await User.find();
     },
     userById: async (parent, { _id }) => {
-      const user = await User.findById(_id).populate({
-        path: 'itineraries',
-        populate: 'title'
-      });
+      const user = await User.findById(_id)
+        .select('-__v -password')
+        .populate('itineraries')
 
       user.itineraries.sort((a, b) => b.title - a.title);
 

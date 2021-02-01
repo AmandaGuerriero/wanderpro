@@ -2,7 +2,6 @@ import React, { useState, useReducer, Fragment } from "react";
 import ReactDOM from "react-dom";
 import { useMutation } from '@apollo/react-hooks';
 import { ADD_ACTIVITY } from '../../utils/mutations';
-import { QUERY_ITINERARIES } from '../../utils/queries';
 
 import './Create-activity.css';
 

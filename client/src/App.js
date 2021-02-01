@@ -9,12 +9,14 @@ import { StoreProvider } from './utils/GlobalState';
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
+import Profile from "./pages/Profile";
 import Donate from "./pages/Donate";
 import Nav from "./components/Nav";
 import CreateItinerary from "./components/CreateItinerary/CreateItinerary"
 import CreateActivityContainer from './components/Create-activity/CreateActivityContainer'
 import Summary from "./components/Summary/Summary";
 import Footer from "./components/Footer/Footer"
+
 const client = new ApolloClient({
   request: (operation) => {
     const token = localStorage.getItem('id_token')
@@ -78,6 +80,8 @@ function App() {
                 <Route exact path="/" component={Home} />
                 <Route exact path="/login" component={Login} />
                 <Route exact path="/signup" component={Signup} />
+                <Route exact path="/profile" component={Profile} />
+                <Route exact path="/itinerary/:id" component={Summary} />
               </Switch>
               <Footer/>
             </StoreProvider>
