@@ -61,4 +61,3 @@ export const ADD_ACTIVITY_PUBLIC = gql`
       }
     }
 `;
-
