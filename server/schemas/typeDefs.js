@@ -17,6 +17,7 @@ type Itinerary {
   dateEnd: String
   latitude: Float
   longitude: Float
+  activityCount: Int
   activities: [Activity]
 }
 

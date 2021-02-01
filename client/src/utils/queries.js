@@ -14,6 +14,7 @@ query{
       location
       dateBegin
       dateEnd
+      activityCount
     }
   }
 }
@@ -33,6 +34,7 @@ query ($_id: ID!) {
       location
       dateEnd
       dateBegin
+      activityCount
     }
   }
 }
@@ -48,6 +50,7 @@ query {
     location
     dateBegin
     dateEnd
+    activityCount
     activities {
       _id
       location
@@ -70,6 +73,7 @@ query ($_id: ID!) {
     location
     dateBegin
     dateBegin
+    activityCount
     activities {
       _id
       itineraryId
