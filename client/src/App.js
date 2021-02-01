@@ -15,8 +15,8 @@ import Nav from "./components/Nav";
 import CreateItinerary from "./components/CreateItinerary/CreateItinerary"
 import CreateActivityContainer from './components/Create-activity/CreateActivityContainer'
 import Summary from "./components/Summary/Summary";
-import Footer from "./components/Footer/Footer"
 import Map from "./components/Map"
+import './App.css'
 
 const client = new ApolloClient({
   request: (operation) => {
@@ -34,10 +34,15 @@ const stripePromise = loadStripe('pk_test_TYooMQauvdEDq54NiTphI7jx');
 
 const Navigation = (props) => {
   return (
-    <div>
-      <button onClick={props.prev}>Global Previous</button>
-      <button onClick={props.next}>Global Next</button>
+    <div className="flex-row space-between btn-container">
+      <div>
+        <button className="previous-btn" onClick={props.prev}>Previous</button>
+      </div>
+      <div>
+        <button className="next-btn" onClick={props.next}>Next</button>
+      </div>
     </div>
+
   );
 };
 function App() {
@@ -48,7 +53,7 @@ function App() {
   const config = {
     navigation: {
       component: Navigation,
-      location: "before"
+      location: "after"
     }
   }
   return (
@@ -64,7 +69,7 @@ function App() {
                 
                 <Route exact path="/donate" component={Donate} />
                             
-                <Route exact path ='/test1'>
+                <Route exact path ='/create'>
                   <Steps config ={config}>
                     <Step exact path='/create' component={CreateItinerary} setLatitude={setLatitude} setLongitude={setLongitude}/>
                     <Step exact path='/activity' component = {CreateActivityContainer} />

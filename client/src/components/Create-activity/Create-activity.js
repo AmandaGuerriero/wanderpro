@@ -41,9 +41,12 @@ const CreateActivity = (props) => {
 
   return (
     <>
-      <form onSubmit={handleFormSubmit}>
-      <div className="input-container">
-          <label htmlFor='itID'>Itinerary ID</label>
+    <section id="create-activity">
+    <div className="create-activity-form">
+
+      <form className = "activity-form" onSubmit={handleFormSubmit}> 
+      <h3>Activity Info</h3>
+      <div className="activity-input-container">
           <input
           type='text'
           name='itineraryId'
@@ -52,8 +55,7 @@ const CreateActivity = (props) => {
           onChange={handleChange} />
         </div>
       
-        <div className="input-container">
-          <label>Date</label>
+        <div className="activity-input-container">
           <input
           type='text'
           name='date'
@@ -62,8 +64,7 @@ const CreateActivity = (props) => {
           onChange={handleChange} />
         </div>
 
-        <div className="input-container">
-          <label>Location</label>
+        <div className="activity-input-container">
           <input
           type='text'
           name='location'
@@ -72,8 +73,7 @@ const CreateActivity = (props) => {
           onChange={handleChange} />
         </div>
 
-        <div className="input-container">
-          <label>Start Time</label>
+        <div className="activity-input-container">
           <input
           type='text'
           name='timeFrom'
@@ -82,8 +82,7 @@ const CreateActivity = (props) => {
           onChange={handleChange} />
         </div>
 
-        <div className="input-container">
-          <label>End Time</label>
+        <div className="activity-input-container">
           <input
           type='text'
           name='timeTo'
@@ -92,9 +91,9 @@ const CreateActivity = (props) => {
           onChange={handleChange} />
         </div>
 
-        <div className="input-container">
-          <label>Notes</label>
+        <div className="activity-input-container">
           <textarea
+          className="activity-text"
           type='text'
           name='notes'
           id='notes'
@@ -102,19 +101,12 @@ const CreateActivity = (props) => {
           onChange={handleChange} />
         </div>
 
-        
-
-        <div className="flex-row flex-end">
-          <button type="submit">
-            Submit
-          </button>
-
-          <p>
-        <button onClick={props.prev}>Previous</button>
-        <button onClick={props.next}>Next</button>
-      </p>
-        </div>
+        <button className="btn activity-submit">
+          Submit
+        </button>
       </form>
+    </div>
+    </section>
     </>
   );
 };

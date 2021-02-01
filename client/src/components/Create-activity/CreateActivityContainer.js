@@ -21,6 +21,13 @@ const CreateActivityContainer = (props) => {
     <>
       <h1>Add Activity</h1>
         <div className="form-row">
+        <button
+                  className="btn btn-link"
+                  type="button"
+                  onClick={() => handleAddFields()}
+                >
+                  Add Activity
+                </button>
           {inputFields.map((inputField, index) => (
             <Fragment key={`${inputField}~${index}`}>
               <CreateActivity />
@@ -30,15 +37,9 @@ const CreateActivityContainer = (props) => {
                   type="button"
                   onClick={() => handleRemoveFields(index)}
                 >
-                  -
+                  Delete Activity
                 </button>
-                <button
-                  className="btn btn-link"
-                  type="button"
-                  onClick={() => handleAddFields()}
-                >
-                  +
-                </button>
+
               </div>
             </Fragment>
           ))}
