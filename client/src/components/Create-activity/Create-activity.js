@@ -42,7 +42,6 @@ const CreateActivity = (props) => {
 
   return (
     <>
-      <h1>Dynamic Form Fields in React</h1>
       <form onSubmit={handleFormSubmit}>
       <div className="input-container">
           <label htmlFor='itID'>Itinerary ID</label>

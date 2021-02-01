@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { ADD_ITINERARY } from "../../utils/mutations"
 import { QUERY_ITINERARIES } from "../../utils/queries"
 import { useMutation } from '@apollo/react-hooks';
+import { geoCoding } from "../../utils/geocoding"
+
 import './Createpost.css';
 
 const CreateItinerary = (props) => {
@@ -12,15 +14,15 @@ const CreateItinerary = (props) => {
     event.preventDefault();
     try {
       // Get coordinate from location
-      // let coordinates = await geoCoding(formState.location);
-      // let latitude = 0,longitude =0;
-      // if(coordinates&&coordinates.length) {
-      //   latitude = coordinates[0].center[1];
-      //   longitude = coordinates[0].center[0];
-      //   props.setLatitude(latitude);
-      //   props.setLongitude(longitude);
-      // }
-      // console.log(latitude, longitude)
+      let coordinates = await geoCoding(formState.location);
+      let latitude = 0,longitude =0;
+      if(coordinates&&coordinates.length) {
+        latitude = coordinates[0].center[1];
+        longitude = coordinates[0].center[0];
+        props.setLatitude(latitude);
+        props.setLongitude(longitude);
+      }
+      console.log(latitude, longitude)
       await addItinerary({
         variables: { 
           title: formState.title, 
@@ -28,10 +30,22 @@ const CreateItinerary = (props) => {
           dateBegin: formState.dateBegin, 
           dateEnd: formState.dateEnd, 
           description: formState.description, 
-          // latitude: latitude, 
-          // longitude: longitude 
+          latitude: latitude, 
+          longitude: longitude 
         }
-      });    
+      });
+
+      // // clear form value
+      // setTitle('');
+
+      // setLocation('');
+
+      // setDateBegin('');
+
+      // setDateEnd('');
+      
+      // setDescription('');
+      
 
     } catch (e) {
       console.error(e);
@@ -57,7 +71,7 @@ const CreateItinerary = (props) => {
                 type='text' 
                 name='title' 
                 id='title'
-                // value={props.getState("title", "")}
+                // value={state.title}
                 onChange={handleChange}/>
             </div>
          
@@ -71,7 +85,7 @@ const CreateItinerary = (props) => {
                 name='location' 
                 id='location' 
                 placeholder='City'
-                // value={props.getState("location", "")}
+                // value={state.location}
                 onChange={handleChange}/>
               </div>
            </div>
@@ -85,7 +99,7 @@ const CreateItinerary = (props) => {
                 name='dateBegin' 
                 id='dateBegin' 
                 placeholder='Date Begin'
-                // value={props.getState("dateBegin", "")}
+                // value={state.dateBegin}
                 onChange={handleChange}/>
               </div>
             </div>
@@ -99,8 +113,9 @@ const CreateItinerary = (props) => {
                 name='dateEnd' 
                 id='dateEnd' 
                 placeholder='Date End'
-                // value={props.getState("dateEnd", "")}
+                // value={state.dateEnd}
                 onChange={handleChange}/>
+
               </div>
             </div>
               <div className='form-group'>
@@ -109,7 +124,7 @@ const CreateItinerary = (props) => {
                 id='description' 
                 rows="4" 
                 placeholder='Write a caption…'
-                // value={props.getState("description", "")}
+                // value={state.description}
                 onChange={handleChange}/>
             </div>
           
