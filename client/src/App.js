@@ -15,9 +15,10 @@ import Nav from "./components/Nav";
 import CreateItinerary from "./components/CreateItinerary/CreateItinerary"
 import CreateActivityContainer from './components/Create-activity/CreateActivityContainer'
 import Summary from "./components/Summary/Summary";
-import Footer from "./components/Footer/Footer"
-import Map from "./components/Map"
-import './App.css'
+import Footer from "./components/Footer/Footer";
+import Map from "./components/Map";
+import './App.css';
+import ActivityList from './components/ActivityList';
 
 const client = new ApolloClient({
   request: (operation) => {
@@ -74,7 +75,7 @@ function App() {
                   <Steps config ={config}>
                     <Step exact path='/create' component={CreateItinerary} setLatitude={setLatitude} setLongitude={setLongitude}/>
                     <Step exact path='/activity' component = {CreateActivityContainer} />
-                    <Step exact path='/summary' component = {Summary} latitude={latitude} longitude={longitude} />
+                    <Route exact path="/itinerary/:id" component={ActivityList} />
                   </Steps>
                 </Route>
                 {/* <Route path="/create">

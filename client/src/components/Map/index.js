@@ -29,14 +29,15 @@ class Map extends Component {
       profile: 'mapbox/driving',
     });
 
+    // GET THE DESTINATION LOCATION
+    directions.setDestination(this.props.myLocation);
+
     // Integrates directions control with map
     map.addControl(directions, 'top-left');
 
     // Need to get user activity location to get auto input location address 
     // <ActivityList activities={activity.name} location={`${activity.location}'s thoughts...`} />
     
-    // GET THE DESTINATION LOCATION
-    //directions.setDestination(activity.location);
 
     // Add geolocate control to the map.
 map.addControl(
@@ -50,6 +51,7 @@ map.addControl(
   }
 
   render() {
+    console.log("my location:, ", this.props.myLocation);
     return (
     <div>
 

@@ -1,7 +1,8 @@
 import React from 'react';
 import Map from '../Map';
 
-const ActivityList = ({ activities}) => {
+const ActivityList = ({ activities }) => {
+  console.log(activities)
   return (
     <div className="card mb-3">
         <div className="card-header">
@@ -13,10 +14,10 @@ const ActivityList = ({ activities}) => {
               <div key={activity._id} className="card mb-3">
                 <p>{activity.name} {''} {activity.location}</p>
                 <p>Get directions for your trip:</p>
-        <div className="App">
-        <Map component={Map} />
-        <p>Your Notes: {activity.notes}</p>
-        </div>
+              <div className="App">
+              <Map id={activity._id} myLocation={activity.location}/>
+                 <p>Your Notes: {activity.notes}</p>
+              </div>
               </div>
             ))}
             
