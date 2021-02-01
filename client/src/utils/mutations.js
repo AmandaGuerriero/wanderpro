@@ -56,4 +56,3 @@ export const ADD_ACTIVITY = gql`
   }
 `;
 
-
