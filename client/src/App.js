@@ -15,6 +15,7 @@ import Nav from "./components/Nav";
 import CreateItinerary from "./components/CreateItinerary/CreateItinerary"
 import CreateActivityContainer from './components/Create-activity/CreateActivityContainer'
 import Summary from "./components/Summary/Summary";
+import Footer from "./components/Footer/Footer"
 import Map from "./components/Map"
 import './App.css'
 
