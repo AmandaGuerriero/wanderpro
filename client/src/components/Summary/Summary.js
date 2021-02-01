@@ -1,10 +1,9 @@
 import React, { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import './Summary.css';
 import { useQuery } from '@apollo/react-hooks';
 import { QUERY_ITINERARY_BY_ID } from '../../utils/queries';
 import ActivityList from '../ActivityList';
-import Map from '../Map';
+
 
 // import mapboxgl from 'mapbox-gl';
 // import 'mapbox-gl/dist/mapbox-gl.css';
@@ -28,19 +27,16 @@ const Summary = props => {
   return (
     
     <div>
-         <p>Your Trip: {itinerary.title}</p>
-         <p>Your Itinerary: {itinerary.itineraryId}</p>
-         <p>First day of your trip: {itinerary.dateBegin}</p>
-         <p>Last day of your trip: {itinerary.dateEnd}</p>
-         <p>Location: {itinerary.location}</p>
-         {/* <p>Time starts: {this.props.state.timeFrom}</p>
-         <p>Time ends: {this.props.state.timeTo}</p>
-         <p>Notes: {this.props.state.notes}</p> */}
-         <ActivityList activities={itinerary.activities} />
-         <p>Get directions for your trip:</p>
-         {/* <div className="App">
-          <Map component={Map} />
-        </div> */}
+        <p>Your Trip: {itinerary.title}</p>
+        <p>Your Itinerary: {itinerary.itineraryId}</p>
+        <p>First day of your trip: {itinerary.dateBegin}</p>
+        <p>Last day of your trip: {itinerary.dateEnd}</p>
+        <p>Location: {itinerary.location}</p>
+        {/* <p>Time starts: {this.props.state.timeFrom}</p>
+        <p>Time ends: {this.props.state.timeTo}</p>
+        <p>Notes: {this.props.state.notes}</p> */}
+        <ActivityList activities={itinerary.activities} />
+
          {/* <div ref={el => (this.mapWrapper = el)} className="mapWrapper" /> */}
     </div>
   );

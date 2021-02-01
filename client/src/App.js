@@ -15,8 +15,7 @@ import Nav from "./components/Nav";
 import CreateItinerary from "./components/CreateItinerary/CreateItinerary"
 import CreateActivityContainer from './components/Create-activity/CreateActivityContainer'
 import Summary from "./components/Summary/Summary";
-import Footer from "./components/Footer/Footer";
-
+import Map from "./components/Map"
 import './App.css'
 
 const client = new ApolloClient({
@@ -89,6 +88,7 @@ function App() {
                 <Route exact path="/signup" component={Signup} />
                 <Route exact path="/profile" component={Profile} />
                 <Route exact path="/itinerary/:id" component={Summary} />
+                <Route exact path="/map" component={Map} />
               </Switch>
               <Footer/>
             </StoreProvider>

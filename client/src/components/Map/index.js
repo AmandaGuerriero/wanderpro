@@ -1,14 +1,16 @@
 import React, {Component} from 'react';
 import ReactMapGL from 'react-map-gl';
+import './Map.css';
 import mapboxgl from 'mapbox-gl';
 import 'mapbox-gl/dist/mapbox-gl.css';
-import MapboxDirections from '@mapbox/mapbox-gl-directions/dist/mapbox-gl-directions'
-import '@mapbox/mapbox-gl-directions/dist/mapbox-gl-directions.css'
+import MapboxDirections from '@mapbox/mapbox-gl-directions/dist/mapbox-gl-directions';
+import '@mapbox/mapbox-gl-directions/dist/mapbox-gl-directions.css';
+import ActivityList from '../ActivityList';
+// import { QUERY_USER, QUERY_ME } from '../utils/queries';
 
 mapboxgl.accessToken = 'pk.eyJ1Ijoiem91c2hpbHUzMSIsImEiOiJja2tnMGxiZmEwOW5lMnVsYTN3OTR6eXg5In0.EExs7dyM_eoTAEdLXzUmVw';
-    
+
 class Map extends Component {
-    
 
   componentDidMount() {
 
@@ -29,7 +31,13 @@ class Map extends Component {
 
     // Integrates directions control with map
     map.addControl(directions, 'top-left');
-    directions.setDestination(this.props.state.location);
+
+    // Need to get user activity location to get auto input location address 
+    // <ActivityList activities={activity.name} location={`${activity.location}'s thoughts...`} />
+    
+    // GET THE DESTINATION LOCATION
+    //directions.setDestination(activity.location);
+
     // Add geolocate control to the map.
 map.addControl(
   new mapboxgl.GeolocateControl({
@@ -40,33 +48,15 @@ map.addControl(
   })
   );
   }
-  
-  state = {
-    viewport: {
-      width: 400,
-      height: 400,
-      latitude: 37.7577,
-      longitude: -122.4376,
-      zoom: 8
-    }
-  };
-    
+
   render() {
-  
-      const { viewport } = this.state;
-     
-     return (
-       <ReactMapGL
-         width={viewport.width}
-         height={viewport.height}
-         latitude={viewport.latitude}
-         longitude={viewport.longitude}
-         zoom={viewport.zoom}
-        
-         onViewportChange={(viewport) => this.setState({viewport})}
-       />
-     );
-   }
+    return (
+    <div>
+
+      <div ref={el => (this.mapWrapper = el)} className="mapWrapper" />
+    </div>
+    );
+  }
 }
-    
+
 export default Map;
