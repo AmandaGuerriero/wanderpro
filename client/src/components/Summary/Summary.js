@@ -55,7 +55,7 @@ map.addControl(
       <p>Notes: {this.props.state.notes}</p>
       <p>Get directions for your trip:</p>
       <div ref={el => (this.mapWrapper = el)} className="mapWrapper" />
-    // </div>
+     </div>
     );
   }
 }
