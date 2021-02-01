@@ -15,12 +15,14 @@ type Itinerary {
   location: String
   dateBegin: String
   dateEnd: String
-  latitude: String
-  longtitude: String
+  latitude: Float
+  longitude: Float
+  activities: [Activity]
 }
 
 type Activity {
   _id: ID!
+  itineraryId: String
   name: String
   date: String
   location: String!
@@ -46,12 +48,11 @@ type Query {
 
 type Mutation {
   login(email: String!, password: String!): Auth
-  addItinerary(title: String!, description: String, location: String, dateBegin: String, dateEnd: String): Itinerary
+  addItinerary(title: String!, description: String, location: String, dateBegin: String, dateEnd: String, latitude: Float, longitude: Float): Itinerary
   updateItinerary(_id: ID!, title: String, description: String, location: String, dateBegin: String, dateEnd: String): Itinerary
   addUser(username: String!, email: String!, password: String!): Auth
   updateUser(_id: ID!, username: String): User
-  addActivity(itineraryId:ID!,location: String!, timeFrom: String, timeTo: String, notes:String, name: String): Itinerary
-  addActivityPublic(name: String, location: String!): Activity
+  addActivity(itineraryId: String,location: String!, timeFrom: String, timeTo: String, notes:String, name: String): Itinerary
   updateActivity(_id: ID!, location: String): Activity
 }
 `;

@@ -1,28 +1,36 @@
-
 import React, { useState, useReducer, Fragment } from "react";
 import ReactDOM from "react-dom";
+import { useMutation } from '@apollo/react-hooks';
 import { ADD_ACTIVITY } from '../../utils/mutations';
 import { QUERY_ITINERARIES } from '../../utils/queries';
-import { useMutation } from '@apollo/react-hooks';
+
 import './Create-activity.css';
 
 
-const CreateAcitivty = () => {
+const CreateActivity = (props) => {
   const [formState, setFormState] = useState({ location: '', timeFrom: '', timeTo: '', notes: '', itineraryId: ''})
-  const addActivity = useMutation(ADD_ACTIVITY);
+  const [addActivity, { error }] = useMutation(ADD_ACTIVITY);
   
   const handleFormSubmit = async event => {
     event.preventDefault();
-    const mutationResponse = await addActivity({
-      varibles: {
-        location: formState.location,
-        timeFrom: formState.timeFrom,
-        timeTo: formState.timeTo,
-        notes: formState.notes,
-        itineraryId: formState.itineraryId
-      }
-    });
-  }
+    console.log(formState)
+    try {
+      await addActivity({
+        variables: {
+          location: formState.location,
+          date: formState.date,
+          timeFrom: formState.timeFrom,
+          timeTo: formState.timeTo,
+          notes: formState.notes,
+          itineraryId: formState.itineraryId
+        }
+      })
+      console.log(addActivity)
+    } 
+    catch(e){
+      console.log(e);
+    }
+  };
 
   const handleChange = event => {
     const {name, value} = event.target;
@@ -34,10 +42,19 @@ const CreateAcitivty = () => {
 
   return (
     <>
-      <h1>Dynamic Form Fields in React</h1>
       <form onSubmit={handleFormSubmit}>
+      <div className="input-container">
+          <label htmlFor='itID'>Itinerary ID</label>
+          <input
+          type='text'
+          name='itineraryId'
+          id='itineraryId'
+          placeholder='Enter An ID for your Itinerary'
+          onChange={handleChange} />
+        </div>
+      
         <div className="input-container">
-          <label htmlFor='date'>Date</label>
+          <label>Date</label>
           <input
           type='text'
           name='date'
@@ -45,7 +62,6 @@ const CreateAcitivty = () => {
           placeholder='Date'
           onChange={handleChange} />
         </div>
-
 
         <div className="input-container">
           <label>Location</label>
@@ -87,15 +103,7 @@ const CreateAcitivty = () => {
           onChange={handleChange} />
         </div>
 
-        <div className="input-container">
-          <label>Itinerary ID</label>
-          <textarea
-          type='text'
-          name='itineraryId'
-          id='itinderaryId'
-          placeholder='Enter An ID for your Itinerary'
-          onChange={handleChange} />
-        </div>
+        
 
         <div className="flex-row flex-end">
           <button type="submit">
@@ -115,4 +123,4 @@ const CreateAcitivty = () => {
 // const rootElement = document.getElementById("root");
 // ReactDOM.render(<App />, rootElement);
 
-export default CreateAcitivty;
+export default CreateActivity;

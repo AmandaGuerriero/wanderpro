@@ -31,13 +31,12 @@ const resolvers = {
   },
   Mutation: {
     addItinerary: async (parent, args, context) => {
-      console.log(context);
+      const itinerary = await Itinerary.create(args);
       if (context.user) {
-        const itinerary = new Itinerary(args);
-
-        await User.findByIdAndUpdate(context.user._id, { $push: { itineraries: itinerary } });
-
-        return itinerary;
+        const user = await User.findById(context.user._id)
+        user.itineraries.push(itinerary)
+        await user.save()
+        return user;
       }
 
       throw new AuthenticationError('Not logged in');
@@ -75,22 +74,16 @@ const resolvers = {
       throw new AuthenticationError('Not logged in');
     },
 
-    addActivity: async (parent, { itineraryId, name, date, location, timeFrom, timeTo, notes}, context) => {
-      if (context.user) {
-        const updatedItinerary = await Itinerary.findOneAndUpdate(
-          { _id: itineraryId },
-          { $push: { activities: { name, date, location, timeFrom, timeTo, notes } } },
-          { new: true}
-        );
-    
-        return updatedItinerary;
-      }
-    
-      throw new AuthenticationError('You need to be logged in!');
-    },
-    addActivityPublic: async (parent, args) => {
-      const newActivity = await Activity.create(args);
-      return newActivity;
+    addActivity: async (parent, { itineraryId, name, date, location, timeFrom, timeTo, notes}) => {
+      // Create Activity first
+      const activity = await Activity.create({ itineraryId, name, date, location, timeFrom, timeTo, notes });
+      
+      // Find the Itinerary ID
+      const itinerary = await Itinerary.findById(activity.itineraryId)
+      
+      // Push activity to itinerary
+      itinerary.activities.push(activity)
+      await itinerary.save()
     },
     
     updateActivity: async (parent, { _id, name }) => {
