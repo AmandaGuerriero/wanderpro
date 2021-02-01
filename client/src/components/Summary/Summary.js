@@ -8,11 +8,12 @@ import ActivityList from '../ActivityList';
 const Summary = props => {
   const { id: itineraryId } = useParams();
   const { loading, data } = useQuery(QUERY_ITINERARY_BY_ID, {
-    variables: { id: itineraryId }
+    variables: { _id: itineraryId }
   });
-
+  console.log(data)
   const itinerary = data?.itinerary || {};
-
+  console.log(data)
+  console.log(itinerary.description)
   if (loading) {
     return <div>Loading...</div>;
   }
@@ -23,14 +24,15 @@ const Summary = props => {
         <p className="card-header">
           <span style={{ fontWeight: 700 }} className="text-light">
             {itinerary.title}
+            {console.log(itinerary.description)}
           </span>{' '}
         </p>
         <div className="card-body">
           <p>{itinerary.description}</p>
         </div>
       </div>
-
-      {itinerary.activities !== null && <ActivityList activities={itinerary.activities} />}
+      {itinerary.activites !== null ?  <ActivityList activities={itinerary.activities} /> : <p>No Activities Found</p>}
+     
     </div>
   );
 };

@@ -63,20 +63,20 @@ query {
 
 // Query for a single itinerary by ID
 export const QUERY_ITINERARY_BY_ID = gql`
-query {
-  itineraries {
-    _id
+query ($_id: ID!) {
+  itineraryById (_id: $_id){
     title
     description
     location
     dateBegin
-    dateEnd
+    dateBegin
     activities {
       _id
-      location
+      itineraryId
       name
-      notes
       date
+      location
+      notes
       timeTo
       timeFrom
     }
