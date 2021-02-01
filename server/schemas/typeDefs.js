@@ -38,6 +38,7 @@ type Auth {
 }
 
 type Query {
+  me: User
   itineraries(title: String): [Itinerary]
   itineraryById(_id: ID!): Itinerary
   activities: [Activity]
