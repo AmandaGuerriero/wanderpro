@@ -11,6 +11,7 @@ import Nav from "./components/Nav";
 import CreateItinerary from "./components/CreateItinerary/CreateItinerary"
 import CreateActivityContainer from './components/Create-activity/CreateActivityContainer'
 import Summary from "./components/Summary/Summary";
+import Footer from "./components/Footer/Footer"
 const client = new ApolloClient({
   request: (operation) => {
     const token = localStorage.getItem('id_token')
@@ -67,6 +68,7 @@ function App() {
                 <Route exact path="/login" component={Login} />
                 <Route exact path="/signup" component={Signup} />
               </Switch>
+              <Footer/>
             </StoreProvider>
         </div>
       </StoreProvider>
