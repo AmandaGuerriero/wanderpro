@@ -1,6 +1,9 @@
 import React from "react";
+import { faCompass } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Auth from "../../utils/auth";
 import { Link } from "react-router-dom";
+import './Nav.css'
 
 function Nav() {
   function showNavigation() {
@@ -8,7 +11,6 @@ function Nav() {
       return (
         <ul className="flex-row">
           <li className="mx-1">
-  
             <a href="/" onClick={() => Auth.logout()}>
               Logout
             </a>
@@ -33,9 +35,10 @@ function Nav() {
     }
   }
   return (
-    <header className="flex-row px-1">
+    <header className="flex-row space-between px-1">
       <h1>
         <Link to="/">
+        <FontAwesomeIcon icon={faCompass}/>
           Wanderpro
         </Link>
       </h1>
