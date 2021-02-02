@@ -1,5 +1,5 @@
 {
-  "name": "mern-shopping",
+  "name": "mern-wanderpro",
   "version": "1.0.0",
   "description": "",
   "main": "server/server.js",
@@ -10,6 +10,10 @@
     "install": "cd server && npm i && cd ../client && npm i",
     "seed": "cd server && npm run seed",
     "heroku-postbuild": "cd client && npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@work.github.com:AmandaGuerriero/wanderpro.git"
   },
   "author": "",
   "license": "ISC",
@@ -30,8 +34,6 @@
     "mapbox-gl": "^2.0.1",
     "mapbox-gl-directions": "^3.0.3",
     "react-datetime": "^3.0.4",
-    "react-map-gl": "^6.1.1",
-    "react-map-gl-directions": "^1.0.4",
     "react-native-firebase": "^5.6.0",
     "react-native-image-picker": "^3.1.4",
     "react-redux": "^7.2.2",
