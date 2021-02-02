@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 import { useMutation } from '@apollo/react-hooks';
 import Auth from "../utils/auth";
 import { ADD_USER } from "../utils/mutations";
+import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 function Signup(props) {
   const [formState, setFormState] = useState({ email: '', password: '' });
@@ -30,14 +32,16 @@ function Signup(props) {
   };
 
   return (
-    <div className="container my-1">
-      <Link to="/login">
-        ← Go to Login
+    <div className="container my-1 signup-container">
+      <div className="login-link">
+      <Link to="/login" >
+        <FontAwesomeIcon icon={faArrowLeft}/> Go to Login
       </Link>
+      </div>
 
-      <h2>Signup</h2>
-      <form onSubmit={handleFormSubmit}>
-        <div className="flex-row space-between my-2">
+      <h2 className="signup-header">Signup</h2>
+      <form onSubmit={handleFormSubmit} className="signup-form">
+        <div className="form-div">
           <label htmlFor="username">Username:</label>
           <input
             placeholder="Username"
@@ -47,7 +51,7 @@ function Signup(props) {
             onChange={handleChange}
           />
         </div>
-        <div className="flex-row space-between my-2">
+        <div className=" form-div">
           <label htmlFor="email">Email:</label>
           <input
             placeholder="youremail@test.com"
@@ -57,7 +61,7 @@ function Signup(props) {
             onChange={handleChange}
           />
         </div>
-        <div className="flex-row space-between my-2">
+        <div className="form-div">
           <label htmlFor="pwd">Password:</label>
           <input
             placeholder="******"
@@ -67,8 +71,8 @@ function Signup(props) {
             onChange={handleChange}
           />
         </div>
-        <div className="flex-row flex-end">
-          <button type="submit">
+        <div className="flex-row">
+          <button type="submit" className="btn signup-btn">
             Submit
           </button>
         </div>

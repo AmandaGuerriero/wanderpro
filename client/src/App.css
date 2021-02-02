@@ -61,3 +61,55 @@ body {
   justify-content: space-between;
 }
 
+/* SignUp Styling */
+.signup-container,
+.login-container {
+  width: 40vw;
+  margin-top: var(--spacing-five);
+  border: 3px var(--light-green) solid;
+  border-radius: 15px;
+  transform: translate(0%, 20%);
+  background-image: linear-gradient(200deg, rgba(22, 110, 243, .8)15%, rgba(226, 204, 170, 1)45%, rgba(49, 115, 18, .6)95%);
+}
+
+.login-link,
+.signup-link {
+  margin-top: var(--spacing-two);
+}
+
+.login-link a,
+.signup-link a {
+  color: var(--dark-cream);
+  transition: .6s;
+}
+
+.login-link a:hover,
+.signup-link a:hover {
+  text-decoration: none;
+  color: var(--dark-blue);
+}
+
+.signup-header,
+.login-header {
+transform: translate(40%, 0%);
+}
+
+.signup-form,
+.login-form {
+  transform: translate(25%, 0%);
+}
+
+.form-div label {
+  display: block;
+}
+
+.form-div input {
+  margin-bottom: var(--spacing-five);
+}
+
+.signup-btn,
+.login-btn {
+  transform: translate(50%, 0%);
+}
+
+/* Login Styling */
