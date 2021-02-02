@@ -16,6 +16,16 @@ function Nav() {
             </a>
           </li>
           <li className="mx-1">
+            <a href="/create">
+              Create Itinerary
+            </a>
+          </li>
+          <li className="mx-1">
+            <a href="/profile">
+              Profile
+            </a>
+          </li>
+          <li className="mx-1">
             <a href="/" onClick={() => Auth.logout()}>
               Logout
             </a>

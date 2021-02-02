@@ -53,6 +53,19 @@ const resolvers = {
     updateItinerary: async (parent, args) => {
         return await Itinerary.findByIdAndUpdate(Itinerary._id, args, { new: true });
     },
+    removeItinerary: async (parent, { _id }, context) => {
+      if (context.user) {
+        const updatedUser = await User.findOneAndUpdate(
+          { _id: context.user._id },
+          { $pull: { savedItineraries: { _id } } },
+          { new: true }
+        );
+
+        return updatedUser;
+      }
+
+      throw new AuthenticationError('You need to be logged in!');
+    },
     addUser: async (parent, args) => {
       const user = await User.create(args);
       const token = signToken(user);
@@ -99,6 +112,21 @@ const resolvers = {
       const newName = name
       return await Activity.findByIdAndUpdate(_id, {location: newName}, { new: true });
     },
+
+    removeActivity: async (parent, { _id }, context) => {
+      if (context.user) {
+        const updatedItinerary = await Itinerary.findOneAndUpdate(
+          { _id: context.user._id },
+          { $pull: { savedActivities: { _id } } },
+          { new: true }
+        );
+
+        return updatedItinerary;
+      }
+
+      throw new AuthenticationError('You need to be logged in!');
+    },
+
 
     login: async (parent, { email, password }) => {
       const user = await User.findOne({ email });
