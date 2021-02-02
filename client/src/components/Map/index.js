@@ -11,9 +11,15 @@ import ActivityList from '../ActivityList';
 mapboxgl.accessToken = 'pk.eyJ1Ijoiem91c2hpbHUzMSIsImEiOiJja2tnMGxiZmEwOW5lMnVsYTN3OTR6eXg5In0.EExs7dyM_eoTAEdLXzUmVw';
 
 class Map extends Component {
-
+  constructor(props) {
+    super(props);
+ 
+    this.state = {
+      isShow: this.props.myLocation,
+    };
+  }
   componentDidMount() {
-
+    
     // Creates new map instance
     const map = new mapboxgl.Map({
       container: this.mapWrapper,
@@ -31,12 +37,13 @@ class Map extends Component {
 
     // Integrates directions control with map
     map.addControl(directions, 'top-left');
+    map.on ('load',() => {
+      this.showRoute()
+    });
 
-    // Need to get user activity location to get auto input location address 
-    // <ActivityList activities={activity.name} location={`${activity.location}'s thoughts...`} />
-    
     // GET THE DESTINATION LOCATION
-    //directions.setDestination(activity.location);
+    directions.setOrigin ('New York')
+    directions.setDestination(this.state.isShow);
 
     // Add geolocate control to the map.
 map.addControl(
@@ -49,6 +56,13 @@ map.addControl(
   );
   }
 
+  showRoute(){
+
+    // const st = this.props.userData.startAddress;
+    // const en = this.props.userData.endAddress;
+    // this.directions.setOrigin('San Diego,CA')
+    // this.directions.setDestination(this.props.myLocation)
+  }
   render() {
     return (
     <div>

@@ -35,7 +35,7 @@ const Summary = props => {
         {/* <p>Time starts: {this.props.state.timeFrom}</p>
         <p>Time ends: {this.props.state.timeTo}</p>
         <p>Notes: {this.props.state.notes}</p> */}
-        <ActivityList activities={itinerary.activities} />
+        <ActivityList activities={itinerary.activities}/>
 
          {/* <div ref={el => (this.mapWrapper = el)} className="mapWrapper" /> */}
     </div>
