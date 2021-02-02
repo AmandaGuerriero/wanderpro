@@ -45,7 +45,7 @@ const resolvers = {
         const user = await User.findById(context.user._id)
         user.itineraries.push(itinerary)
         await user.save()
-        return itinerary;
+        return user;
       }
 
       throw new AuthenticationError('Not logged in');
@@ -113,18 +113,16 @@ const resolvers = {
       return await Activity.findByIdAndUpdate(_id, {location: newName}, { new: true });
     },
 
-    removeActivity: async (parent, { _id }, context) => {
-      if (context.user) {
-        const updatedItinerary = await Itinerary.findOneAndUpdate(
-          { _id: context.user._id },
-          { $pull: { savedActivities: { _id } } },
-          { new: true }
-        );
+    removeActivity: async (parent, { _id },context) => {
+      if (!context.user) throw new AuthenticationError("You must be logged in to perform this action");
 
-        return updatedItinerary;
-      }
+      const ok = Boolean(Activity[_id]);
+      delete Activity[_id];
 
-      throw new AuthenticationError('You need to be logged in!');
+      return { ok };
+      
+
+     // throw new AuthenticationError('You need to be logged in!');
     },
 
 
