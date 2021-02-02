@@ -5,6 +5,7 @@ import { QUERY_USER, QUERY_ME } from '../utils/queries';
 import ItineraryList from '../components/ItineraryList';
 
 
+
 const Profile = () => {
   const { username: userParam } = useParams();
 

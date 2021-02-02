@@ -28,6 +28,9 @@ const activitySchema = new Schema({
   },
   itineraryId: {
     type: String
+  },
+  rating: {
+    type: Number,
   }
 });
 

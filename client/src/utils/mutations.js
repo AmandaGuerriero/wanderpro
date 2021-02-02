@@ -40,6 +40,20 @@ export const ADD_ITINERARY = gql`
   }
 `;
 
+// Mutation to update an itinerary
+export const UDPATE_ITINERARY = gql`
+mutation updateItinerary ($_id: ID!, $title: String, $description: String, $location: String, $dateBegin: String, $dateEnd: String) {
+  updateItinerary (_id: $_id, title: $title, description: $description, location: $location, dateBegin: $dateBegin, dateEnd: $dateEnd ) {
+    _id
+    title
+    description
+    dateEnd
+    dateBegin
+    location
+  }
+}
+`;
+
 // Mutation to add an activity
 export const ADD_ACTIVITY = gql`
 mutation removeActivity($_id: ID!, $itineraryId: String) {
@@ -67,7 +81,7 @@ mutation removeActivity($_id: ID!, $itineraryId: String) {
 }
 `;
 
-
+// Mutation to remove an itinerary
 export const REMOVE_ITINERARY = gql`
 mutation removeItinerary($_id: ID! ) {
   removeItinerary(_id: $_id) {
@@ -89,6 +103,7 @@ mutation removeItinerary($_id: ID! ) {
 }
 `;
 
+// Mutation to remove an activity
 export const REMOVE_ACTIVITY = gql`
 mutation removeActivity($_id: ID! ) {
   removeActivity(_id: $_id) {
@@ -104,3 +119,18 @@ mutation removeActivity($_id: ID! ) {
   
   }
   `;
+// Mutation to Update an activity
+export const UPDATE_ACTIVITY = gql`
+mutation updateActivity($_id: ID!, $name: String, $location: String, $timeFrom: String, $timeTo: String, $date: String, $notes: String, $rating: Int) {
+  updateActivity(_id: $_id, name: $name, location: $location, timeFrom: $timeFrom, timeTo: $timeTo, date: $date, notes: $notes, rating: $rating) {
+    _id
+    timeTo
+    timeFrom
+    date
+    notes
+    rating
+    itineraryId
+  }
+}
+`;
+
