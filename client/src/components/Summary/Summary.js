@@ -4,6 +4,7 @@ import { useQuery } from '@apollo/react-hooks';
 import { QUERY_ITINERARY_BY_ID } from '../../utils/queries';
 import ActivityList from '../ActivityList';
 import './index.css'
+import { LogoNodejs } from 'react-ionicons'
 
 // import mapboxgl from 'mapbox-gl';
 // import 'mapbox-gl/dist/mapbox-gl.css';
@@ -34,22 +35,22 @@ const Summary = props => {
               <div className="user-info">
                 <div className="flex-row mb-3">
                   <div className="detail">
-                    <h4>Your Trip: </h4>
+                  <ion-icon name="today-outline"></ion-icon>
                     <p>{itinerary.title}</p>
                   </div>
                 </div>
                 <div>
                   {/* <h5>Your Itinerary: {itinerary.itineraryId}</h5> */}
                   <div className="detail">
-                    <h4>First day of your trip:</h4>
+                  <ion-icon name="today-outline"></ion-icon>
                   <p>{itinerary.dateBegin}</p>
                   </div>
                   <div className="detail">
-                    <h4>Last day of your trip:</h4>
+                  <ion-icon name="today-outline"></ion-icon>
                   <p>{itinerary.dateEnd}</p>
                   </div>
                   <div className="detail">
-                    <h4>Location:</h4>
+                  <ion-icon name="today-outline"></ion-icon>
                   <p>{itinerary.location}</p>
                   </div>
                 </div>
