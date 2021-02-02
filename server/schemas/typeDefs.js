@@ -51,11 +51,13 @@ type Query {
 type Mutation {
   login(email: String!, password: String!): Auth
   addItinerary(title: String!, description: String, location: String, dateBegin: String, dateEnd: String, latitude: Float, longitude: Float): Itinerary
-  updateItinerary(_id: ID!, title: String, description: String, location: String, dateBegin: String, dateEnd: String): Itinerary
+  updateItinerary(_id: ID!, title: String, description: String, location: String, dateBegin: String, dateEnd: String): User
+  removeItinerary(_id: ID!): User
   addUser(username: String!, email: String!, password: String!): Auth
   updateUser(_id: ID!, username: String): User
   addActivity(itineraryId: String,location: String!, timeFrom: String, timeTo: String, notes:String, name: String): Itinerary
-  updateActivity(_id: ID!, location: String): Activity
+  updateActivity(_id: ID!, location: String): Itinerary
+  removeActivity(_id: ID!): Itinerary
 }
 `;
 
