@@ -38,6 +38,7 @@ body {
   border: 2px solid var(--light-blue);
   border-radius: 20px;
   transition: .5s;
+  bottom: 0;
 }
 
 .next-btn:hover,
