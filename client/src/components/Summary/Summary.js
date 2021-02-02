@@ -4,7 +4,7 @@ import { useQuery } from '@apollo/react-hooks';
 import { QUERY_ITINERARY_BY_ID } from '../../utils/queries';
 import ActivityList from '../ActivityList';
 import './index.css'
-import { LogoNodejs } from 'react-ionicons'
+// import { LogoNodejs } from 'react-ionicons'
 
 // import mapboxgl from 'mapbox-gl';
 // import 'mapbox-gl/dist/mapbox-gl.css';
