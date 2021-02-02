@@ -52,7 +52,8 @@ IconContainer.propTypes = {
   value: PropTypes.number.isRequired,
 };
 
-function CustomizedRatings() {
+const CustomizedRatings = ({ activities }) =>  {
+  console.log(activities)
   return (
     <div>
       <Box component="fieldset" mb={3} borderColor="transparent">

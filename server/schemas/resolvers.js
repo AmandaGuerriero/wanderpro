@@ -108,9 +108,15 @@ const resolvers = {
       await itinerary.save()
     },
     
-    updateActivity: async (parent, { _id, name }) => {
+    updateActivity: async (parent, { _id, name, location, timeFrom, timeTo, notes, date, rating }) => {
       const newName = name
-      return await Activity.findByIdAndUpdate(_id, {location: newName}, { new: true });
+      const newLocation = location
+      const newTimeFrom = timeFrom
+      const newTimeTo = timeTo
+      const newNotes = notes
+      const newDate = date
+      const newRating = rating
+      return await Activity.findByIdAndUpdate(_id, {name: newName, location: newLocation, timeFrom: newTimeFrom, timeTo: newTimeTo, date: newDate, notes: newNotes, rating: newRating}, { new: true });
     },
 
     removeActivity: async (parent, { _id }, context) => {
