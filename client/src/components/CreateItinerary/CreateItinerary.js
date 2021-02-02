@@ -33,7 +33,9 @@ const CreateItinerary = (props) => {
           longitude: longitude 
         } 
       });
+      console.log(data)
       console.log(data.data.addItinerary._id)
+      localStorage.setItem('itineraryId', data.data.addItinerary._id);
     } catch (e) {
       console.error(e);
     }

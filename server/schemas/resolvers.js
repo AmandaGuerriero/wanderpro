@@ -45,7 +45,7 @@ const resolvers = {
         const user = await User.findById(context.user._id)
         user.itineraries.push(itinerary)
         await user.save()
-        return user;
+        return itinerary;
       }
 
       throw new AuthenticationError('Not logged in');
