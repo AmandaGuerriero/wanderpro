@@ -1,5 +1,5 @@
 {
-  "name": "mern-shopping",
+  "name": "mern-wanderpro",
   "version": "1.0.0",
   "description": "",
   "main": "server/server.js",
@@ -9,7 +9,11 @@
     "start:dev": "concurrently \"cd server && npm run watch\" \"cd client && npm start\"",
     "install": "cd server && npm i && cd ../client && npm i",
     "seed": "cd server && npm run seed",
-    "heroku-postbuild": "npm run build"
+    "heroku-postbuild": "cd client && npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@work.github.com:AmandaGuerriero/wanderpro.git"
   },
   "author": "",
   "license": "ISC",
