@@ -16,6 +16,7 @@ const CreateActivity = (props) => {
     try {
       await addActivity({
         variables: {
+          name: formState.name,
           location: formState.location,
           date: formState.date,
           timeFrom: formState.timeFrom,
@@ -49,9 +50,9 @@ const CreateActivity = (props) => {
       <div className="activity-input-container">
           <input
           type='text'
-          name='itineraryId'
-          id='itineraryId'
-          placeholder='Enter An ID for your Itinerary'
+          name='name'
+          id='name'
+          placeholder='Enter the activity name'
           onChange={handleChange} />
         </div>
       

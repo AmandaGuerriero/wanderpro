@@ -17,10 +17,10 @@ const itinerarySchema = new Schema({
     type: String,
   },
   dateBegin: {
-    type: Date
+    type: String,
   },
   dateEnd: {
-    type: Date
+    type: String,
   },
   latitude: {
     type: Number
