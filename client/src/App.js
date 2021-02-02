@@ -17,7 +17,7 @@ import CreateActivityContainer from './components/Create-activity/CreateActivity
 import Summary from "./components/Summary/Summary";
 import Footer from "./components/Footer/Footer"
 import Map from "./components/Map"
-import './App.css'
+import './index.css';
 
 const client = new ApolloClient({
   request: (operation) => {
