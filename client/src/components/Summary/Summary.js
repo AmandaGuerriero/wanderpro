@@ -31,6 +31,10 @@ const Summary = props => {
                   <ion-icon name="today-outline"></ion-icon>
                     <p>{itinerary.title}</p>
                   </div>
+                  <div className="detail">
+                  <ion-icon name="today-outline"></ion-icon>
+                  <p>{itinerary.description}</p>
+                  </div>
                 </div>
                 <div>
                   {/* <h5>Your Itinerary: {itinerary.itineraryId}</h5> */}
