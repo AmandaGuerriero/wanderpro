@@ -53,8 +53,13 @@ const resolvers = {
 
       throw new AuthenticationError('Not logged in');
     }, 
-    updateItinerary: async (parent, args) => {
-        return await Itinerary.findByIdAndUpdate(Itinerary._id, args, { new: true });
+    updateItinerary: async (parent, { _id, title, location, dateBegin, dateEnd, description}) => {
+      const newTitle = title
+      const newLocation = location
+      const newDateBegin = dateBegin
+      const newDateEnd = dateEnd
+      const newDescription = description
+      return await Itinerary.findByIdAndUpdate(_id, {title: newTitle, location: newLocation, dateBegin: newDateBegin, dateEnd: newDateEnd, description: newDescription}, { new: true });
     },
     removeItinerary: async (parent, { _id }, context) => {
       if (context.user) {

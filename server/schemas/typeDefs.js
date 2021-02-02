@@ -52,7 +52,7 @@ type Query {
 type Mutation {
   login(email: String!, password: String!): Auth
   addItinerary(title: String!, description: String, location: String, dateBegin: String, dateEnd: String, latitude: Float, longitude: Float): Itinerary
-  updateItinerary(_id: ID!, title: String, description: String, location: String, dateBegin: String, dateEnd: String): User
+  updateItinerary(_id: ID!, title: String, description: String, location: String, dateBegin: String, dateEnd: String): Itinerary
   removeItinerary(_id: ID!): User
   addUser(username: String!, email: String!, password: String!): Auth
   updateUser(_id: ID!, username: String): User

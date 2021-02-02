@@ -40,6 +40,20 @@ export const ADD_ITINERARY = gql`
   }
 `;
 
+// Mutation to update an itinerary
+export const UDPATE_ITINERARY = gql`
+mutation updateItinerary ($_id: ID!, $title: String, $description: String, $location: String, $dateBegin: String, $dateEnd: String) {
+  updateItinerary (_id: $_id, title: $title, description: $description, location: $location, dateBegin: $dateBegin, dateEnd: $dateEnd ) {
+    _id
+    title
+    description
+    dateEnd
+    dateBegin
+    location
+  }
+}
+`;
+
 // Mutation to add an activity
 export const ADD_ACTIVITY = gql`
   mutation addActivity($itineraryId: String, $name: String, $location: String!, $timeFrom: String, $timeTo: String, $notes: String, $date: String) {
