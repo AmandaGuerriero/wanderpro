@@ -6,36 +6,36 @@ import { geoCoding } from "../../utils/geocoding"
 import './CreateItinerary.css';
 
 const CreateItinerary = (props) => {
-  const [formState, setFormState] = useState({ location: '', dateBegin: '', dateEnd: '', title: '', description: ''})
+  const [formState, setFormState] = useState({ location: '', dateBegin: '', dateEnd: '', title: '', description: '', toggle: true })
   const [addItinerary, { error }] = useMutation(ADD_ITINERARY);
   // submit form
   const handleFormSubmit = async event => {
     event.preventDefault();
     // try {
-      // // Get coordinate from location
-      // let coordinates = await geoCoding(formState.location);
-      // let latitude = 0,longitude =0;
-      // if(coordinates&&coordinates.length) {
-      //   latitude = coordinates[0].center[1];
-      //   longitude = coordinates[0].center[0];
-      //   props.setLatitude(latitude);
-      //   props.setLongitude(longitude);
-      // }
-      // console.log(latitude, longitude)
-      // await 
-      addItinerary({
-        variables: { 
-          title: formState.title, 
-          location: formState.location,
-          dateBegin: formState.dateBegin, 
-          dateEnd: formState.dateEnd, 
-          description: formState.description, 
-          // latitude: latitude, 
-          // longitude: longitude 
-        }
-      });
-      
+    // // Get coordinate from location
+    // let coordinates = await geoCoding(formState.location);
+    // let latitude = 0,longitude =0;
+    // if(coordinates&&coordinates.length) {
+    //   latitude = coordinates[0].center[1];
+    //   longitude = coordinates[0].center[0];
+    //   props.setLatitude(latitude);
+    //   props.setLongitude(longitude);
+    // }
+    // console.log(latitude, longitude)
+    // await 
+    addItinerary({
+      variables: {
+        title: formState.title,
+        location: formState.location,
+        dateBegin: formState.dateBegin,
+        dateEnd: formState.dateEnd,
+        description: formState.description,
+        // latitude: latitude, 
+        // longitude: longitude 
+      }
+    });
 
+    setFormState({ toggle: false });
     // } catch (e) {
     //   console.error(e);
     // }
@@ -48,27 +48,29 @@ const CreateItinerary = (props) => {
     })
     console.log(event.target.value)
   };
-  
-	return (
-  <div>
-		<section id="create-itinerary">
-    <h1 className="page-header">
+
+  return (
+    <div>
+      <section id="create-itinerary">
+        <h1 className="page-header">
           Create Your Itinerary
     </h1>
-      <div className='c-create-itinerary-form'>
-      <form onSubmit={handleFormSubmit}>
-        <ul>
-              <div className='form-group'>
-                <input 
-                type='text' 
-                name='title' 
-                id='title'
-                placeholder='Itinerary Name'
-                // value={state.title}
-                onChange={handleChange}/>
-            </div>
-         
-            {/* //<div className='form-group flex'>
+        <div className='c-create-itinerary-form'>
+
+          {formState.toggle ?
+            <form onSubmit={handleFormSubmit}>
+              <ul>
+                <div className='form-group'>
+                  <input
+                    type='text'
+                    name='title'
+                    id='title'
+                    placeholder='Itinerary Name'
+                    // value={state.title}
+                    onChange={handleChange} />
+                </div>
+
+                {/* //<div className='form-group flex'>
               <div className="icon-container">
                 <div className='icon-spirit icon__location--grey'></div>
               </div>
@@ -82,36 +84,36 @@ const CreateItinerary = (props) => {
                 onChange={handleChange}/>
               </div> //
            </div> */}
-            <div className='form-group flex'>
-              <div className='icon-container'>
-                <div className='icon-spirit icon__calendar'></div>
-              </div>
-              <div className='input-container'>
-                <input 
-                type='text' 
-                name='dateBegin' 
-                id='dateBegin' 
-                placeholder='Date Begin'
-                // value={state.dateBegin}
-                onChange={handleChange}/>
-              </div>
-            </div>
-            <div className='form-group flex'>
-              <div className='icon-container'>
-                <div className='icon-spirit icon__calendar'></div>
-              </div>
-              <div className='input-container'>
-                <input 
-                type='text' 
-                name='dateEnd' 
-                id='dateEnd' 
-                placeholder='Date End'
-                // value={state.dateEnd}
-                onChange={handleChange}/>
+                <div className='form-group flex'>
+                  <div className='icon-container'>
+                    <div className='icon-spirit icon__calendar'></div>
+                  </div>
+                  <div className='input-container'>
+                    <input
+                      type='text'
+                      name='dateBegin'
+                      id='dateBegin'
+                      placeholder='Date Begin'
+                      // value={state.dateBegin}
+                      onChange={handleChange} />
+                  </div>
+                </div>
+                <div className='form-group flex'>
+                  <div className='icon-container'>
+                    <div className='icon-spirit icon__calendar'></div>
+                  </div>
+                  <div className='input-container'>
+                    <input
+                      type='text'
+                      name='dateEnd'
+                      id='dateEnd'
+                      placeholder='Date End'
+                      // value={state.dateEnd}
+                      onChange={handleChange} />
 
-              </div>
-            </div>
-              {/* <div className='form-group'>
+                  </div>
+                </div>
+                {/* <div className='form-group'>
                 <textarea 
                 className="itinerary-text"
                 name='description' 
@@ -121,24 +123,73 @@ const CreateItinerary = (props) => {
                 // value={state.description}
                 onChange={handleChange}/>
             </div> */}
-          
-            <div className='form-group flex'>
-              <div className='icon-container'>
-                <div className='icon-spirit icon__photo'></div>
-              </div>
-            </div>
-        </ul>
-        <button 
+
+                <div className='form-group flex'>
+                  <div className='icon-container'>
+                    <div className='icon-spirit icon__photo'></div>
+                  </div>
+                </div>
+              </ul>
+              <button
                 className='btn'
                 onClick={handleFormSubmit}
-            >
-              Submit
+              >
+                Submit
             </button>
-        </form>
-      </div>
-	  </section>
-  </div>
-	);
+            </form>
+            :
+            <form onSubmit={handleFormSubmit}>
+              <ul>
+                <div className='form-group'>
+                  <input
+                    type='text'
+                    name='title'
+                    id='title'
+                    placeholder='Itinerary Name'
+                    // value={state.title}
+                     />
+                </div>
+                <div className='form-group flex'>
+                  <div className='icon-container'>
+                    <div className='icon-spirit icon__calendar'></div>
+                  </div>
+                  <div className='input-container'>
+                    <input
+                      type='text'
+                      name='dateBegin'
+                      id='dateBegin'
+                      placeholder='Date Begin'
+                      // value={state.dateBegin}
+                       />
+                  </div>
+                </div>
+                <div className='form-group flex'>
+                  <div className='icon-container'>
+                    <div className='icon-spirit icon__calendar'></div>
+                  </div>
+                  <div className='input-container'>
+                    <input
+                      type='text'
+                      name='dateEnd'
+                      id='dateEnd'
+                      placeholder='Date End'
+                      // value={state.dateEnd}
+                      />
+                  </div>
+                </div>
+
+                <div className='form-group flex'>
+                  <div className='icon-container'>
+                    <div className='icon-spirit icon__photo'></div>
+                  </div>
+                </div>
+              </ul>
+            </form>
+          }
+        </div>
+      </section>
+    </div>
+  );
 }
 
 export default CreateItinerary;
