@@ -6,13 +6,6 @@ import ActivityList from '../ActivityList';
 import './index.css'
 // import { LogoNodejs } from 'react-ionicons'
 
-// import mapboxgl from 'mapbox-gl';
-// import 'mapbox-gl/dist/mapbox-gl.css';
-// import MapboxDirections from '@mapbox/mapbox-gl-directions/dist/mapbox-gl-directions'
-// import '@mapbox/mapbox-gl-directions/dist/mapbox-gl-directions.css'
-
-// mapboxgl.accessToken = 'pk.eyJ1Ijoiem91c2hpbHUzMSIsImEiOiJja2tnMGxiZmEwOW5lMnVsYTN3OTR6eXg5In0.EExs7dyM_eoTAEdLXzUmVw';
-
 
 const Summary = props => {
 
