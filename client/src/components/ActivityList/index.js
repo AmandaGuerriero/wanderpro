@@ -1,4 +1,5 @@
 import React from 'react';
+import Map from '../Map';
 
 const ActivityList = ({ activities}) => {
   return (
@@ -10,7 +11,12 @@ const ActivityList = ({ activities}) => {
             {activities &&
             activities.map(activity => (
               <div key={activity._id} className="card mb-3">
-                <p>{activity.name} {'// '} {activity.location}</p>
+                <p>{activity.name} {''} {activity.location}</p>
+                <p>Get directions for your trip:</p>
+        <div className="App">
+        <Map component={Map} />
+        <p>Your Notes: {activity.notes}</p>
+        </div>
               </div>
             ))}
             

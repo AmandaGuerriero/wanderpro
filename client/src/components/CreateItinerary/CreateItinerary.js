@@ -4,11 +4,11 @@ import { QUERY_ITINERARIES } from "../../utils/queries"
 import { useMutation } from '@apollo/react-hooks';
 import { geoCoding } from "../../utils/geocoding"
 
-import './Createpost.css';
+import './CreateItinerary.css';
 
 const CreateItinerary = (props) => {
   const [formState, setFormState] = useState({ location: '', dateBegin: '', dateEnd: '', title: '', description: ''})
-  const [addItinerary, { error }] = useMutation(ADD_ITINERARY);
+  const [addItinerary, { error, data }] = useMutation(ADD_ITINERARY)
   // submit form
   const handleFormSubmit = async event => {
     event.preventDefault();
@@ -22,8 +22,7 @@ const CreateItinerary = (props) => {
         props.setLatitude(latitude);
         props.setLongitude(longitude);
       }
-      console.log(latitude, longitude)
-      await addItinerary({
+      const data = await addItinerary({
         variables: { 
           title: formState.title, 
           location: formState.location,
@@ -32,24 +31,13 @@ const CreateItinerary = (props) => {
           description: formState.description, 
           latitude: latitude, 
           longitude: longitude 
-        }
+        } 
       });
-
-      // // clear form value
-      // setTitle('');
-
-      // setLocation('');
-
-      // setDateBegin('');
-
-      // setDateEnd('');
-      
-      // setDescription('');
-      
-
+      console.log(data.data.addItinerary._id)
     } catch (e) {
       console.error(e);
     }
+    
   };
   const handleChange = event => {
     const { name, value } = event.target;
@@ -63,6 +51,9 @@ const CreateItinerary = (props) => {
 	return (
   <div>
 		<section id="create-itinerary">
+    <h1 className="page-header">
+          Create Your Itinerary
+    </h1>
       <div className='c-create-itinerary-form'>
       <form onSubmit={handleFormSubmit}>
         <ul>
@@ -71,6 +62,7 @@ const CreateItinerary = (props) => {
                 type='text' 
                 name='title' 
                 id='title'
+                placeholder='Itinerary Name'
                 // value={state.title}
                 onChange={handleChange}/>
             </div>
@@ -103,7 +95,7 @@ const CreateItinerary = (props) => {
                 onChange={handleChange}/>
               </div>
             </div>
-<div className='form-group flex'>
+            <div className='form-group flex'>
               <div className='icon-container'>
                 <div className='icon-spirit icon__calendar'></div>
               </div>
@@ -118,22 +110,23 @@ const CreateItinerary = (props) => {
 
               </div>
             </div>
-              <div className='form-group'>
+              {/* <div className='form-group'>
                 <textarea 
+                className="itinerary-text"
                 name='description' 
                 id='description' 
                 rows="4" 
                 placeholder='Write a caption…'
                 // value={state.description}
                 onChange={handleChange}/>
-            </div>
+            </div> */}
           
             <div className='form-group flex'>
               <div className='icon-container'>
                 <div className='icon-spirit icon__photo'></div>
               </div>
             </div>
-
+{/* 
               <div className='form-group flex'>
                 <div className='icon-container'>
                   <div className='icon-spirit icon__photo'></div>
@@ -145,12 +138,13 @@ const CreateItinerary = (props) => {
                   placeholder='+ Photo'>
                 </input>
               </div>
-              </div>
+              </div> */}
         </ul>
         <button 
                 className='btn'
                 onClick={handleFormSubmit}
             >
+              Submit
             </button>
         
         </form>

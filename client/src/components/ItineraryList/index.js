@@ -1,9 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const ItineraryList = ({ itineraries, title, description }) => {
+const ItineraryList = ({ itineraries, title, description, activityCount }) => {
   if (!itineraries.length) {
-    return <h3>No Itinerary Yet</h3>;
+    return <h3>No Itineraries Created Yet</h3>;
   }
 
   return (
@@ -12,22 +12,12 @@ const ItineraryList = ({ itineraries, title, description }) => {
         itineraries.map(itinerary => (
           <div key={itinerary._id} className="card mb-3">
             <p className="card-header">
-                <Link
-                    to={`/itinerary/${itinerary._id}`}
-                    style={{ fontWeight: 700 }}
-                    className="text-light"
-                >
-                    {itinerary._id}
-                </Link>{' '}
-                {itinerary.title} has {itinerary.description}
+                {itinerary.title}
             </p>
             <div className="card-body">
-                <Link to={`/itinerary/${itinerary._id}`}>
-                    <p>{itinerary.description}</p>
-                    <p className="mb-0">
-                    Click to{' '} 'see' : 'start' the discussion!
-                    </p>
-                </Link>
+                
+                    <p>Description: {itinerary.description}</p>
+                    <Link to={`/itinerary/${itinerary._id}`}><button>View full Itinerary</button></Link>
             </div>
           </div>
         ))}
