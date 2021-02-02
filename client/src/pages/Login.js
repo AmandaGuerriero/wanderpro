@@ -3,6 +3,8 @@ import { useMutation } from '@apollo/react-hooks';
 import { Link } from "react-router-dom";
 import { LOGIN } from "../utils/mutations"
 import Auth from "../utils/auth";
+import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 function Login(props) {
   const [formState, setFormState] = useState({ email: '', password: '' })
@@ -31,7 +33,7 @@ function Login(props) {
     <div className="container my-1 login-container">
       <div className="signup-link">
       <Link to="/signup">
-        ← Go to Signup
+      <FontAwesomeIcon icon={faArrowLeft}/> Go to Signup
       </Link>
       </div>
 
