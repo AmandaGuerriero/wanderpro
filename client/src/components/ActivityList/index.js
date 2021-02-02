@@ -16,10 +16,10 @@ const ActivityList = ({ activities }) => {
         {activities &&
           activities.map(activity => (
             <div key={activity._id} className="card-box">
-              <div class="timeline">
-                <div class="container-timeline right">
-                  <div class="content">
-                    <h5>{activity.timeFrom} activity</h5>
+              <div className="timeline">
+                <div className="container-timeline right">
+                  <div className="content">
+                    <h5>{activity.timeFrom} to {activity.timeTo}</h5>
                     <p>{activity.location}</p>
                     <h5>Get directions for your trip:</h5>
                     <div className="App">
