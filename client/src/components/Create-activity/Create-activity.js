@@ -2,6 +2,7 @@ import React, { useState, useReducer, Fragment } from "react";
 import ReactDOM from "react-dom";
 import { useMutation } from '@apollo/react-hooks';
 import { ADD_ACTIVITY } from '../../utils/mutations';
+import { Link } from 'react-router-dom';
 
 import './Create-activity.css';
 
@@ -9,6 +10,7 @@ import './Create-activity.css';
 const CreateActivity = (props) => {
   const [formState, setFormState] = useState({ location: '', timeFrom: '', timeTo: '', notes: '', itineraryId: ''})
   const [addActivity, { error }] = useMutation(ADD_ACTIVITY);
+  const itineraryId = localStorage.getItem("itineraryId");
   
   const handleFormSubmit = async event => {
     event.preventDefault();
@@ -21,7 +23,7 @@ const CreateActivity = (props) => {
           timeFrom: formState.timeFrom,
           timeTo: formState.timeTo,
           notes: formState.notes,
-          itineraryId: formState.itineraryId
+          itineraryId: itineraryId
         }
       })
       console.log(addActivity)
@@ -46,14 +48,6 @@ const CreateActivity = (props) => {
 
       <form className = "activity-form" onSubmit={handleFormSubmit}> 
       <h3>Activity Info</h3>
-      <div className="activity-input-container">
-          <input
-          type='text'
-          name='itineraryId'
-          id='itineraryId'
-          placeholder='Enter An ID for your Itinerary'
-          onChange={handleChange} />
-        </div>
       
         <div className="activity-input-container">
           <input
@@ -104,6 +98,7 @@ const CreateActivity = (props) => {
         <button className="btn activity-submit">
           Submit
         </button>
+        <Link to={`/itinerary/${itineraryId}`}><button>View Full Itinerary</button></Link>
       </form>
     </div>
     </section>
