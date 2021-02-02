@@ -57,7 +57,7 @@ const resolvers = {
       if (context.user) {
         const updatedUser = await User.findOneAndUpdate(
           { _id: context.user._id },
-          { $pull: { savedItineraries: { _id } } },
+          { $pull: { itineraries: { _id } } },
           { new: true }
         );
 
@@ -66,6 +66,9 @@ const resolvers = {
 
       throw new AuthenticationError('You need to be logged in!');
     },
+
+
+     
     addUser: async (parent, args) => {
       const user = await User.create(args);
       const token = signToken(user);
@@ -113,19 +116,25 @@ const resolvers = {
       return await Activity.findByIdAndUpdate(_id, {location: newName}, { new: true });
     },
 
-    removeActivity: async (parent, { _id },context) => {
-      if (!context.user) throw new AuthenticationError("You must be logged in to perform this action");
+    removeActivity: async (parent, { _id,itineraryId },context) => {
+      if (context.user) {
+           
+        const updatedItinerary = await Itinerary.findOneAndUpdate(
+          { _id:  itineraryId  },
+          { $pull: { activities: { _id } } },
+          { new: true }
+        );
 
-      const ok = Boolean(Activity[_id]);
-      delete Activity[_id];
-
-      return { ok };
-      
-
-     // throw new AuthenticationError('You need to be logged in!');
+        return updatedItinerary;
+      }
+      throw new AuthenticationError('You need to be logged in!');
     },
 
 
+      
+
+
+    
     login: async (parent, { email, password }) => {
       const user = await User.findOne({ email });
 
