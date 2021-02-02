@@ -3,6 +3,8 @@ import { useMutation } from '@apollo/react-hooks';
 import { Link } from "react-router-dom";
 import { LOGIN } from "../utils/mutations"
 import Auth from "../utils/auth";
+import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 function Login(props) {
   const [formState, setFormState] = useState({ email: '', password: '' })
@@ -28,14 +30,16 @@ function Login(props) {
   };
 
   return (
-    <div className="container my-1">
+    <div className="container my-1 login-container">
+      <div className="signup-link">
       <Link to="/signup">
-        ← Go to Signup
+      <FontAwesomeIcon icon={faArrowLeft}/> Go to Signup
       </Link>
+      </div>
 
-      <h2>Login</h2>
-      <form onSubmit={handleFormSubmit}>
-        <div className="flex-row space-between my-2">
+      <h2 className="login-header">Login</h2>
+      <form onSubmit={handleFormSubmit} className="login-form">
+        <div className="form-div">
           <label htmlFor="email">Email address:</label>
           <input
             placeholder="youremail@test.com"
@@ -45,7 +49,7 @@ function Login(props) {
             onChange={handleChange}
           />
         </div>
-        <div className="flex-row space-between my-2">
+        <div className="form-div">
           <label htmlFor="pwd">Password:</label>
           <input
             placeholder="******"
@@ -60,8 +64,8 @@ function Login(props) {
             <p className="error-text" >The provided credentials are incorrect</p>
           </div> : null
         }
-        <div className="flex-row flex-end">
-          <button type="submit">
+        <div className="flex-row">
+          <button type="submit" className="btn login-btn">
             Submit
           </button>
         </div>
