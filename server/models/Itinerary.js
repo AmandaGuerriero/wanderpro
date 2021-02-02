@@ -18,9 +18,12 @@ const itinerarySchema = new Schema({
   },
   dateBegin: {
     type: String,
+    trim: true
   },
   dateEnd: {
     type: String,
+    trim: true
+
   },
   latitude: {
     type: Number
