@@ -101,3 +101,19 @@ query {
   }
 }
 `;
+
+// Query an activity by ID
+export const QUERY_ACTIVITY_BY_ID = gql`
+query activityById ($_id: ID!) {
+  activityById(_id: $_id) {
+    _id
+    itineraryId
+    name
+    timeTo
+    timeFrom
+    location
+    rating
+    date
+  }
+}
+`;

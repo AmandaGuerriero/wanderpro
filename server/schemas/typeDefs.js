@@ -57,7 +57,7 @@ type Mutation {
   addUser(username: String!, email: String!, password: String!): Auth
   updateUser(_id: ID!, username: String): User
   addActivity(itineraryId: String,location: String!, timeFrom: String, timeTo: String, notes:String, name: String, date: String): Itinerary
-  updateActivity(_id: ID!, location: String, rating: Int): Activity
+  updateActivity(_id: ID!, name: String, location: String, timeFrom: String, timeTo: String, date: String, notes: String, rating: Int): Activity
   removeActivity(_id: ID!): Itinerary
 }
 `;

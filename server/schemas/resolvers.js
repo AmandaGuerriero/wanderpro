@@ -37,6 +37,9 @@ const resolvers = {
     activities: async () => {
       return await Activity.find();
     },
+    activityById: async (parent, { _id }) => {
+      return await Activity.findById(_id)
+    },
   },
   Mutation: {
     addItinerary: async (parent, args, context) => {

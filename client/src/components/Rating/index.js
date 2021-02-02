@@ -1,6 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
+// import { UPDATE_ACTIVITY } from "../../utils/mutations"
+// import { QUERY_ACTIVITY_BY_ID } from "../../utils/queries"
+// import { useMutation } from '@apollo/react-hooks';
+// import { useQuery } from '@apollo/react-hooks';
 import Rating from '@material-ui/lab/Rating';
 import StarBorderIcon from '@material-ui/icons/StarBorder';
 import SentimentVeryDissatisfiedIcon from '@material-ui/icons/SentimentVeryDissatisfied';
