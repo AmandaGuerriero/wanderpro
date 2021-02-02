@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import ReactMapGL from 'react-map-gl';
 import './Map.css';
 import mapboxgl from 'mapbox-gl';
 import 'mapbox-gl/dist/mapbox-gl.css';
@@ -9,49 +10,66 @@ import ActivityList from '../ActivityList';
 
 mapboxgl.accessToken = 'pk.eyJ1Ijoiem91c2hpbHUzMSIsImEiOiJja2tnMGxiZmEwOW5lMnVsYTN3OTR6eXg5In0.EExs7dyM_eoTAEdLXzUmVw';
 
-class Map extends Component {
+class Map extends React.Component {
 
+  componentDidUpdate(){
+    this.showRoute();
+  }
   componentDidMount() {
 
+    console.log(this)
+
     // Creates new map instance
-    const map = new mapboxgl.Map({
+    this.map = new mapboxgl.Map({
       container: this.mapWrapper,
       style: 'mapbox://styles/mapbox/streets-v10',
       center: [-73.985664, 40.748514],
       zoom: 12
-    });
+    })
 
     // Creates new directions control instance
-    const directions = new MapboxDirections({
+    this.directions = new MapboxDirections({
       accessToken: mapboxgl.accessToken,
       unit: 'metric',
       profile: 'mapbox/driving',
-    });
+    })
 
     // Integrates directions control with map
-    map.addControl(directions, 'top-left');
-
-    // Need to get user activity location to get auto input location address 
-    // <ActivityList activities={activity.name} location={`${activity.location}'s thoughts...`} />
-    
-    // GET THE DESTINATION LOCATION
-    //directions.setDestination(activity.location);
-
-    // Add geolocate control to the map.
-map.addControl(
-  new mapboxgl.GeolocateControl({
+    this.map.addControl(this.directions, 'top-left');
+     new mapboxgl.GeolocateControl({
   positionOptions: {
   enableHighAccuracy: true
   },
   trackUserLocation: true
-  })
-  );
-  }
+});
+    this.map.on('load', () => {
+       new mapboxgl.GeolocateControl({
+  positionOptions: {
+  enableHighAccuracy: true
+  },
+  trackUserLocation: true
+});
+       this.showRoute()
+    });
+  };
+//
+    showRoute(){
+
+    // const st = this.props.userData.startAddress;
+    // const en = this.props.userData.endAddress;
+    // this.directions.setOrigin(st)
+    this.directions.setDestination(this.props.myLocation)
+  };
+     
+    // <ActivityList activities={activities.id} location={`${this.props.mylocation}'s thoughts...`} />
+    
+    // Add geolocate control to the map.
+
 
   render() {
+    console.log("my location:, ", this.props.myLocation);
     return (
     <div>
-
       <div ref={el => (this.mapWrapper = el)} className="mapWrapper" />
     </div>
     );
