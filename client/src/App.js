@@ -15,10 +15,10 @@ import Nav from "./components/Nav";
 import CreateItinerary from "./components/CreateItinerary/CreateItinerary"
 import CreateActivityContainer from './components/Create-activity/CreateActivityContainer'
 import Summary from "./components/Summary/Summary";
-import Footer from "./components/Footer/Footer";
-import Map from "./components/Map";
-import './App.css';
-import ActivityList from './components/ActivityList';
+import Footer from "./components/Footer/Footer"
+import Map from "./components/Map"
+import './App.css'
+import CreateActivity from "./components/Create-activity/Create-activity";
 
 const client = new ApolloClient({
   request: (operation) => {
@@ -55,7 +55,7 @@ function App() {
   const config = {
     navigation: {
       component: Navigation,
-      location: "after"
+      location: "before"
     }
   }
   return (
@@ -66,16 +66,14 @@ function App() {
         <div>
           <StoreProvider>
               <Nav />
-              <Switch>
-              
-                
+              <Switch>  
                 <Route exact path="/donate" component={Donate} />
                             
                 <Route exact path ='/create'>
                   <Steps config ={config}>
                     <Step exact path='/create' component={CreateItinerary} setLatitude={setLatitude} setLongitude={setLongitude}/>
                     <Step exact path='/activity' component = {CreateActivityContainer} />
-                    <Route exact path="/itinerary/:id" component={ActivityList} />
+                    <Step exact path='/summary' component = {Summary} latitude={latitude} longitude={longitude} />
                   </Steps>
                 </Route>
                 {/* <Route path="/create">
@@ -90,6 +88,8 @@ function App() {
                 <Route exact path="/signup" component={Signup} />
                 <Route exact path="/profile" component={Profile} />
                 <Route exact path="/itinerary/:id" component={Summary} />
+                <Route exact path="/edititinerary/:id" component={CreateItinerary} />
+                <Route exact path="/activity/:id" component={CreateActivityContainer} />
                 <Route exact path="/map" component={Map} />
               </Switch>
               <Footer/>

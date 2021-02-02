@@ -28,15 +28,19 @@
   color: #61dafb;
 }
 
+.card-box {
+  padding:20px;
+  margin: auto;
+}
 .mapWrapper {
 display: block;
 position: relative;
 margin: 0px auto;
-width: 50%;
-height: 40px;
+width: auto !important;
+height: auto ;
 padding: 10px;
-border: none;
-border-radius: 3px;
+border: black;
+border-radius: 20px;
 font-size: 12px;
 text-align: center;
 color: #000;

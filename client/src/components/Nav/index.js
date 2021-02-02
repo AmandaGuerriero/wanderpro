@@ -11,6 +11,21 @@ function Nav() {
       return (
         <ul className="flex-row">
           <li className="mx-1">
+            <a href="/donate">
+              Donate
+            </a>
+          </li>
+          <li className="mx-1">
+            <a href="/create">
+              Create Itinerary
+            </a>
+          </li>
+          <li className="mx-1">
+            <a href="/profile">
+              Profile
+            </a>
+          </li>
+          <li className="mx-1">
             <a href="/" onClick={() => Auth.logout()}>
               Logout
             </a>
@@ -20,6 +35,11 @@ function Nav() {
     } else {
       return (
         <ul className="flex-row">
+          <li className="mx-1">
+            <a href="/donate">
+              Donate
+            </a>
+          </li>
           <li className="mx-1">
             <Link to="/signup">
               Signup

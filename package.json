@@ -1,5 +1,5 @@
 {
-  "name": "mern-shopping",
+  "name": "mern-wanderpro",
   "version": "1.0.0",
   "description": "",
   "main": "server/server.js",
@@ -10,6 +10,10 @@
     "install": "cd server && npm i && cd ../client && npm i",
     "seed": "cd server && npm run seed",
     "heroku-postbuild": "cd client && npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@work.github.com:AmandaGuerriero/wanderpro.git"
   },
   "author": "",
   "license": "ISC",
@@ -22,6 +26,9 @@
     "@fortawesome/react-fontawesome": "^0.1.14",
     "@mapbox/mapbox-gl-directions": "^4.1.0",
     "@mapbox/mapbox-sdk": "^0.12.0",
+    "@material-ui/core": "^4.11.3",
+    "@material-ui/icons": "^4.11.2",
+    "@material-ui/lab": "^4.0.0-alpha.57",
     "@reduxjs/toolkit": "^1.5.0",
     "@stripe/react-stripe-js": "^1.2.1",
     "@stripe/stripe-js": "^1.11.0",
@@ -29,9 +36,8 @@
     "if-env": "^1.0.4",
     "mapbox-gl": "^2.0.1",
     "mapbox-gl-directions": "^3.0.3",
+    "prop-types": "^15.7.2",
     "react-datetime": "^3.0.4",
-    "react-map-gl": "^6.1.1",
-    "react-map-gl-directions": "^1.0.4",
     "react-native-firebase": "^5.6.0",
     "react-native-image-picker": "^3.1.4",
     "react-redux": "^7.2.2",

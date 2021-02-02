@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 import { useQuery } from '@apollo/react-hooks';
 import { QUERY_ITINERARY_BY_ID } from '../../utils/queries';
 import ActivityList from '../ActivityList';
-
+import './index.css'
 
 // import mapboxgl from 'mapbox-gl';
 // import 'mapbox-gl/dist/mapbox-gl.css';
@@ -23,24 +23,47 @@ const Summary = props => {
   if (loading) {
     return <div>Loading...</div>;
   }
-  
-  return (
-    
-    <div>
-        <p>Your Trip: {itinerary.title}</p>
-        <p>Your Itinerary: {itinerary.itineraryId}</p>
-        <p>First day of your trip: {itinerary.dateBegin}</p>
-        <p>Last day of your trip: {itinerary.dateEnd}</p>
-        <p>Location: {itinerary.location}</p>
-        {/* <p>Time starts: {this.props.state.timeFrom}</p>
-        <p>Time ends: {this.props.state.timeTo}</p>
-        <p>Notes: {this.props.state.notes}</p> */}
-        <ActivityList activities={itinerary.activities} />
 
-         {/* <div ref={el => (this.mapWrapper = el)} className="mapWrapper" /> */}
+  return (
+<section>
+    <div className="container-fluid">
+      <div className="row">
+        <div className="col-lg-3">
+          <aside id="leftsidebar" className="sidebar">
+            <ul className="list">
+              <div className="user-info">
+                <div className="flex-row mb-3">
+                  <div className="detail">
+                    <h4>Your Trip: </h4>
+                    <p>{itinerary.title}</p>
+                  </div>
+                </div>
+                <div>
+                  {/* <h5>Your Itinerary: {itinerary.itineraryId}</h5> */}
+                  <div className="detail">
+                    <h4>First day of your trip:</h4>
+                  <p>{itinerary.dateBegin}</p>
+                  </div>
+                  <div className="detail">
+                    <h4>Last day of your trip:</h4>
+                  <p>{itinerary.dateEnd}</p>
+                  </div>
+                  <div className="detail">
+                    <h4>Location:</h4>
+                  <p>{itinerary.location}</p>
+                  </div>
+                </div>
+                <br></br>
+              </div>
+            </ul>
+          </aside>
+        </div>
+      </div>
     </div>
+  <ActivityList activities={itinerary.activities} />
+</section>
   );
 };
- 
+
 
 export default Summary;
