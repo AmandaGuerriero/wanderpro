@@ -1,8 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { ADD_ITINERARY } from "../../utils/mutations"
 import { QUERY_ITINERARIES } from "../../utils/queries"
 import { useMutation } from '@apollo/react-hooks';
 import { geoCoding } from "../../utils/geocoding"
+
+import {useStoreContext} from '../../utils/GlobalState';
+import {UPDATE_ITINERARY } from '../../utils/actions';
 
 import './CreateItinerary.css';
 
