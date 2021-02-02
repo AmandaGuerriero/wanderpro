@@ -1,5 +1,10 @@
 import React, { useState, Fragment } from "react";
 import CreateActivity from './Create-activity'
+import { faTrashAlt, faPlusCircle } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+
+import './Create-activity.css';
+
 const CreateActivityContainer = (props) => {
   const [inputFields, setInputFields] = useState([
     {location:'', date:'', timeFrom:'', timeTo:'', notes:'', itineraryId:''}
@@ -19,28 +24,25 @@ const CreateActivityContainer = (props) => {
 
   return (
     <>
-      <h1>Add Activity</h1>
-        <div className="form-row">
-        <button
-                  className="btn btn-link"
+      <button
+                  className="btn btn-link add-activity-btn"
                   type="button"
                   onClick={() => handleAddFields()}
                 >
-                  Add Activity
+                  <h2><FontAwesomeIcon icon={faPlusCircle}/> Add Activity</h2>
                 </button>
+        <div className="center">
           {inputFields.map((inputField, index) => (
             <Fragment key={`${inputField}~${index}`}>
-              <CreateActivity />
-              <div className="form-group col-sm-2">
-                <button
-                  className="btn btn-link"
-                  type="button"
-                  onClick={() => handleRemoveFields(index)}
-                >
-                  Delete Activity
-                </button>
+              <CreateActivity/>
+              <button
+                className="btn delete-btn"
+                type="button"
+                onClick={() => handleRemoveFields(index)}
+              >
+                <FontAwesomeIcon icon={faTrashAlt}/>
+              </button>
 
-              </div>
             </Fragment>
           ))}
         </div>
