@@ -30,7 +30,7 @@ const ActivityList = ({ activities }) => {
               </div>
               <div className="card-box-note">
                 <p>Your Notes: {activity.notes}</p>
-                <CustomizedRatings />
+                <CustomizedRatings activities={activities} />
               </div>
               <Link to={`/profile`}>
                 <button

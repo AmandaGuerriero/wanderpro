@@ -56,3 +56,18 @@ export const ADD_ACTIVITY = gql`
   }
 `;
 
+// Mutation to Update an activity
+export const UPDATE_ACTIVITY = gql`
+mutation updateActivity($_id: ID!, $name: String, $location: String, $timeFrom: String, $timeTo: String, $date: String, $notes: String, $rating: Int) {
+  updateActivity(_id: $_id, name: $name, location: $location, timeFrom: $timeFrom, timeTo: $timeTo, date: $date, notes: $notes, rating: $rating) {
+    _id
+    timeTo
+    timeFrom
+    date
+    notes
+    rating
+    itineraryId
+  }
+}
+`;
+
