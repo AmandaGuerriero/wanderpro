@@ -56,3 +56,7 @@ body {
   color:rgb(49, 115, 18);
   font-weight: 700;
 }
+
+.itcontainer{
+  padding:20px;
+}
