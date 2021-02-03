@@ -67,29 +67,56 @@ const CustomizedRatings = (props) => {
     4.5: 'Excellent',
     5: 'Excellent+',
   }
+  // const = useState({ rating: $rating })
+  const [updateActivity, { error }] = useMutation(UPDATE_ACTIVITY);
+  const itineraryId = localStorage.getItem("itineraryId");
+  console.log(itineraryId)
+
+  const handleFormSubmit = async event => {
+    event.preventDefault();
+    try {
+      await updateActivity({
+        variables: {
+          rating: props.rating,
+        }
+      })
+      console.log(updateActivity)
+    }
+    catch (e) {
+      console.log(e);
+    }
+  };
+
+
   return (
     <div>
-      <Box component="fieldset" mb={3} borderColor="transparent">
-        <Typography component="legend">How do you like this activity?</Typography>
-        <Rating
-          name="simple-controlled"
-          value={value}
-          onChange={(event, newValue) => {
-            setValue(newValue);
-            console.log("newValue", newValue);
-            //update itinerary using newValue as a parameter, 
-            // updateActivity({
-            //   variables: {
-            //     rating: props.box
-            //   }
-            // })
-            // updateItinerary(newValue, props.id)
+      <form onSubmit={handleFormSubmit}>
 
-            //or just call update itinearay using state
-            //updateItinerary()
-          }}
-        />
-      </Box>
+        <Box component="fieldset" mb={3} borderColor="transparent">
+          <Typography component="legend">How do you like this activity?</Typography>
+          <Rating
+            name="simple-controlled"
+            value={value}
+            onChange={(event, newValue) => {
+              setValue(newValue);
+              console.log("newValue", newValue);
+              //update itinerary using newValue as a parameter, 
+              // updateActivity({
+              //   variables: {
+              //     rating: props.box
+              //   }
+              // })
+              // updateItinerary(newValue, props.id)
+
+              //or just call update itinearay using state
+              //updateItinerary()
+            }}
+          />
+          {/* <button className="btn rating-submit left">
+              Save rating
+            </button> */}
+        </Box>
+      </form>
     </div>
   );
 }

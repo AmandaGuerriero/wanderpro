@@ -121,6 +121,11 @@ transform: translate(40%, 0%);
   color:rgb(22, 110, 243)!important;
 }
 
+.rating-submit{
+    border-radius: 15px;
+    /* transform: translate(50%, 0%); */
+}
+
 @media screen and (max-width: 775px) {
   .signup-container,
   .login-container {
