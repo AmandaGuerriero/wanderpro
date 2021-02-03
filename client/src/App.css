@@ -16,6 +16,33 @@ body {
   font-family: 'Montserrat', sans-serif;
 }
 
+.homepage-jumbo {
+  background-size: cover;
+  background-position: 80%;
+  height: 60vh;
+  background-image: linear-gradient(180deg, rgba(36, 186, 236, .4) 0%, rgba(226, 204, 170, .7) 30%, rgba(36, 186, 236, .4) 110%),url('./pages/public/homePage.JPG')!important;
+}
+
+.homepage-signup {
+  border: none;
+  border-radius: 15px;
+  margin-left: 10vw;
+  margin-top: 10vh;
+  padding: 10px;
+  cursor: pointer;
+  transition: .8s;
+  color: var(--light-blue);
+}
+
+.homepage-signup:hover {
+  background-color: var(--light-blue);
+  color: var(--dark-blue);
+}
+
+.homepage-signup:focus {
+  outline: none;
+}
+
 .btn-container {
   margin-top: 1em;
 }
