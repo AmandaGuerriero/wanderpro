@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 const Home = () => {
   const { loading, data } = useQuery(QUERY_ACTIVITIES);
   const activities = data?.activities || [];
-
+  console.log(activities)
   return (
       <div>
         <h1>HOME</h1>
