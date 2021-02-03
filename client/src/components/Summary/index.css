@@ -84,3 +84,26 @@ body {
   font-weight: 900;
   color:rgb(22, 110, 243);
 }
+
+.title-text{
+  font-weight: 900;
+  color:rgb(22, 110, 243);
+  margin:2px;
+}
+
+.ui button{
+  color:rgb(22, 110, 243) !important;
+  border-radius: 10px;
+  border:solid;
+}
+
+.content-box-profile {
+  background-color:lightblue !important;
+  padding:10px;
+  margin: auto;
+  size:50%;
+  border-radius: 10px;
+  border:solid;
+  border-color: lightblue!important;
+
+}
