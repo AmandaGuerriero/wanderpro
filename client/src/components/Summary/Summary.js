@@ -4,8 +4,9 @@ import { useQuery } from '@apollo/react-hooks';
 import { QUERY_ITINERARY_BY_ID } from '../../utils/queries';
 import ActivityList from '../ActivityList';
 import './index.css'
-// import { LogoNodejs } from 'react-ionicons'
-
+import { Image, List } from 'semantic-ui-react'
+import { FaMapMarkerAlt} from '@fortawesome/free-brands-svg-icons';
+// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const Summary = props => {
 
@@ -19,49 +20,37 @@ const Summary = props => {
   }
   console.log(itinerary)
   return (
-<section>
-    <div className="container-fluid">
-      <div className="row">
-        <div className="col-lg-3">
-          <aside id="leftsidebar" className="sidebar">
-            <ul className="list">
-              <div className="user-info">
-                <div className="flex-row mb-3">
-                  <div className="detail">
-                  <ion-icon name="today-outline"></ion-icon>
-                    <p>{itinerary.title}</p>
-                  </div>
-                  <div className="detail">
-                  <ion-icon name="today-outline"></ion-icon>
-                  <p>{itinerary.description}</p>
-                  </div>
-                </div>
-                <div>
-                  {/* <h5>Your Itinerary: {itinerary.itineraryId}</h5> */}
-                  <div className="detail">
-                  <ion-icon name="today-outline"></ion-icon>
-                  <p>{itinerary.dateBegin}</p>
-                  </div>
-                  <div className="detail">
-                  <ion-icon name="today-outline"></ion-icon>
-                  <p>{itinerary.dateEnd}</p>
-                  </div>
-                  <div className="detail">
-                  <ion-icon name="today-outline"></ion-icon>
-                  <p>{itinerary.location}</p>
-                  </div>
-                </div>
-                <br></br>
-              </div>
-            </ul>
-          </aside>
-        </div>
-      </div>
+    <div>
+      <List celled className='itcontainer'>
+        <List.Item>
+          <Image avatar src='https://react.semantic-ui.com/images/avatar/small/helen.jpg' />
+          <List.Content>
+            <List.Header>Title</List.Header>
+            {itinerary.title}
+      </List.Content>
+        </List.Item>
+        <List.Item>
+        {/* <FontAwesomeIcon icon={faMapMarkerAlt}/> */}
+        <i class="fas fa-map-marker-alt"></i>
+          <List.Content>
+            <List.Header>Date</List.Header>
+            {itinerary.dateBegin}
+            - {itinerary.dateEnd}
+      </List.Content>
+        </List.Item>
+        <List.Item>
+          <Image avatar src='https://react.semantic-ui.com/images/avatar/small/daniel.jpg' />
+          <List.Content>
+            <List.Header>Descripton</List.Header>
+            {itinerary.location}
+      </List.Content>
+        </List.Item>
+        <ActivityList activities={itinerary.activities} />
+      </List>
+      
     </div>
-  <ActivityList activities={itinerary.activities} />
-</section>
+
   );
 };
-
 
 export default Summary;
