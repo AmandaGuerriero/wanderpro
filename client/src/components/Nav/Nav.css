@@ -67,7 +67,7 @@ nav li {
 }
 
 .logo-img:hover {
-    background-color: rgba(226, 204, 170, .8);
+  background-color: rgba(226, 204, 170, .8);
 }
 
 .flex-row {
@@ -128,3 +128,36 @@ nav li {
     padding-bottom: var(--spacing-two);
   }
   
+  @media screen and (max-width: 775px) {
+    .logo-img {
+      transform: translate(50%,0%);
+      margin-bottom: var(--spacing-two);
+    }
+
+    header {
+      height: auto;
+      align-items: center;
+    }
+
+    header nav {
+      font-size: 1.6em;
+      transform: translate(5%, 0%);
+    }
+
+    .logo-img:hover {
+      background-color: rgba(0, 0, 0, .6);
+    }
+  }
+
+  @media screen and (max-width: 525px) {
+    .logo-img {
+      height: 1em;
+      transform: translate(3%,0%);
+      margin-bottom: var(--spacing-two);
+    }
+
+    header nav {
+      transform: translate(0%, 0%);
+      margin-left: var(--spacing-five);
+    }
+  }

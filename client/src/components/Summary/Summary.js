@@ -18,7 +18,7 @@ const Summary = props => {
   if (loading) {
     return <div>Loading...</div>;
   }
-console.log(itinerary.dateEnd)
+  console.log(itinerary)
   return (
     <div>
       <List celled className='itcontainer'>
