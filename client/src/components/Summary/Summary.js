@@ -3,15 +3,10 @@ import { useParams } from 'react-router-dom';
 import { useQuery } from '@apollo/react-hooks';
 import { QUERY_ITINERARY_BY_ID } from '../../utils/queries';
 import ActivityList from '../ActivityList';
-
-
-// import mapboxgl from 'mapbox-gl';
-// import 'mapbox-gl/dist/mapbox-gl.css';
-// import MapboxDirections from '@mapbox/mapbox-gl-directions/dist/mapbox-gl-directions'
-// import '@mapbox/mapbox-gl-directions/dist/mapbox-gl-directions.css'
-
-// mapboxgl.accessToken = 'pk.eyJ1Ijoiem91c2hpbHUzMSIsImEiOiJja2tnMGxiZmEwOW5lMnVsYTN3OTR6eXg5In0.EExs7dyM_eoTAEdLXzUmVw';
-
+import './index.css'
+import { Image, List } from 'semantic-ui-react'
+import { FaMapMarkerAlt} from '@fortawesome/free-brands-svg-icons';
+// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const Summary = props => {
 
@@ -23,24 +18,39 @@ const Summary = props => {
   if (loading) {
     return <div>Loading...</div>;
   }
-  
+  console.log(itinerary)
   return (
-    
     <div>
-        <p>Your Trip: {itinerary.title}</p>
-        <p>Your Itinerary: {itinerary.itineraryId}</p>
-        <p>First day of your trip: {itinerary.dateBegin}</p>
-        <p>Last day of your trip: {itinerary.dateEnd}</p>
-        <p>Location: {itinerary.location}</p>
-        {/* <p>Time starts: {this.props.state.timeFrom}</p>
-        <p>Time ends: {this.props.state.timeTo}</p>
-        <p>Notes: {this.props.state.notes}</p> */}
+      <List celled className='itcontainer'>
+        <List.Item>
+          <Image avatar src='https://react.semantic-ui.com/images/avatar/small/helen.jpg' />
+          <List.Content>
+            <List.Header>Title</List.Header>
+            {itinerary.title}
+      </List.Content>
+        </List.Item>
+        <List.Item>
+        {/* <FontAwesomeIcon icon={faMapMarkerAlt}/> */}
+        <i class="fas fa-map-marker-alt"></i>
+          <List.Content>
+            <List.Header>Date</List.Header>
+            {itinerary.dateBegin}
+            - {itinerary.dateEnd}
+      </List.Content>
+        </List.Item>
+        <List.Item>
+          <Image avatar src='https://react.semantic-ui.com/images/avatar/small/daniel.jpg' />
+          <List.Content>
+            <List.Header>Descripton</List.Header>
+            {itinerary.location}
+      </List.Content>
+        </List.Item>
         <ActivityList activities={itinerary.activities} />
-
-         {/* <div ref={el => (this.mapWrapper = el)} className="mapWrapper" /> */}
+      </List>
+      
     </div>
+
   );
 };
- 
 
 export default Summary;

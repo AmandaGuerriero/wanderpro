@@ -60,7 +60,7 @@ const CreateItinerary = (props) => {
           Create Your Itinerary
     </h1>
       <div className='c-create-itinerary-form'>
-      <form onSubmit={handleFormSubmit}>
+      <form className="itinerary-form" onSubmit={handleFormSubmit}>
         <ul>
               <div className='form-group'>
                 <input 
@@ -131,19 +131,6 @@ const CreateItinerary = (props) => {
                 <div className='icon-spirit icon__photo'></div>
               </div>
             </div>
-{/* 
-              <div className='form-group flex'>
-                <div className='icon-container'>
-                  <div className='icon-spirit icon__photo'></div>
-                </div>
-                <div className='input-container'>
-                  <input 
-                  type='file' 
-                  name='image_url' 
-                  placeholder='+ Photo'>
-                </input>
-              </div>
-              </div> */}
         </ul>
         <button 
                 className='btn'

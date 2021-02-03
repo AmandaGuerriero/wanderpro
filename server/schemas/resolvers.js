@@ -37,6 +37,9 @@ const resolvers = {
     activities: async () => {
       return await Activity.find();
     },
+    activityById: async (parent, { _id }) => {
+      return await Activity.findById(_id)
+    },
   },
   Mutation: {
     addItinerary: async (parent, args, context) => {
@@ -45,19 +48,24 @@ const resolvers = {
         const user = await User.findById(context.user._id)
         user.itineraries.push(itinerary)
         await user.save()
-        return itinerary;
+        return user;
       }
 
       throw new AuthenticationError('Not logged in');
     }, 
-    updateItinerary: async (parent, args) => {
-        return await Itinerary.findByIdAndUpdate(Itinerary._id, args, { new: true });
+    updateItinerary: async (parent, { _id, title, location, dateBegin, dateEnd, description}) => {
+      const newTitle = title
+      const newLocation = location
+      const newDateBegin = dateBegin
+      const newDateEnd = dateEnd
+      const newDescription = description
+      return await Itinerary.findByIdAndUpdate(_id, {title: newTitle, location: newLocation, dateBegin: newDateBegin, dateEnd: newDateEnd, description: newDescription}, { new: true });
     },
     removeItinerary: async (parent, { _id }, context) => {
       if (context.user) {
         const updatedUser = await User.findOneAndUpdate(
           { _id: context.user._id },
-          { $pull: { savedItineraries: { _id } } },
+          { $pull: { itineraries: { _id } } },
           { new: true }
         );
 
@@ -66,6 +74,9 @@ const resolvers = {
 
       throw new AuthenticationError('You need to be logged in!');
     },
+
+
+     
     addUser: async (parent, args) => {
       const user = await User.create(args);
       const token = signToken(user);
@@ -108,26 +119,36 @@ const resolvers = {
       await itinerary.save()
     },
     
-    updateActivity: async (parent, { _id, name }) => {
+    updateActivity: async (parent, { _id, name, location, timeFrom, timeTo, notes, date, rating }) => {
       const newName = name
-      return await Activity.findByIdAndUpdate(_id, {location: newName}, { new: true });
+      const newLocation = location
+      const newTimeFrom = timeFrom
+      const newTimeTo = timeTo
+      const newNotes = notes
+      const newDate = date
+      const newRating = rating
+      return await Activity.findByIdAndUpdate(_id, {name: newName, location: newLocation, timeFrom: newTimeFrom, timeTo: newTimeTo, date: newDate, notes: newNotes, rating: newRating}, { new: true });
     },
 
-    removeActivity: async (parent, { _id }, context) => {
+    removeActivity: async (parent, { _id,itineraryId },context) => {
       if (context.user) {
+           
         const updatedItinerary = await Itinerary.findOneAndUpdate(
-          { _id: context.user._id },
-          { $pull: { savedActivities: { _id } } },
+          { _id:  itineraryId  },
+          { $pull: { activities: { _id } } },
           { new: true }
         );
 
         return updatedItinerary;
       }
-
       throw new AuthenticationError('You need to be logged in!');
     },
 
 
+      
+
+
+    
     login: async (parent, { email, password }) => {
       const user = await User.findOne({ email });
 

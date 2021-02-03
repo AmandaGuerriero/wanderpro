@@ -1,0 +1,62 @@
+body {
+  font-family: 'Montserrat', sans-serif;
+}
+
+.btn-container {
+  margin-top: 1em;
+}
+
+.profile{
+  background: lightblue;	
+  padding: 0px 0px;
+}
+.profile .container-fluid{
+  padding: 0px !important;
+  margin: 0px !important;  
+  color:lightblue;
+}
+
+.sidebar .list{
+  padding: 5px 5px 0px 5px;
+  list-style: none;
+  margin: 0 0px;
+  overflow: hidden; 
+  width: auto;
+ }
+ sidebar .user-info {
+  position: relative;
+  border-bottom: 1px solid lightblue;
+  text-align: center;
+  padding-top:10px;
+  padding-bottom: 15px;
+  margin-bottom: 20px;
+ }
+ .sidebar .user-info a {
+  display: inline-block !important;
+ }
+ .sidebar .user-info .image img {
+  width: 180px;
+  vertical-align: bottom !important;
+  border: 3px solid lightblue;
+  box-shadow: 0px 5px 25px 0px rgba(0,0,0,0.2);
+ }
+
+ .sidebar .user-info .detail{
+  margin-bottom: 0px;
+}
+.sidebar .user-info .detail h4 {
+ font-size: 20px;
+ color:rgb(49, 115, 18) !important;
+ font-weight: 700;
+ line-height: 0;
+ padding-top:10px;
+}
+
+.trip-text {
+  color:rgb(49, 115, 18);
+  font-weight: 700;
+}
+
+.itcontainer{
+  padding:20px;
+}
