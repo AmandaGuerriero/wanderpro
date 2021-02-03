@@ -70,7 +70,7 @@ const CustomizedRatings = (props) => {
   return (
     <div>
       <Box component="fieldset" mb={3} borderColor="transparent">
-        <Typography component="legend">Controlled</Typography>
+        <Typography component="legend">How do you like the activity?</Typography>
         <Rating
           name="simple-controlled"
           value={value}

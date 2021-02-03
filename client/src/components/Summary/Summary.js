@@ -5,8 +5,11 @@ import { QUERY_ITINERARY_BY_ID } from '../../utils/queries';
 import ActivityList from '../ActivityList';
 import './index.css'
 import { Image, List } from 'semantic-ui-react'
-import { FaMapMarkerAlt} from '@fortawesome/free-brands-svg-icons';
-// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faMapMarker } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faGlobeAmericas } from '@fortawesome/free-solid-svg-icons';
+import { faCalendar } from '@fortawesome/free-solid-svg-icons';
+import { faComment } from '@fortawesome/free-solid-svg-icons';
 
 const Summary = props => {
 
@@ -18,36 +21,44 @@ const Summary = props => {
   if (loading) {
     return <div>Loading...</div>;
   }
-console.log(itinerary.dateEnd)
+  console.log(itinerary)
   return (
     <div>
       <List celled className='itcontainer'>
-        <List.Item>
-          <Image avatar src='https://react.semantic-ui.com/images/avatar/small/helen.jpg' />
-          <List.Content>
-            <List.Header>Title</List.Header>
+        <List.Item className="title-box">
+          <FontAwesomeIcon icon={faGlobeAmericas} />
+          <List.Content className='content-box'>
+            <List.Header className='header-box'>Title</List.Header>
             {itinerary.title}
-      </List.Content>
+          </List.Content>
         </List.Item>
-        <List.Item>
-        {/* <FontAwesomeIcon icon={faMapMarkerAlt}/> */}
-        <i class="fas fa-map-marker-alt"></i>
-          <List.Content>
-            <List.Header>Date</List.Header>
-            {itinerary.dateBegin}
-            - {itinerary.dateEnd}
-      </List.Content>
-        </List.Item>
-        <List.Item>
-          <Image avatar src='https://react.semantic-ui.com/images/avatar/small/daniel.jpg' />
-          <List.Content>
-            <List.Header>Descripton</List.Header>
+
+        <List.Item className="title-box">
+          <FontAwesomeIcon icon={faMapMarker} />
+          <List.Content className='content-box'>
+            <List.Header className='header-box'>Location</List.Header>
             {itinerary.location}
-      </List.Content>
+          </List.Content>
+        </List.Item>
+        <List.Item className="title-box">
+          <FontAwesomeIcon icon={faCalendar} />
+          <i class="fas fa-map-marker-alt"></i>
+          <List.Content className='content-box'>
+            <List.Header className='header-box'><b>Date</b></List.Header>
+            {itinerary.dateBegin}
+             - {itinerary.dateEnd}
+          </List.Content>
+        </List.Item>
+        <List.Item className="title-box">
+          <FontAwesomeIcon icon={faComment} />
+          <List.Content className='content-box'>
+            <List.Header className='header-box'>Descripton</List.Header>
+            {itinerary.location}
+          </List.Content>
         </List.Item>
         <ActivityList activities={itinerary.activities} />
       </List>
-      
+
     </div>
 
   );
