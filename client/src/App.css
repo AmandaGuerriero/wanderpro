@@ -47,6 +47,11 @@ body {
   border: 2px solid var(--dark-blue);
 }
 
+.next-btn:focus,
+.previous-btn:focus {
+  outline: none;
+}
+
 .mapWrapper {
   width: 100vw;
   height: 100vh;
@@ -112,4 +117,9 @@ transform: translate(40%, 0%);
   transform: translate(50%, 0%);
 }
 
-/* Login Styling */
+@media screen and (max-width: 775px) {
+  .signup-container,
+  .login-container {
+    width: 80vw;
+  }
+}
