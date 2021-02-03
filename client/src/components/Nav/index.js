@@ -1,5 +1,5 @@
 import React from "react";
-import { faCompass } from '@fortawesome/free-solid-svg-icons';
+import { faCompass} from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Auth from "../../utils/auth";
 import { Link } from "react-router-dom";
@@ -9,7 +9,7 @@ function Nav() {
   function showNavigation() {
     if (Auth.loggedIn()) {
       return (
-        <ul className="flex-row">
+        <ul className="flex-row logged-in">
           <li className="mx-1">
             <a href="/donate">
               Donate
@@ -34,7 +34,7 @@ function Nav() {
       );
     } else {
       return (
-        <ul className="flex-row">
+        <ul className="flex-row logged-out">
           <li className="mx-1">
             <a href="/donate">
               Donate

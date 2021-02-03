@@ -108,7 +108,6 @@ const CreateActivity = (props) => {
         <button className="btn activity-submit">
           Submit
         </button>
-        <Link to={`/itinerary/${itineraryId}`}><button>View Full Itinerary</button></Link>
       </form>
     </div>
     </section>

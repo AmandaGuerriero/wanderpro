@@ -133,7 +133,7 @@ const CreateItinerary = (props) => {
             </div>
         </ul>
         <button 
-                className='btn'
+                className='btn itinerary-submit'
                 onClick={handleFormSubmit}
             >
               Submit

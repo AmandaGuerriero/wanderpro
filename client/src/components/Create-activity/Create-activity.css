@@ -13,24 +13,34 @@
 
  .create-activity-form {
    display: flex;
-   position: relative;
    margin-top: var(--spacing-five);
-   width: 30vw;
-   border: 3px var(--light-green) solid;
+   margin-bottom: var(--spacing-five);
+   margin-left: 25vw;
+   width: 60vw;
    border-radius: 15px;
-   transform: translate(120%, -20%);
-   background-image: linear-gradient(200deg, rgba(22, 110, 243, .8)15%, rgba(226, 204, 170, 1)45%, rgba(49, 115, 18, .6)95%)
+   background-image: linear-gradient(180deg, rgba(22, 110, 243, .8)15%, rgba(6, 186, 236, .7)65%, rgba(49, 115, 18, .6)95%)
  }
 
- .activity-form {
-   transform: translate(20%, -0%);
+ .activity-form h3 {
    padding: 40px;
+   margin-left: 25vw;
+}
+
+ .activity-form input,
+ .activity-form textarea {
+    width: 35vw;
+    margin-left: 12.5vw;
+ }
+
+ .activity-form button {
+    margin-bottom: var(--spacing-two);
+    margin-left: 25vw;
  }
 
  .activity-text {
    width: 15em;
    height: 5em;
-   background-color: #F2F2F2;
+   background-color: #f2f2f2;
    border:none;
    border-radius:3px;
    margin-top:3px;
@@ -56,18 +66,30 @@
 }
 
 .delete-btn {
-   height: 5vh;
+   position: absolute;
+   z-index: 9999;
+   height: 2em;
    width: auto;
    font-size: 1.5em;
-   transform: translate(1020%, -1500%);
+   margin-left: 27vw;
    color: var(--dark-green);
 }
 
 .add-activity-btn {
-   transform: translate(300%, -150%);
    width: fit-content;
    text-decoration: none;
    color: var(--dark-blue);
+}
+
+.full-itinerary-btn {
+   width: fit-content;
+   margin-left: 8vw;
+   background-color: white;
+   color: var(--light-blue);
+}
+
+.full-itinerary-btn:hover {
+   background-color: var(--dark-blue);
 }
 
 .add-activity-btn:hover {
@@ -75,11 +97,108 @@
    color: var(--dark-blue);
 }
 
-/* .center {
-   display: flex;
-   justify-content: 'center';
-   align-items: 'center';
-} */
+.activity-buttons {
+   margin-left: 40vw;
+}
+
+@media screen and (max-width: 1285px) {
+   .activity-buttons {
+      margin-left: 27vw;
+   }
+
+   .create-activity-form {
+      width: 80vw;
+      transform: translate(0%, 0%);
+      margin-left: 11vw;
+   }
+
+   .activity-form h3 {
+      margin-left: 28vw;
+   }
+
+   .activity-form button {
+      margin-left: 30vw;
+   }
+
+   .activity-form input,
+   .activity-form textarea {
+     width: 50vw;
+     margin-left: 15vw;
+   }
+
+   .delete-btn {
+      margin-left: 13vw;
+   }
+}
+
+@media screen and (max-width: 775px) {
+   .activity-buttons {
+      display: flex;
+      width: fit-content;
+      margin-left: 20vw;
+   }
+
+   .activity-buttons h2 {
+      font-size: 1.5em;
+   }
+
+   .create-activity-form {
+      width: 80vw;
+      transform: translate(0%, 0%);
+      margin-left: 10vw;
+      margin-bottom: var(--spacing-five);
+   }
+
+   .create-activity-form h3 {
+      margin-left: 22vw;
+   }
+
+   .activity-form {
+      margin-left: 2vw;
+      width: 70vw;
+   }
+
+   .activity-form input,
+   .activity-form textarea {
+      width: 65vw;
+      transform: translate(0%, 0%);
+      margin-left: 5vw;
+   }
+
+   .activity-form button {
+      margin-left: 23vw;
+   }
+
+   .delete-btn {
+      z-index: 9999;
+      margin-left: 14vw;
+   }
+
+   .add-activity-btn:hover,
+   .full-itinerary-btn:hover {
+      background-color: white;
+   }
+
+}
+
+@media screen and (max-width: 525px) {
+   .create-activity-form button {
+      margin-left: 13vw;
+   }
+
+   .full-itinerary-btn {
+      width: fit-content;
+   }
+
+   .add-activity-btn {
+      width: fit-content;
+   }
+
+   .activity-buttons h2 {
+      font-size: 1em;
+      margin-left: -10vw;
+   }
+}
 
 
 

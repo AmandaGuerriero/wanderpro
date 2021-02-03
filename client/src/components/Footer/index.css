@@ -13,11 +13,11 @@
 
 /* Footer Styling */
 footer {
+    clear: both;
+    height: 40px;
     bottom: 0;
-    position: absolute;
-    padding: 10px 0;
-    padding-top: 20px;
-    margin-top: 20px;
+    position: fixed;
+    margin-top: 10vh;
     width: 100vw;
     background-image: linear-gradient(145deg, rgba(22, 110, 243, .5)15%, rgba(36, 186, 236, 1)45%, rgba(22, 110, 243, .6)85%)
 }
@@ -34,7 +34,7 @@ footer ul {
 .footer-link {
     color:var(--dark-blue);
     text-decoration: none;
-    font-size: 2em;
+    font-size: 1.5em;
 }
 
 .footer-link:hover {
@@ -46,19 +46,17 @@ footer ul {
 
 @media screen and (max-width: 775px) {
     .footer-item {
-        margin-left: 7%;
+        margin-left: 10%;
     }
 }
 
 @media screen and (max-width: 525px) {
-    footer {
-        height: 7vh;
-    }
 
     .footer-item {
         margin-bottom: 10px;
         justify-content: space-around;
         bottom: 0;
+        margin-left: 6%;
     }
 
     .footer-link {
