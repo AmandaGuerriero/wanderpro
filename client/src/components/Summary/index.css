@@ -60,3 +60,27 @@ body {
 .itcontainer{
   padding:20px;
 }
+
+.title-box
+{
+  background-color:lightblue;
+  border:10px;
+  border-radius: 10px;
+  border-color:black;
+  
+}
+
+.content-box{
+  background-color:rgb(238, 238, 238);
+  padding:10px;
+  margin: auto;
+  size:50%;
+  border-radius: 10px;
+  border:solid;
+  border-color: lightblue!important;
+}
+
+.header-box{
+  font-weight: 900;
+  color:rgb(22, 110, 243);
+}
