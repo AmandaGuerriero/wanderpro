@@ -92,7 +92,7 @@ function App() {
                 <Route exact path="/activity/:id" component={CreateActivityContainer} />
                 <Route exact path="/map" component={Map} />
               </Switch>
-              {/* <Footer/> */}
+              <Footer/>
             </StoreProvider>
         </div>
       </StoreProvider>
