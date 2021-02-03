@@ -11,6 +11,7 @@ const CreateActivity = (props) => {
   const [formState, setFormState] = useState({ location: '', timeFrom: '', timeTo: '', notes: '', itineraryId: ''})
   const [addActivity, { error }] = useMutation(ADD_ACTIVITY);
   const itineraryId = localStorage.getItem("itineraryId");
+  console.log(itineraryId)
   
   const handleFormSubmit = async event => {
     event.preventDefault();
