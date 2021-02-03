@@ -17,7 +17,7 @@ const Summary = props => {
   if (loading) {
     return <div>Loading...</div>;
   }
-
+  console.log(itinerary)
   return (
 <section>
     <div className="container-fluid">
