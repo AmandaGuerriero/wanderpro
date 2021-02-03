@@ -71,15 +71,14 @@ body {
 .login-container {
   width: 40vw;
   margin-top: var(--spacing-five);
-  border: 3px var(--light-green) solid;
   border-radius: 15px;
-  transform: translate(0%, 20%);
-  background-image: linear-gradient(200deg, rgba(22, 110, 243, .8)15%, rgba(226, 204, 170, 1)45%, rgba(49, 115, 18, .6)95%);
+  margin-top: 10vh !important;
+  background-image: linear-gradient(180deg, rgba(22, 110, 243, .8)15%, rgba(6, 186, 236, .7)65%, rgba(49, 115, 18, .6)95%)
 }
 
 .login-link,
 .signup-link {
-  margin-top: var(--spacing-two);
+  margin-top: var(--spacing-five) !important;
 }
 
 .login-link a,
@@ -91,17 +90,18 @@ body {
 .login-link a:hover,
 .signup-link a:hover {
   text-decoration: none;
-  color: var(--dark-blue);
+  color: var(--light-green);
 }
 
 .signup-header,
 .login-header {
-transform: translate(40%, 0%);
+  margin-left: 18vw;
 }
 
 .signup-form,
 .login-form {
-  transform: translate(25%, 0%);
+  margin-top: 7vh;
+  margin-left: 15vw;
 }
 
 .form-div label {
@@ -114,7 +114,21 @@ transform: translate(40%, 0%);
 
 .signup-btn,
 .login-btn {
-  transform: translate(50%, 0%);
+  margin-bottom: var(--spacing-five);
+  margin-left: 2vw;
+}
+
+@media screen and (max-width: 1285px) {
+  .login-form,
+  .signup-form {
+    margin-left: 12vw;
+  }
+
+  .signup-header,
+  .login-header {
+    margin-top: 7vh;
+    margin-left: 15vw;
+  }
 }
 
 .profile-card-box {
@@ -126,4 +140,44 @@ transform: translate(40%, 0%);
   .login-container {
     width: 80vw;
   }
+
+  .login-form,
+  .signup-form {
+    margin-left: 25vw;
+  }
+
+  .signup-header,
+  .login-header {
+    margin-top: 7vh;
+    margin-left: 32vw;
+  }
+
+  .signup-btn,
+  .login-btn {
+  margin-bottom: 10vw;
+  margin-left: 6vw;
 }
+}
+
+@media screen and (max-width: 525px) {
+
+  .login-form,
+  .signup-form {
+    margin-top: 0vh;
+    margin-left: 10vw;
+    margin-bottom: 10vh;
+  }
+
+  .signup-header,
+  .login-header {
+    margin-top: 7vh;
+    margin-left: 25vw;
+  }
+
+  .signup-btn,
+  .login-btn {
+  margin-bottom: 10vw;
+  margin-left: 13vw;
+}
+}
+
