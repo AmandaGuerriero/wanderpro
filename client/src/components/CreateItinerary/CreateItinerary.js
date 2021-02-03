@@ -125,16 +125,16 @@ const CreateItinerary = (props) => {
                 // value={state.description}
                 onChange={handleChange}/>
             </div>
-
-              <div className='form-group flex'>
-                <div className='icon-container'>
-                  <div className='icon-spirit icon__photo'></div>
-                </div>
+            <div className='form-group flex'>
+              <div className='icon-container'>
+                <div className='icon-spirit icon__photo'></div>
               </div>
-            </ul>
-            <button
-              className='btn'
-              onClick={handleFormSubmit}
+            </div>
+        </ul>
+        <button 
+                className='btn itinerary-submit'
+                onClick={handleFormSubmit}
+
             >
               Submit
             </button>
