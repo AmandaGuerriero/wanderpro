@@ -56,25 +56,14 @@ mutation updateItinerary ($_id: ID!, $title: String, $description: String, $loca
 
 // Mutation to add an activity
 export const ADD_ACTIVITY = gql`
-mutation removeActivity($_id: ID!, $itineraryId: String) {
-  removeActivity(_id: $_id, itineraryId: $itineraryId) {
+mutation addActivity($itineraryId: String, $name: String, $location: String!, $timeFrom: String, $timeTo: String, $notes: String, $date: String) {
+  addActivity(itineraryId: $itineraryId, location: $location, timeFrom: $timeFrom, timeTo: $timeTo, notes: $notes, name: $name, date: $date ) {
     _id
     title
-    description
-    location
-    dateBegin
-    dateEnd
-    latitude
-    longitude
-    activityCount
     activities {
       _id
-      itineraryId
       name
-      date
       location
-      timeFrom
-      timeTo
       notes
     }
   }
