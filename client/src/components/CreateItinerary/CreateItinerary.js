@@ -60,7 +60,7 @@ const CreateItinerary = (props) => {
           Create Your Itinerary
     </h1>
       <div className='c-create-itinerary-form'>
-      <form onSubmit={handleFormSubmit}>
+      <form className="itinerary-form" onSubmit={handleFormSubmit}>
         <ul>
               <div className='form-group'>
                 <input 
