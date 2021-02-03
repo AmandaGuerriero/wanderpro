@@ -70,7 +70,7 @@ query ($_id: ID!) {
     description
     location
     dateBegin
-    dateBegin
+    dateEnd
     activityCount
     activities {
       _id

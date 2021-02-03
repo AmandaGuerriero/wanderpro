@@ -21,15 +21,19 @@
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-  color: white;
+  color: lightgrey;
 }
 
 .App-link {
   color: #61dafb;
 }
 
+.card-body {
+  background-color:rgb(230, 230, 230);
+}
+
 .card-box {
-  padding:20px;
+  padding:auto;
   margin: auto;
 }
 .mapWrapper {
@@ -44,7 +48,7 @@ border-radius: 20px;
 font-size: 12px;
 text-align: center;
 color: #000;
-background: #ee8a65;
+background: lightgrey;
 }
 
 @keyframes App-logo-spin {

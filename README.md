@@ -5,6 +5,7 @@
 ## Description
 
 ## Deployed Application
+https://wanderpro.herokuapp.com/
 
 ## Screenshots
 ### Deskop
@@ -32,7 +33,7 @@
 * Node JS
 * IndexedDB
 * React JS
-* More
+* MapBox
 
 ## Usage
 

@@ -4,8 +4,12 @@ import { useQuery } from '@apollo/react-hooks';
 import { QUERY_ITINERARY_BY_ID } from '../../utils/queries';
 import ActivityList from '../ActivityList';
 import './index.css'
-// import { LogoNodejs } from 'react-ionicons'
-
+import { Image, List } from 'semantic-ui-react'
+import { faMapMarker } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faGlobeAmericas } from '@fortawesome/free-solid-svg-icons';
+import { faCalendar } from '@fortawesome/free-solid-svg-icons';
+import { faComment } from '@fortawesome/free-solid-svg-icons';
 
 const Summary = props => {
 
@@ -17,51 +21,47 @@ const Summary = props => {
   if (loading) {
     return <div>Loading...</div>;
   }
-
+  console.log(itinerary)
   return (
-<section>
-    <div className="container-fluid">
-      <div className="row">
-        <div className="col-lg-3">
-          <aside id="leftsidebar" className="sidebar">
-            <ul className="list">
-              <div className="user-info">
-                <div className="flex-row mb-3">
-                  <div className="detail">
-                  <ion-icon name="today-outline"></ion-icon>
-                    <p>{itinerary.title}</p>
-                  </div>
-                  <div className="detail">
-                  <ion-icon name="today-outline"></ion-icon>
-                  <p>{itinerary.description}</p>
-                  </div>
-                </div>
-                <div>
-                  {/* <h5>Your Itinerary: {itinerary.itineraryId}</h5> */}
-                  <div className="detail">
-                  <ion-icon name="today-outline"></ion-icon>
-                  <p>{itinerary.dateBegin}</p>
-                  </div>
-                  <div className="detail">
-                  <ion-icon name="today-outline"></ion-icon>
-                  <p>{itinerary.dateEnd}</p>
-                  </div>
-                  <div className="detail">
-                  <ion-icon name="today-outline"></ion-icon>
-                  <p>{itinerary.location}</p>
-                  </div>
-                </div>
-                <br></br>
-              </div>
-            </ul>
-          </aside>
-        </div>
-      </div>
+    <div>
+      <List celled className='itcontainer'>
+        <List.Item className="title-box">
+          <FontAwesomeIcon icon={faGlobeAmericas} />
+          <List.Content className='content-box'>
+            <List.Header className='header-box'>Title</List.Header>
+            {itinerary.title}
+          </List.Content>
+        </List.Item>
+
+        <List.Item className="title-box">
+          <FontAwesomeIcon icon={faMapMarker} />
+          <List.Content className='content-box'>
+            <List.Header className='header-box'>Location</List.Header>
+            {itinerary.location}
+          </List.Content>
+        </List.Item>
+        <List.Item className="title-box">
+          <FontAwesomeIcon icon={faCalendar} />
+          <i class="fas fa-map-marker-alt"></i>
+          <List.Content className='content-box'>
+            <List.Header className='header-box'><b>Date</b></List.Header>
+            {itinerary.dateBegin}
+             - {itinerary.dateEnd}
+          </List.Content>
+        </List.Item>
+        <List.Item className="title-box">
+          <FontAwesomeIcon icon={faComment} />
+          <List.Content className='content-box'>
+            <List.Header className='header-box'>Descripton</List.Header>
+            {itinerary.location}
+          </List.Content>
+        </List.Item>
+        <ActivityList activities={itinerary.activities} />
+      </List>
+
     </div>
-  <ActivityList activities={itinerary.activities} />
-</section>
+
   );
 };
-
 
 export default Summary;

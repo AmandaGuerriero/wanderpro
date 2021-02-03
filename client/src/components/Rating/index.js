@@ -1,10 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
-// import { UPDATE_ACTIVITY } from "../../utils/mutations"
-// import { QUERY_ACTIVITY_BY_ID } from "../../utils/queries"
-// import { useMutation } from '@apollo/react-hooks';
-// import { useQuery } from '@apollo/react-hooks';
+import { UPDATE_ACTIVITY } from "../../utils/mutations"
+import { QUERY_ACTIVITY_BY_ID } from "../../utils/queries"
+import { useMutation } from '@apollo/react-hooks';
+import { useQuery } from '@apollo/react-hooks';
 import Rating from '@material-ui/lab/Rating';
 import StarBorderIcon from '@material-ui/icons/StarBorder';
 import SentimentVeryDissatisfiedIcon from '@material-ui/icons/SentimentVeryDissatisfied';
@@ -15,14 +15,6 @@ import SentimentVerySatisfiedIcon from '@material-ui/icons/SentimentVerySatisfie
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
 
-const StyledRating = withStyles({
-  iconFilled: {
-    color: '#ff6d75',
-  },
-  iconHover: {
-    color: '#ff3d47',
-  },
-})(Rating);
 
 const customIcons = {
   1: {
@@ -56,17 +48,46 @@ IconContainer.propTypes = {
   value: PropTypes.number.isRequired,
 };
 
-const CustomizedRatings = ({ activities }) =>  {
-  console.log(activities)
+
+const CustomizedRatings = (props) => {
+  console.log('hello', props.id)
+  // const [updateActivity, { error }] = useMutation(UP_ACTIVITY);
+
+  const [value, setValue] = React.useState(4);
+  const [hover, setHover] = React.useState(-1);
+  const labels = {
+    0.5: 'Useless',
+    1: 'Useless+',
+    1.5: 'Poor',
+    2: 'Poor+',
+    2.5: 'Ok',
+    3: 'Ok+',
+    3.5: 'Good',
+    4: 'Good+',
+    4.5: 'Excellent',
+    5: 'Excellent+',
+  }
   return (
     <div>
       <Box component="fieldset" mb={3} borderColor="transparent">
-        <Typography component="legend">Rate Your Activity</Typography>
+        <Typography component="legend">How do you like the activity?</Typography>
         <Rating
-          name="customized-empty"
-          defaultValue={0}
-          precision={0.5}
-          emptyIcon={<StarBorderIcon fontSize="inherit" />}
+          name="simple-controlled"
+          value={value}
+          onChange={(event, newValue) => {
+            setValue(newValue);
+            console.log("newValue", newValue);
+            //update itinerary using newValue as a parameter, 
+            // updateActivity({
+            //   variables: {
+            //     rating: props.box
+            //   }
+            // })
+            // updateItinerary(newValue, props.id)
+
+            //or just call update itinearay using state
+            //updateItinerary()
+          }}
         />
       </Box>
     </div>

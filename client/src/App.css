@@ -131,6 +131,10 @@ body {
   }
 }
 
+.profile-card-box {
+  color:rgb(22, 110, 243)!important;
+}
+
 @media screen and (max-width: 775px) {
   .signup-container,
   .login-container {
@@ -176,3 +180,4 @@ body {
   margin-left: 13vw;
 }
 }
+
