@@ -20,6 +20,7 @@ header {
     height: auto;
     width: 100%;
     font-family: 'Montserrat', sans-serif;
+    border-bottom: 1px var(--dark-blue) solid;
 }
 
 header nav {
