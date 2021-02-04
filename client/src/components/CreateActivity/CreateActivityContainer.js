@@ -1,6 +1,5 @@
 import React, { useState, Fragment } from "react";
-import CreateActivity from './Create-activity'
-import ReactDOM from "react-dom";
+import CreateActivity from './CreateActivity'
 import { Link } from 'react-router-dom';
 import { faTrashAlt, faPlusCircle, faClipboardList } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -58,17 +57,5 @@ const CreateActivityContainer = (props) => {
     </>
   );
 };
-  
-  // return (
-    // <div>
-    //   {inputFields.map((inputField, index) => (
-    //         <Fragment key={`${inputField}~${index}`}>
-            
-
-    //         </Fragment>
-    //         )
-    // </div>
-    
-  // )};
                  
 export default CreateActivityContainer;

@@ -1,8 +1,6 @@
 import React, { useState, useReducer, Fragment } from "react";
-import ReactDOM from "react-dom";
 import { useMutation } from '@apollo/react-hooks';
 import { ADD_ACTIVITY } from '../../utils/mutations';
-import { QUERY_ITINERARIES } from '../../utils/queries';
 
 import './Create-activity.css';
 
@@ -10,19 +8,21 @@ import './Create-activity.css';
 const CreateActivity = (props) => {
   const [formState, setFormState] = useState({ location: '', timeFrom: '', timeTo: '', notes: '', itineraryId: ''})
   const [addActivity, { error }] = useMutation(ADD_ACTIVITY);
+  const itineraryId = localStorage.getItem("itineraryId");
+  
   
   const handleFormSubmit = async event => {
     event.preventDefault();
-    console.log(formState)
     try {
       await addActivity({
-        varibles: {
+        variables: {
+          name: formState.name,
           location: formState.location,
           date: formState.date,
           timeFrom: formState.timeFrom,
           timeTo: formState.timeTo,
           notes: formState.notes,
-          itineraryId: formState.itineraryId
+          itineraryId: itineraryId
         }
       })
     } 
@@ -41,20 +41,22 @@ const CreateActivity = (props) => {
 
   return (
     <>
-      <h1>Dynamic Form Fields in React</h1>
-      <form onSubmit={handleFormSubmit}>
-      <div className="input-container">
-          <label htmlFor='itID'>Itinerary ID</label>
+    <section id="create-activity">
+    <div className="create-activity-form">
+
+      <form className = "activity-form" onSubmit={handleFormSubmit}> 
+      <h3>Activity Info</h3>
+      <div className="activity-input-container">
           <input
           type='text'
-          name='itineraryId'
-          id='itineraryId'
-          placeholder='Enter An ID for your Itinerary'
+          name='name'
+          id='name'
+          placeholder='Enter the activity name'
           onChange={handleChange} />
         </div>
+
       
-        <div className="input-container">
-          <label>Date</label>
+        <div className="activity-input-container">
           <input
           type='text'
           name='date'
@@ -63,8 +65,7 @@ const CreateActivity = (props) => {
           onChange={handleChange} />
         </div>
 
-        <div className="input-container">
-          <label>Location</label>
+        <div className="activity-input-container">
           <input
           type='text'
           name='location'
@@ -73,8 +74,7 @@ const CreateActivity = (props) => {
           onChange={handleChange} />
         </div>
 
-        <div className="input-container">
-          <label>Start Time</label>
+        <div className="activity-input-container">
           <input
           type='text'
           name='timeFrom'
@@ -83,8 +83,7 @@ const CreateActivity = (props) => {
           onChange={handleChange} />
         </div>
 
-        <div className="input-container">
-          <label>End Time</label>
+        <div className="activity-input-container">
           <input
           type='text'
           name='timeTo'
@@ -93,9 +92,9 @@ const CreateActivity = (props) => {
           onChange={handleChange} />
         </div>
 
-        <div className="input-container">
-          <label>Notes</label>
+        <div className="activity-input-container">
           <textarea
+          className="activity-text"
           type='text'
           name='notes'
           id='notes'
@@ -103,19 +102,12 @@ const CreateActivity = (props) => {
           onChange={handleChange} />
         </div>
 
-        
-
-        <div className="flex-row flex-end">
-          <button type="submit">
-            Submit
-          </button>
-
-          <p>
-        <button onClick={props.prev}>Previous</button>
-        <button onClick={props.next}>Next</button>
-      </p>
-        </div>
+        <button className="btn activity-submit">
+          Submit
+        </button>
       </form>
+    </div>
+    </section>
     </>
   );
 };
