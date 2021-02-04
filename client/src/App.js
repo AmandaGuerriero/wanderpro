@@ -35,7 +35,9 @@ const client = new ApolloClient({
 const stripePromise = loadStripe('pk_test_TYooMQauvdEDq54NiTphI7jx');
 
 const Navigation = (props) => {
+  
   return (
+    
     <div className="flex-row space-between btn-container">
       <div>
         <button className="previous-btn" onClick={props.prev}>Previous</button>

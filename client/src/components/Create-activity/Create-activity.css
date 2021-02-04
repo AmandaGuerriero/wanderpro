@@ -15,7 +15,7 @@
    display: flex;
    margin-top: var(--spacing-five);
    margin-bottom: var(--spacing-five);
-   margin-left: 25vw;
+   margin-left: 20vw;
    width: 60vw;
    border-radius: 15px;
    background-image: linear-gradient(180deg, rgba(22, 110, 243, .8)15%, rgba(6, 186, 236, .7)65%, rgba(49, 115, 18, .6)95%)
@@ -71,7 +71,7 @@
    height: 2em;
    width: auto;
    font-size: 1.5em;
-   margin-left: 27vw;
+   margin-left: 22vw;
    color: var(--dark-green);
 }
 
@@ -98,7 +98,7 @@
 }
 
 .activity-buttons {
-   margin-left: 40vw;
+   margin-left: 30vw;
 }
 
 @media screen and (max-width: 1285px) {

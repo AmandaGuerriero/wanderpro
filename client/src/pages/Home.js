@@ -3,7 +3,7 @@ import { QUERY_ACTIVITIES } from '../utils/queries';
 import { useQuery } from '@apollo/react-hooks';
 import Auth from "../utils/auth";
 import { Link } from "react-router-dom";
-import { faUserPlus } from '@fortawesome/free-solid-svg-icons';
+import { faUserPlus, faUserCircle } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const Home = () => {
@@ -17,8 +17,8 @@ const Home = () => {
         {
         Auth.loggedIn() ?
         <Link to="/profile">
-        <button>
-        Go to Profile
+        <button className="homePage-profile">
+        <FontAwesomeIcon icon={faUserCircle}/> Go to Profile
         </button>
         </Link>
           :
@@ -27,22 +27,24 @@ const Home = () => {
         </button>
        }
         </div>
+        <div className="activity-section-header">
+          <h1 >Activities You Can Try!</h1>
+        </div>
+        <div className="activity-container flex-row space-between">
         {activities && 
           activities.map(activity => (
-            <div key={activity._id} className="card-box">
-                  <div className="timeline">
-                    <div className="container-timeline right">
-                      <div className="content">
-                        <h5>{activity.name}</h5>
-                        <p>{activity.location}</p>
-                      </div>
-                    </div>
-                  </div>
-                  <div>
-                  </div>
-          </div>
+            <div key={activity._id} className="card-box flex-row">
+              <div className="home-activities-container">
+                <div className="home-card-header"> 
+                  <h5 >{activity.name}</h5>
+                </div>
+                <div className="home-card-body"> 
+                  <p>{activity.location}</p>
+                </div>
+              </div>
+            </div>
       ))}
-      
+        </div>
     </div>
   )
 };
