@@ -2,6 +2,14 @@
   box-sizing: border-box;
 }
 
+.map-white-box {
+  width: fit-content;
+}
+
+.routes-container {
+  width: 50vw;
+}
+
 /* Set a background color */
 .card-body {
   background-color:rgb(226, 226, 226);
@@ -16,7 +24,7 @@
 .timeline {
   position: relative;
   max-width: 1200px;
-  margin: 0 auto;
+  margin-left: -10vw;
 }
 
 /* The actual timeline (the vertical ruler) */
@@ -27,7 +35,7 @@
   background-color: rgb(36, 186, 236);
   top: 0;
   bottom: 0;
-  left: 20%;
+  left: 5%;
   margin-left: -3px;
 }
 
@@ -36,7 +44,7 @@
   padding: 10px 40px;
   position: relative;
   background-color: inherit;
-  width: 50%;
+  width: 80%;
 }
 
 /* The circles on the timeline */
@@ -102,6 +110,21 @@
   background-color: white;
   position: relative;
   border-radius: 6px;
+}
+
+@media screen and (max-width: 775px) {
+  .map-item {
+    width: fit-content;
+    margin-left: 5vw;
+  }
+
+  .map-white-box {
+    width: fit-content;
+  }
+  
+  .routes-container {
+    width: 80vw;
+  } 
 }
 
 /* Media queries - Responsive timeline on screens less than 600px wide */
