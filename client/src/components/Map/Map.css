@@ -13,6 +13,11 @@
   }
 }
 
+.App {
+  width: 30vw;
+  height: 50vh;
+}
+
 .App-header {
   background-color: #282c34;
   min-height: 50vh;
@@ -41,7 +46,7 @@ display: block;
 position: relative;
 margin: 0px auto;
 width: auto !important;
-height: auto ;
+height: 50vh !important;
 padding: 10px;
 border: black;
 border-radius: 20px;
@@ -57,5 +62,11 @@ background: lightgrey;
   }
   to {
     transform: rotate(360deg);
+  }
+}
+
+@media screen and (max-width: 775px) {
+  .App {
+    width: 45vw;
   }
 }
