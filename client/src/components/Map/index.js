@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import './Map.css';
 import mapboxgl from 'mapbox-gl';
 import 'mapbox-gl/dist/mapbox-gl.css';
@@ -7,11 +7,11 @@ import '@mapbox/mapbox-gl-directions/dist/mapbox-gl-directions.css';
 import ActivityList from '../ActivityList';
 // import { QUERY_USER, QUERY_ME } from '../utils/queries';
 
-mapboxgl.accessToken = 'pk.eyJ1Ijoiem91c2hpbHUzMSIsImEiOiJja2tnMGxiZmEwOW5lMnVsYTN3OTR6eXg5In0.EExs7dyM_eoTAEdLXzUmVw';
+mapboxgl.accessToken = `${process.env.REACT_APP_MAPBOX_KEY}`;
 
 class Map extends React.Component {
 
-  componentDidUpdate(){
+  componentDidUpdate() {
     this.showRoute();
   }
   componentDidMount() {
@@ -35,42 +35,36 @@ class Map extends React.Component {
 
     // Integrates directions control with map
     this.map.addControl(this.directions, 'top-left');
-     new mapboxgl.GeolocateControl({
-  positionOptions: {
-  enableHighAccuracy: true
-  },
-  trackUserLocation: true
-});
+    new mapboxgl.GeolocateControl({
+      positionOptions: {
+        enableHighAccuracy: true
+      },
+      trackUserLocation: true
+    });
     this.map.on('load', () => {
-       new mapboxgl.GeolocateControl({
-  positionOptions: {
-  enableHighAccuracy: true
-  },
-  trackUserLocation: true
-});
-       this.showRoute()
+      new mapboxgl.GeolocateControl({
+        positionOptions: {
+          enableHighAccuracy: true
+        },
+        trackUserLocation: true
+      });
+      this.showRoute()
     });
   };
-//
-    showRoute(){
+  //
+  showRoute() {
 
-    // const st = this.props.userData.startAddress;
-    // const en = this.props.userData.endAddress;
-    // this.directions.setOrigin(st)
     this.directions.setDestination(this.props.myLocation)
   };
-     
-    // <ActivityList activities={activities.id} location={`${this.props.mylocation}'s thoughts...`} />
-    
-    // Add geolocate control to the map.
-
 
   render() {
     console.log("my location:, ", this.props.myLocation);
     return (
-    <div>
-      <div ref={el => (this.mapWrapper = el)} className="mapWrapper" />
-    </div>
+      <div>
+        <div ref={el => (this.mapWrapper = el)} className="mapWrapper"
+          mapboxapiaccesstoken={process.env.REACT_APP_MAPBOX_KEY}
+        />
+      </div>
     );
   }
 }
