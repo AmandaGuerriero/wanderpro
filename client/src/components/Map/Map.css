@@ -13,6 +13,11 @@
   }
 }
 
+.App {
+  width: 30vw;
+  height: 50vh;
+}
+
 .App-header {
   background-color: #282c34;
   min-height: 50vh;
@@ -21,15 +26,19 @@
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-  color: white;
+  color: lightgrey;
 }
 
 .App-link {
   color: #61dafb;
 }
 
+.card-body {
+  background-color:rgb(230, 230, 230);
+}
+
 .card-box {
-  padding:20px;
+  padding:auto;
   margin: auto;
 }
 .mapWrapper {
@@ -37,14 +46,14 @@ display: block;
 position: relative;
 margin: 0px auto;
 width: auto !important;
-height: auto ;
+height: 50vh !important;
 padding: 10px;
 border: black;
 border-radius: 20px;
 font-size: 12px;
 text-align: center;
 color: #000;
-background: #ee8a65;
+background: lightgrey;
 }
 
 @keyframes App-logo-spin {
@@ -53,5 +62,11 @@ background: #ee8a65;
   }
   to {
     transform: rotate(360deg);
+  }
+}
+
+@media screen and (max-width: 775px) {
+  .App {
+    width: 45vw;
   }
 }

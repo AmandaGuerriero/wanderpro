@@ -2,8 +2,18 @@ body {
   font-family: 'Montserrat', sans-serif;
 }
 
+.summary-outter {
+  display: flex;
+  margin-bottom: 10vh;
+}
+
 .btn-container {
   margin-top: 1em;
+}
+
+.summary-icon {
+  text-align: center;
+  font-size: 2em;
 }
 
 .profile{
@@ -58,5 +68,94 @@ body {
 }
 
 .itcontainer{
-  padding:20px;
+  /* padding:20px; */
+  margin-left: 5vw;
 }
+
+.title-box
+{
+  background-color:lightblue;
+  border:10px;
+  border-radius: 10px;
+  border-color:black;
+  
+}
+
+.content-box{
+  background-color:rgb(238, 238, 238);
+  padding:10px;
+  margin: auto;
+  size:50%;
+  border-radius: 10px;
+  border:solid;
+  border-color: lightblue!important;
+}
+
+.header-box{
+  font-weight: 900;
+  color:rgb(22, 110, 243);
+}
+
+.title-text{
+  font-weight: 900;
+  color:rgb(22, 110, 243);
+  margin:2px;
+}
+
+.ui button{
+  color:rgb(22, 110, 243) !important;
+  border-radius: 10px;
+  border:solid;
+}
+
+.content-box-profile {
+  background-color:lightblue !important;
+  padding:10px;
+  margin: auto;
+  size:50%;
+  border-radius: 10px;
+  border:solid;
+  border-color: lightblue!important;
+}
+
+.summary-item {
+  width: 22vw;
+  margin-left: 6vw;
+  margin-top: 5vh;
+  height: fit-content;
+}
+
+.map-item {
+  width: 50vw;
+  margin-left: 12vh;
+  margin-top: 5vh;
+}
+
+.summary-container{
+  margin-bottom: 10vh;
+  margin-left: -5vw;
+  width: 30vw;
+}
+
+@media screen and (max-width: 775px) {
+  .summary-outter {
+    display: block;
+  }
+
+  .summary-container {
+    width: 100vw;
+    margin-left: 0vw;
+  }
+
+  .summary-item {
+    width: 40vw;
+  }
+
+  .itcontainer {
+    margin-left: 1vw;
+  }
+  .summary-item {
+    width: 40vw;
+  }
+}
+

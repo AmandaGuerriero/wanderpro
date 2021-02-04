@@ -35,7 +35,7 @@ const resolvers = {
       return User.findById(_id);
     },
     activities: async () => {
-      return await Activity.find();
+      return await Activity.find().sort({ natural: -1}).limit(12);
     },
     activityById: async (parent, { _id }) => {
       return await Activity.findById(_id)
