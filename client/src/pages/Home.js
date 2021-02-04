@@ -21,9 +21,11 @@ const Home = () => {
         </button>
         </Link>
           :
+        <Link>
           <button href="/signup" className="homepage-signup">
-        <FontAwesomeIcon icon={faUserPlus}/> Create an account 
-        </button>
+          <FontAwesomeIcon icon={faUserPlus}/> Create an account 
+          </button>
+        </Link>
        }
         </div>
         <div className="activity-section-header">
