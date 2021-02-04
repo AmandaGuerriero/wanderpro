@@ -24,7 +24,7 @@
 .timeline {
   position: relative;
   max-width: 1200px;
-  margin-left: -10vw;
+  margin-left: 3vw;
 }
 
 /* The actual timeline (the vertical ruler) */

@@ -1,3 +1,17 @@
+:root{
+  /* Color Palette 3 */
+  --dark-green: rgb(49, 115, 18);
+  --light-green: rgb(110, 187, 45);
+  --cream: rgb(222, 217, 201);
+  --dark-cream: rgb(226, 204, 170);
+  --light-blue: rgb(36, 186, 236);
+  --dark-blue: rgb(22, 110, 243);
+  --spacing-one: calc(1rem * 0.5);
+  --spacing-two: calc(1rem);
+  --spacing-five: calc(2.5rem);
+}
+
+
 body {
   font-family: 'Montserrat', sans-serif;
 }
@@ -17,13 +31,13 @@ body {
 }
 
 .profile{
-  background: lightblue;	
+  background-color: var(--light-blue);	
   padding: 0px 0px;
 }
 .profile .container-fluid{
   padding: 0px !important;
   margin: 0px !important;  
-  color:lightblue;
+  color:var(--light-blue);
 }
 
 .sidebar .list{
@@ -35,7 +49,7 @@ body {
  }
  sidebar .user-info {
   position: relative;
-  border-bottom: 1px solid lightblue;
+  border-bottom: 1px solid var(--light-blue);
   text-align: center;
   padding-top:10px;
   padding-bottom: 15px;
@@ -47,7 +61,7 @@ body {
  .sidebar .user-info .image img {
   width: 180px;
   vertical-align: bottom !important;
-  border: 3px solid lightblue;
+  border: 3px solid var(--light-blue);
   box-shadow: 0px 5px 25px 0px rgba(0,0,0,0.2);
  }
 
@@ -74,7 +88,7 @@ body {
 
 .title-box
 {
-  background-color:lightblue;
+  background-color:var(--light-blue);
   border:10px;
   border-radius: 10px;
   border-color:black;
@@ -88,7 +102,7 @@ body {
   size:50%;
   border-radius: 10px;
   border:solid;
-  border-color: lightblue!important;
+  border-color: var(--light-blue)!important;
 }
 
 .header-box{
@@ -109,13 +123,13 @@ body {
 }
 
 .content-box-profile {
-  background-color:lightblue !important;
+  background-color:var(--light-blue) !important;
   padding:10px;
   margin: auto;
   size:50%;
   border-radius: 10px;
   border:solid;
-  border-color: lightblue!important;
+  border-color: var(--light-blue)!important;
 }
 
 .summary-item {
@@ -137,7 +151,48 @@ body {
   width: 30vw;
 }
 
+.test1 {
+  width: 100vw;
+  margin-left: -5vw;
+}
+
+.profile-outter-container {
+  width: 100vw;
+  display: flex;
+}
+
+.trips-header {
+  text-align: center;
+  margin: 1.5em;
+}
+
+.profile-info {
+  text-align: center;
+  color: black;
+}
+
+.outtermost {
+  margin-bottom: 8vh;
+}
+
 @media screen and (max-width: 775px) {
+  .profile-card-container {
+    width: 80vw;
+  }
+
+  .profile-card-body {
+    text-align: center;
+  }
+
+  .profile-outter-container {
+    display: block;
+    margin-left: -3vw;
+  }
+
+  .test2 {
+    width: 90vw;
+  }
+
   .summary-outter {
     display: block;
   }
@@ -159,3 +214,9 @@ body {
   }
 }
 
+
+@media screen and (max-width: 550px) {
+  .profile-outter-container {
+    margin-left: -8vw;
+  }
+}

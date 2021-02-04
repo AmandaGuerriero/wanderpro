@@ -20,13 +20,14 @@ const CreateItinerary = (props) => {
           description: formState.description,
         }
       });
-
       localStorage.setItem('itineraryId', data.data.addItinerary._id);
+      window.location.replace('/activity')
     } catch (e) {
       console.error(e);
     }
 
   };
+
   const handleChange = event => {
     const { name, value } = event.target;
     setFormState({
