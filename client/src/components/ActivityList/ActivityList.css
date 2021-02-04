@@ -6,8 +6,8 @@
   width: fit-content;
 }
 
-.activity-routes-box {
-  margin-bottom: 100vh;
+.routes-container {
+  width: 50vw;
 }
 
 /* Set a background color */
@@ -24,7 +24,7 @@
 .timeline {
   position: relative;
   max-width: 1200px;
-  margin: 0 auto;
+  margin-left: -10vw;
 }
 
 /* The actual timeline (the vertical ruler) */
@@ -110,6 +110,21 @@
   background-color: white;
   position: relative;
   border-radius: 6px;
+}
+
+@media screen and (max-width: 775px) {
+  .map-item {
+    width: fit-content;
+    margin-left: 5vw;
+  }
+
+  .map-white-box {
+    width: fit-content;
+  }
+  
+  .routes-container {
+    width: 80vw;
+  } 
 }
 
 /* Media queries - Responsive timeline on screens less than 600px wide */
