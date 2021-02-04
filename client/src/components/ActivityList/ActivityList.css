@@ -4,10 +4,15 @@
 
 .map-white-box {
   width: fit-content;
+  margin-left: 5vw;
 }
 
 .routes-container {
   width: 50vw;
+}
+
+.card-box-note {
+  margin-left: 8vw;
 }
 
 /* Set a background color */
