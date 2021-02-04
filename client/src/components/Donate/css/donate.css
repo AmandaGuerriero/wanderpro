@@ -11,6 +11,10 @@
     --spacing-five: calc(2.5rem);
  }
 
+section h4 {
+  font-family: 'Montserrat', sans-serif;
+}
+
 .donate-container {
      width: 100vw;
      text-align: center;

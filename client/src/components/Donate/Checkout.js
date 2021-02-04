@@ -133,9 +133,9 @@ const Checkout = () => {
               src={require("./wanderpro_logo.png")}>
               </img>
             </div>
-            <h4>Thank you for your donation</h4>
+            <h4>Thank you for your donation!</h4>
             <div className="pasha-image">
-              <h4>Wanderpro Creators</h4>
+              <h4>Meet the Wanderpro creators</h4>
                 <img
                   className="creators"
                   alt="WanderPro Icon"

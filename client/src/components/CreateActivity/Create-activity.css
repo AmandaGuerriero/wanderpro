@@ -79,6 +79,7 @@
    width: fit-content;
    text-decoration: none;
    color: var(--dark-blue);
+   font-family: 'Montserrat', sans-serif;
 }
 
 .full-itinerary-btn {
@@ -86,6 +87,7 @@
    margin-left: 8vw;
    background-color: white;
    color: var(--light-blue);
+   font-family: 'Montserrat', sans-serif;
 }
 
 .full-itinerary-btn:hover {

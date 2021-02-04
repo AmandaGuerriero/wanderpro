@@ -8,7 +8,7 @@
   --body-color: var(--gray-mid);
   --headline-color: var(--gray-dark);
   --accent-color: #0066f0;
-  --body-font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+  /* --body-font-family: -apple-system, BlinkMacSystemFont, sans-serif; */
   --radius: 6px;
   --logo-image: url('https://storage.googleapis.com/stripe-sample-images/KAVHOLM.svg');
   --form-width: 600px;
@@ -19,7 +19,7 @@
   box-sizing: border-box;
 }
 body {
-  font-family: var(--body-font-family);
+  /* font-family: var(--body-font-family); */
   font-size: 16px;
   color: var(--body-color);
   -webkit-font-smoothing: antialiased;
@@ -314,7 +314,7 @@ a:active {
 }
 code,
 pre {
-  font-family: 'SF Mono', 'IBM Plex Mono', 'Menlo', monospace;
+  /* font-family: 'SF Mono', 'IBM Plex Mono', 'Menlo', monospace; */
   font-size: 12px;
 }
 
