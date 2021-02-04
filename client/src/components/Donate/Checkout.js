@@ -2,6 +2,9 @@ import React, { useEffect, useReducer } from 'react';
 import { loadStripe } from '@stripe/stripe-js';
 //import '../../css/normalize.css';
 //import './css/global.css';
+import './css/donate.css'
+
+
 const fetchCheckoutSession = async ({ quantity }) => {
   return fetch('/create-checkout-session', {
     method: 'POST',
@@ -118,22 +121,26 @@ const Checkout = () => {
   };
 
   return (
-    <div className="sr-root">
-      <div className="sr-main">
-        <header className="sr-header">
-          <div className="sr-header__logo"></div>
-        </header>
+    <div className="sr-root donate-container">
+      <div className="sr-main donate-inner">
         <section className="container">
           <div>
-            <h1>WanderPro</h1>
+            {/* <h1>WanderPro</h1> */}
+            <div>
+              <img 
+              className="wanderpro-donate-logo"
+              alt="wanderpro-logo"
+              src={require("./wanderpro_logo.png")}>
+              </img>
+            </div>
             <h4>Thank you for your donation</h4>
             <div className="pasha-image">
-              <img
-                alt="WanderPro Icon"
-                src="../../../compass-solid.png"
-                width="140"
-                height="160"
-              />
+              <h4>Wanderpro Creators</h4>
+                <img
+                  className="creators"
+                  alt="WanderPro Icon"
+                  src={require('./creatorv2.png')}
+                />
             </div>
           </div>
           <div className="quantity-setter">
