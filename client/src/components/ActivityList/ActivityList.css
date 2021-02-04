@@ -2,6 +2,14 @@
   box-sizing: border-box;
 }
 
+.map-white-box {
+  width: fit-content;
+}
+
+.activity-routes-box {
+  margin-bottom: 100vh;
+}
+
 /* Set a background color */
 .card-body {
   background-color:rgb(226, 226, 226);
