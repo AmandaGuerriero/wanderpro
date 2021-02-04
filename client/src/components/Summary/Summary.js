@@ -10,9 +10,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGlobeAmericas } from '@fortawesome/free-solid-svg-icons';
 import { faCalendar } from '@fortawesome/free-solid-svg-icons';
 import { faComment } from '@fortawesome/free-solid-svg-icons';
-
 const Summary = props => {
-
   const { id: itineraryId } = useParams();
   const { loading, data } = useQuery(QUERY_ITINERARY_BY_ID, {
     variables: { _id: itineraryId }
@@ -75,5 +73,4 @@ const Summary = props => {
 
   );
 };
-
 export default Summary;
