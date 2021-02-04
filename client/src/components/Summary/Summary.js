@@ -23,42 +23,54 @@ const Summary = props => {
   }
   console.log(itinerary)
   return (
-    <div>
-      <List celled className='itcontainer'>
-        <List.Item className="title-box">
-          <FontAwesomeIcon icon={faGlobeAmericas} />
+    <div className="summary-outter">
+
+    <div className="summary-container">
+      <List celled className='itcontainer flex-row space-around'>
+        <List.Item className="title-box summary-item">
+          <div className="summary-icon">
+            <FontAwesomeIcon icon={faGlobeAmericas} />
+          </div>
           <List.Content className='content-box'>
             <List.Header className='header-box'>Title</List.Header>
             {itinerary.title}
           </List.Content>
         </List.Item>
 
-        <List.Item className="title-box">
-          <FontAwesomeIcon icon={faMapMarker} />
+        <List.Item className="title-box summary-item">
+          <div className="summary-icon">
+            <FontAwesomeIcon icon={faMapMarker} />
+          </div>
           <List.Content className='content-box'>
             <List.Header className='header-box'>Location</List.Header>
             {itinerary.location}
           </List.Content>
         </List.Item>
-        <List.Item className="title-box">
-          <FontAwesomeIcon icon={faCalendar} />
-          <i class="fas fa-map-marker-alt"></i>
+        <List.Item className="title-box summary-item">
+          <div className="summary-icon">
+            <FontAwesomeIcon icon={faCalendar} />
+          </div>
+          <i className="fas fa-map-marker-alt"></i>
           <List.Content className='content-box'>
             <List.Header className='header-box'><b>Date</b></List.Header>
             {itinerary.dateBegin}
              - {itinerary.dateEnd}
           </List.Content>
         </List.Item>
-        <List.Item className="title-box">
-          <FontAwesomeIcon icon={faComment} />
+        <List.Item className="title-box summary-item">
+          <div className="summary-icon">
+            <FontAwesomeIcon icon={faComment} />
+          </div>
           <List.Content className='content-box'>
             <List.Header className='header-box'>Descripton</List.Header>
             {itinerary.location}
           </List.Content>
         </List.Item>
-        <ActivityList activities={itinerary.activities} />
       </List>
-
+    </div>
+    <div className="map-item">
+          <ActivityList activities={itinerary.activities} />
+    </div>
     </div>
 
   );
