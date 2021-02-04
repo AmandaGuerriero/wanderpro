@@ -8,7 +8,7 @@ const ActivityList = ({ activities }) => {
   console.log(activities)
   const itineraryId = localStorage.getItem("itineraryId");
   return (
-    <div className="card mb-3">
+    <div className="card mb-3 routes-container">
       <div className="card-header">
         <span className="text-dark"><h5>Activity Routes</h5></span>
       </div>
