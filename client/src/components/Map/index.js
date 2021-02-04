@@ -69,9 +69,9 @@ class Map extends React.Component {
   render() {
     console.log("my location:, ", this.props.myLocation);
     return (
-    <div>
-      <div ref={el => (this.mapWrapper = el)} className="mapWrapper" 
-      mapboxApiAccessToken={process.env.REACT_APP_MAPBOX_TOKEN}
+      <div>
+      <div ref={el => (this.mapWrapper = el)} className="mapWrapper"
+      mapboxapiaccesstoken={process.env.REACT_APP_MAPBOX_KEY}
       />
     </div>
     );
