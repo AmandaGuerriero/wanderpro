@@ -10,7 +10,7 @@ import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import Profile from "./pages/Profile";
-import Donate from "./pages/Donate";
+//import Donate from "./pages/Donate";
 import Nav from "./components/Nav";
 import CreateItinerary from "./components/CreateItinerary/CreateItinerary"
 import CreateActivityContainer from './components/Create-activity/CreateActivityContainer'
@@ -19,6 +19,12 @@ import Footer from "./components/Footer/Footer"
 import Map from "./components/Map"
 import './App.css'
 import CreateActivity from "./components/Create-activity/Create-activity";
+import Checkout from './components/Donate/Checkout.js';
+import Success from './components/Donate/Success.js';
+import Canceled from './components/Donate/Canceled.js';
+
+import './css/normalize.css';
+import './css/global.css';
 
 const client = new ApolloClient({
   request: (operation) => {
@@ -69,8 +75,16 @@ function App() {
           <StoreProvider>
               <Nav />
               <Switch>  
-                <Route exact path="/donate" component={Donate} />
-                            
+               
+                <Route path="/success.html">
+                  <Success />
+                </Route>
+                <Route path="/canceled.html">
+                  <Canceled />
+                </Route>
+                <Route path="/donate">
+                  <Checkout />
+                </Route>           
                 <Route exact path ='/create'>
                   <Steps config ={config}>
                     <Step exact path='/create' component={CreateItinerary} setLatitude={setLatitude} setLongitude={setLongitude}/>
