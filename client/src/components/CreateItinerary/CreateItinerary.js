@@ -1,12 +1,7 @@
-import React, { useState, useEffect } from 'react';
-import { ADD_ITINERARY } from "../../utils/mutations"
-import { QUERY_ITINERARIES } from "../../utils/queries"
+import React, { useState } from 'react';
+import { ADD_ITINERARY } from "../../utils/mutations";
 import { useMutation } from '@apollo/react-hooks';
-import { geoCoding } from "../../utils/geocoding"
-
-import { useStoreContext } from '../../utils/GlobalState';
-import { UPDATE_ITINERARY } from '../../utils/actions';
-
+import { Link } from 'react-router-dom';
 import './CreateItinerary.css';
 
 const CreateItinerary = (props) => {
@@ -16,15 +11,6 @@ const CreateItinerary = (props) => {
   const handleFormSubmit = async event => {
     event.preventDefault();
     try {
-      // Get coordinate from location
-      let coordinates = await geoCoding(formState.location);
-      let latitude = 0, longitude = 0;
-      if (coordinates && coordinates.length) {
-        latitude = coordinates[0].center[1];
-        longitude = coordinates[0].center[0];
-        props.setLatitude(latitude);
-        props.setLongitude(longitude);
-      }
       const data = await addItinerary({
         variables: {
           title: formState.title,
@@ -32,25 +18,22 @@ const CreateItinerary = (props) => {
           dateBegin: formState.dateBegin,
           dateEnd: formState.dateEnd,
           description: formState.description,
-          latitude: latitude,
-          longitude: longitude
         }
       });
-      console.log(data)
-      console.log(data.data.addItinerary._id)
       localStorage.setItem('itineraryId', data.data.addItinerary._id);
+      window.location.replace('/activity')
     } catch (e) {
       console.error(e);
     }
 
   };
+
   const handleChange = event => {
     const { name, value } = event.target;
     setFormState({
       ...formState,
       [name]: value
     })
-    console.log(event.target.value)
   };
 
   return (
@@ -82,7 +65,6 @@ const CreateItinerary = (props) => {
                     name='location'
                     id='location'
                     placeholder='City'
-                    // value={state.location}
                     onChange={handleChange} />
                 </div>
               </div>
@@ -96,7 +78,6 @@ const CreateItinerary = (props) => {
                     name='dateBegin'
                     id='dateBegin'
                     placeholder='Date Begin'
-                    // value={state.dateBegin}
                     onChange={handleChange} />
                 </div>
               </div>
@@ -110,7 +91,6 @@ const CreateItinerary = (props) => {
                     name='dateEnd'
                     id='dateEnd'
                     placeholder='Date End'
-                    // value={state.dateEnd}
                     onChange={handleChange} />
 
                 </div>
@@ -122,7 +102,6 @@ const CreateItinerary = (props) => {
                 id='description' 
                 rows="4" 
                 placeholder='Write a caption…'
-                // value={state.description}
                 onChange={handleChange}/>
             </div>
             <div className='form-group flex'>
@@ -132,13 +111,13 @@ const CreateItinerary = (props) => {
             </div>
         </ul>
         <button 
-                className='btn itinerary-submit'
-                onClick={handleFormSubmit}
-
-            >
-              Submit
-            </button>
-
+          className='btn itinerary-submit'
+          onClick={handleFormSubmit}
+        >
+          <Link to={"/activity"}>
+          Submit
+          </Link>
+        </button>
           </form>
         </div>
       </section>

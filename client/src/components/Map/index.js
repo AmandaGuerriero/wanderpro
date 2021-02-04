@@ -7,6 +7,10 @@ import '@mapbox/mapbox-gl-directions/dist/mapbox-gl-directions.css';
 import ActivityList from '../ActivityList';
 // import { QUERY_USER, QUERY_ME } from '../utils/queries';
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> develop
 mapboxgl.accessToken = 'pk.eyJ1Ijoiem91c2hpbHUzMSIsImEiOiJja2txaXhwMjAzNWZ4MnBwZGVrcDIwMDdyIn0.TC2CK7vybPMBffLQkSo58g';
 
 class Map extends React.Component {
@@ -69,7 +73,7 @@ class Map extends React.Component {
     console.log("my location:, ", this.props.myLocation);
     return (
     <div>
-      <div ref={el => (this.mapWrapper = el)} className="mapWrapper"
+      <div ref={el => (this.mapWrapper = el)} className="mapWrapper" 
       mapboxApiAccessToken={process.env.REACT_APP_MAPBOX_TOKEN}
       />
     </div>

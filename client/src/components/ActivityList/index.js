@@ -1,12 +1,10 @@
 import React from 'react';
 import Map from '../Map';
 import './ActivityList.css';
-import { Link } from 'react-router-dom';
-import CustomizedRatings from '../Rating'
+// import CustomizedRatings from '../Rating'
 
 const ActivityList = ({ activities }) => {
   console.log(activities)
-  const itineraryId = localStorage.getItem("itineraryId");
   return (
     <div className="card mb-3 routes-container">
       <div className="card-header">
@@ -29,7 +27,7 @@ const ActivityList = ({ activities }) => {
                   </div>
                   <div className="card-box-note">
                     <p>Your Notes: {activity.notes}</p>
-                    <CustomizedRatings activities={activities} />
+                    {/* <CustomizedRatings activities={activities} /> */}
                   </div>
                 </div>
               </div>

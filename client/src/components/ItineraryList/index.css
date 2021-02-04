@@ -1,0 +1,55 @@
+:root{
+    /* Color Palette 3 */
+    --dark-green: rgb(49, 115, 18);
+    --light-green: rgb(110, 187, 45);
+    --cream: rgb(222, 217, 201);
+    --dark-cream: rgb(226, 204, 170);
+    --light-blue: rgb(36, 186, 236);
+    --dark-blue: rgb(22, 110, 243);
+    --spacing-one: calc(1rem * 0.5);
+    --spacing-two: calc(1rem);
+    --spacing-five: calc(2.5rem);
+}
+
+.profile-card-container {
+  background-image: linear-gradient(180deg, rgba(36, 186, 236, .4) 0%, rgba(226, 204, 170, .7) 30%, rgba(36, 186, 236, .4) 110%);
+    padding: var(--spacing-five);
+    border-radius: 15px;
+}
+
+.profile-card-inner-container {
+    width: 100vw;
+}
+
+.profile-outter-container {
+    width: 100vw;
+}
+
+.profile-card-header {
+    text-align: center;
+    margin-bottom: 3vh;
+}
+
+.profile-card-body div {
+    margin-bottom: 2vh;
+}
+
+.itinerary-item {
+    width: 25vw;
+    margin-left:5%;
+}
+
+.flex-row {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+@media screen and (max-width: 775px) {
+    .profile-outter-container {
+        display: block;
+    }
+
+    .itinerary-item {
+        width: 80vw;
+    }
+}
