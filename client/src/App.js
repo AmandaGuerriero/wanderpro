@@ -1,5 +1,3 @@
-import { loadStripe } from "@stripe/stripe-js";
-import { Elements } from "@stripe/react-stripe-js";
 import React, { useState } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { ApolloProvider } from '@apollo/react-hooks';
@@ -9,7 +7,6 @@ import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import Profile from "./pages/Profile";
-import Donate from "./pages/Donate";
 import Nav from "./components/Nav";
 import CreateItinerary from "./components/CreateItinerary/CreateItinerary"
 import CreateActivityContainer from './components/CreateActivity/CreateActivityContainer'
@@ -17,6 +14,11 @@ import Summary from "./components/Summary/Summary";
 import Footer from "./components/Footer/Footer"
 import Map from "./components/Map"
 import './App.css'
+import Checkout from './components/Donate/Checkout.js';
+import Success from './components/Donate/Success.js';
+import Canceled from './components/Donate/Canceled.js';
+
+
 
 const client = new ApolloClient({
   request: (operation) => {
@@ -30,19 +32,27 @@ const client = new ApolloClient({
   uri: '/graphql',
 })
 
-const stripePromise = loadStripe('pk_test_TYooMQauvdEDq54NiTphI7jx');
 
 function App() {
   return (
     <ApolloProvider client={client}>
       <Router>
-      <Elements stripe={stripePromise}>
+      
       <StoreProvider>
         <div>
           <StoreProvider>
               <Nav />
               <Switch>  
-                <Route exact path="/donate" component={Donate} />
+               
+                <Route path="/success.html">
+                  <Success />
+                </Route>
+                <Route path="/canceled.html">
+                  <Canceled />
+                </Route>
+                <Route path="/donate">
+                  <Checkout />
+                </Route>           
                 <Route exact path ='/create' component={CreateItinerary}></Route>
                 <Route exact path="/" component={Home} />
                 <Route exact path="/login" component={Login} />
@@ -57,7 +67,7 @@ function App() {
             </StoreProvider>
         </div>
       </StoreProvider>
-      </Elements>
+      
       </Router>
     </ApolloProvider>
   );
