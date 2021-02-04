@@ -1,0 +1,205 @@
+:root{
+   /* Color Palette 3 */
+   --dark-green: rgb(49, 115, 18);
+   --light-green: rgb(110, 187, 45);
+   --cream: rgb(222, 217, 201);
+   --dark-cream: rgb(226, 204, 170);
+   --light-blue: rgb(36, 186, 236);
+   --dark-blue: rgb(22, 110, 243);
+   --spacing-one: calc(1rem * 0.5);
+   --spacing-two: calc(1rem);
+   --spacing-five: calc(2.5rem);
+ }
+
+ .create-activity-form {
+   display: flex;
+   margin-top: var(--spacing-five);
+   margin-bottom: var(--spacing-five);
+   margin-left: 20vw;
+   width: 60vw;
+   border-radius: 15px;
+   background-image: linear-gradient(180deg, rgba(22, 110, 243, .8)15%, rgba(6, 186, 236, .7)65%, rgba(49, 115, 18, .6)95%)
+ }
+
+ .activity-form h3 {
+   padding: 40px;
+   margin-left: 25vw;
+}
+
+ .activity-form input,
+ .activity-form textarea {
+    width: 35vw;
+    margin-left: 12.5vw;
+ }
+
+ .activity-form button {
+    margin-bottom: var(--spacing-two);
+    margin-left: 25vw;
+ }
+
+ .activity-text {
+   width: 15em;
+   height: 5em;
+   background-color: #f2f2f2;
+   border:none;
+   border-radius:3px;
+   margin-top:3px;
+}
+
+.activity-input-container {
+   margin-top: var(--spacing-two);
+}
+
+.activity-submit {
+   margin-top: var(--spacing-five);
+   border-radius: 15px;
+   transform: translate(50%, 0%);
+}
+
+.flex-row {
+   display: flex;
+   flex-wrap: wrap;
+ }
+ 
+ .space-between {
+   justify-content: space-between;
+}
+
+.delete-btn {
+   position: absolute;
+   z-index: 9999;
+   height: 2em;
+   width: auto;
+   font-size: 1.5em;
+   margin-left: 22vw;
+   color: var(--dark-green);
+}
+
+.add-activity-btn {
+   width: fit-content;
+   text-decoration: none;
+   color: var(--dark-blue);
+}
+
+.full-itinerary-btn {
+   width: fit-content;
+   margin-left: 8vw;
+   background-color: white;
+   color: var(--light-blue);
+}
+
+.full-itinerary-btn:hover {
+   background-color: var(--dark-blue);
+}
+
+.add-activity-btn:hover {
+   text-decoration: none;
+   color: var(--dark-blue);
+}
+
+.activity-buttons {
+   margin-left: 30vw;
+}
+
+@media screen and (max-width: 1285px) {
+   .activity-buttons {
+      margin-left: 27vw;
+   }
+
+   .create-activity-form {
+      width: 80vw;
+      transform: translate(0%, 0%);
+      margin-left: 11vw;
+   }
+
+   .activity-form h3 {
+      margin-left: 28vw;
+   }
+
+   .activity-form button {
+      margin-left: 30vw;
+   }
+
+   .activity-form input,
+   .activity-form textarea {
+     width: 50vw;
+     margin-left: 15vw;
+   }
+
+   .delete-btn {
+      margin-left: 13vw;
+   }
+}
+
+@media screen and (max-width: 775px) {
+   .activity-buttons {
+      display: flex;
+      width: fit-content;
+      margin-left: 20vw;
+   }
+
+   .activity-buttons h2 {
+      font-size: 1.5em;
+   }
+
+   .create-activity-form {
+      width: 80vw;
+      transform: translate(0%, 0%);
+      margin-left: 10vw;
+      margin-bottom: var(--spacing-five);
+   }
+
+   .create-activity-form h3 {
+      margin-left: 22vw;
+   }
+
+   .activity-form {
+      margin-left: 2vw;
+      width: 70vw;
+   }
+
+   .activity-form input,
+   .activity-form textarea {
+      width: 65vw;
+      transform: translate(0%, 0%);
+      margin-left: 5vw;
+   }
+
+   .activity-form button {
+      margin-left: 23vw;
+   }
+
+   .delete-btn {
+      z-index: 9999;
+      margin-left: 14vw;
+   }
+
+   .add-activity-btn:hover,
+   .full-itinerary-btn:hover {
+      background-color: white;
+   }
+
+}
+
+@media screen and (max-width: 525px) {
+   .create-activity-form button {
+      margin-left: 13vw;
+   }
+
+   .full-itinerary-btn {
+      width: fit-content;
+   }
+
+   .add-activity-btn {
+      width: fit-content;
+   }
+
+   .activity-buttons h2 {
+      font-size: 1em;
+      margin-left: -10vw;
+   }
+}
+
+
+
+
