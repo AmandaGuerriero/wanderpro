@@ -7,11 +7,7 @@ import '@mapbox/mapbox-gl-directions/dist/mapbox-gl-directions.css';
 import ActivityList from '../ActivityList';
 // import { QUERY_USER, QUERY_ME } from '../utils/queries';
 
-<<<<<<< HEAD
-=======
-
->>>>>>> develop
-mapboxgl.accessToken = 'pk.eyJ1Ijoiem91c2hpbHUzMSIsImEiOiJja2txaXhwMjAzNWZ4MnBwZGVrcDIwMDdyIn0.TC2CK7vybPMBffLQkSo58g';
+//mapboxgl.accessToken = 'pk.eyJ1Ijoiem91c2hpbHUzMSIsImEiOiJja2txaXhwMjAzNWZ4MnBwZGVrcDIwMDdyIn0.TC2CK7vybPMBffLQkSo58g';
 
 class Map extends React.Component {
 

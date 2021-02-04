@@ -1,6 +1,7 @@
 import React, { useEffect, useReducer } from 'react';
 import { loadStripe } from '@stripe/stripe-js';
-
+//import '../../css/normalize.css';
+//import './css/global.css';
 const fetchCheckoutSession = async ({ quantity }) => {
   return fetch('/create-checkout-session', {
     method: 'POST',
