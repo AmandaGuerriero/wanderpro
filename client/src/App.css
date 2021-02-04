@@ -23,7 +23,8 @@ body {
   background-image: linear-gradient(180deg, rgba(36, 186, 236, .4) 0%, rgba(226, 204, 170, .7) 30%, rgba(36, 186, 236, .4) 110%),url('./pages/public/homePage.JPG')!important;
 }
 
-.homepage-signup {
+.homepage-signup,
+.homePage-profile {
   border: none;
   border-radius: 15px;
   margin-left: 10vw;
@@ -34,13 +35,55 @@ body {
   color: var(--light-blue);
 }
 
-.homepage-signup:hover {
+.homepage-signup:hover,
+.homePage-profile:hover {
   background-color: var(--light-blue);
   color: var(--dark-blue);
 }
 
 .homepage-signup:focus {
   outline: none;
+}
+
+.activity-section-header {
+  width: fit-content;
+  margin-left: 38vw;
+  border-radius: 50%;
+  margin-top: var(--spacing-five);
+  padding: var(--spacing-two);
+  background-image: linear-gradient(0deg, rgba(226, 204, 170, .8)10%,rgba(36, 186, 236, .8)55%,rgba(22, 110, 243, 0.7)95%);
+}
+
+.activity-section-header h1 {
+  padding: 10px;
+}
+
+.activity-container {
+  width: 90vw;
+  margin-top: 10vh;
+  margin-left: 5vw;
+  margin-bottom: 10vw;
+}
+
+.home-activities-container {
+  height: 30vh;
+  width: 20vw;
+  border-radius: 20%;
+  background-image: linear-gradient(0deg, rgba(226, 204, 170, .9)20%,rgba(110, 187, 45, .8)55%,rgba(44, 136, 2, 0.7)80%);
+}
+
+.home-card-header {
+  margin-top: 2vh;
+  text-align: center;
+}
+
+.home-card-header h5 {
+  font-size: 2.5em;
+}
+
+.home-card-body {
+  margin-top: 6vh;
+  text-align: center;
 }
 
 .btn-container {
@@ -105,7 +148,7 @@ body {
 
 .login-link,
 .signup-link {
-  margin-top: var(--spacing-five) !important;
+  margin-top: var(--spacing-two) !important;
 }
 
 .login-link a,
@@ -122,13 +165,13 @@ body {
 
 .signup-header,
 .login-header {
-  margin-left: 18vw;
+  margin-left: 13vw;
 }
 
 .signup-form,
 .login-form {
   margin-top: 7vh;
-  margin-left: 15vw;
+  margin-left: 10vw;
 }
 
 .form-div label {
@@ -145,7 +188,8 @@ body {
   margin-left: 2vw;
 }
 
-@media screen and (max-width: 1285px) {
+
+@media screen and (max-width: 1300px) {
   .login-form,
   .signup-form {
     margin-left: 12vw;
@@ -155,6 +199,10 @@ body {
   .login-header {
     margin-top: 7vh;
     margin-left: 15vw;
+  }
+
+  .activity-section-header {
+    margin-left: 33vw;
   }
 }
 
@@ -184,6 +232,28 @@ body {
   margin-bottom: 10vw;
   margin-left: 6vw;
 }
+
+.activity-section-header {
+  margin-left: 22vw;
+}
+
+.activity-container {
+  margin-top: 4vh;
+}
+
+.home-activities-container {
+  margin-bottom: 5vh;
+  width: 40vw;
+}
+
+.home-card-header {
+  text-align: center;
+}
+
+.home-card-body {
+  text-align: center;
+}
+
 }
 
 @media screen and (max-width: 525px) {
@@ -205,6 +275,19 @@ body {
   .login-btn {
   margin-bottom: 10vw;
   margin-left: 13vw;
+}
+
+.activity-section-header {
+  margin-left: 10vw;
+}
+
+.activity-section-header h1 {
+  font-size: 1.8em;
+}
+
+.home-activities-container {
+  margin-bottom: 5vh;
+  width: 80vw;
 }
 }
 
