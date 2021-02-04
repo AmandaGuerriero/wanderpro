@@ -35,7 +35,7 @@
   background-color: rgb(36, 186, 236);
   top: 0;
   bottom: 0;
-  left: 20%;
+  left: 5%;
   margin-left: -3px;
 }
 
@@ -44,7 +44,7 @@
   padding: 10px 40px;
   position: relative;
   background-color: inherit;
-  width: 50%;
+  width: 80%;
 }
 
 /* The circles on the timeline */

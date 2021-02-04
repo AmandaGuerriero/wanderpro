@@ -20,6 +20,7 @@ const ActivityList = ({ activities }) => {
                 <div className="container left">
                   <div className="content map-white-box">
                     <h5>{activity.timeFrom} to {activity.timeTo}</h5>
+                    <p>{activity.name}</p>
                     <p>{activity.location}</p>
                     <h5>Get directions for your trip:</h5>
                     <div className="App"> 
