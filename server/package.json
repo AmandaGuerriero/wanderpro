@@ -5,6 +5,7 @@
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
+    "heroku-postbuild": "webpack --config webpack.prod.js",
     "watch": "nodemon",
     "seed": "node config/seeds.js"
   },

@@ -20,6 +20,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
 app.use('/images', express.static(path.join(__dirname, '../client/images')));
+app.use(express.static(__dirname + '/dist'));
 
 if (process.env.NODE_ENV === 'production') {
   app.use(express.static(path.join(__dirname, '../client/build')));
@@ -29,6 +30,8 @@ app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, '../client/build/index.html'));
 })
 };
+
+if (process.env.NODE_ENV == 'development') require('dotenv').config({ silent: true });
 
 db.once('open', () => {
   app.listen(PORT, () => {
@@ -62,9 +65,8 @@ app.use(
   })
 );
 
-app.get('/', (req, res) => {
-  const path = resolve(process.env.STATIC_DIR + '/index.html');
-  res.sendFile(path);
+app.get('*', (req, res) => {
+  res.sendFile(path.resolve(__dirname, 'index.html'));
 });
 
 app.get('/config', async (req, res) => {

@@ -50,7 +50,9 @@
     "semantic-ui-react": "^2.0.3"
   },
   "devDependencies": {
-    "concurrently": "^5.1.0"
+    "concurrently": "^5.1.0",
+    "dotenv": "^8.2.0",
+    "dotenv-webpack": "^6.0.0"
   },
   "react-dotenv": {
     "whitelist": [
