@@ -62,7 +62,7 @@ class Map extends React.Component {
     return (
       <div>
         <div ref={el => (this.mapWrapper = el)} className="mapWrapper"
-          mapboxapiaccesstoken={process.env.REACT_APP_MAPBOX_KEY}
+          mapboxapiaccesstoken='pk.eyJ1Ijoiem91c2hpbHUzMSIsImEiOiJja2txaXhwMjAzNWZ4MnBwZGVrcDIwMDdyIn0.TC2CK7vybPMBffLQkSo58g'
         />
       </div>
     );
